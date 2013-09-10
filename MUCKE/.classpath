@@ -2,5 +2,46 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="var" path="MUCKE_LIB/colt.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/commons-codec-1.5.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/commons-lang3-3.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/concurrent.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/fastutil-6.5.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/geronimo-jta_1.1_spec-1.1.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/httpclient-4.1.2.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/httpcore-4.1.3.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/java-getopt-1.0.14.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/jcl-over-slf4j-1.6.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/jdbc-api-1.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/jena-arq-2.9.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/jena-core-2.7.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/jena-iri-0.9.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/jena-tdb-0.9.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/lc4j-0.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/log4j-1.2.16.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/log4j.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/lucene-analyzers-common-4.2.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/lucene-core-4.2.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/lucene-queryparser-4.2.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/mg4j-5.2.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/microsoft-translator-java-api-0.6.2-jar-with-dependencies.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/mysql-connector-java-5.0.5.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/neo4j-cypher-1.8.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/neo4j-graph-algo-1.8.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/neo4j-graph-matching-1.8.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/neo4j-jmx-1.8.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/neo4j-kernel-1.8.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/neo4j-lucene-index-1.8.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/neo4j-shell-1.8.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/neo4j-udc-1.8.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/org.apache.servicemix.bundles.jline-0.9.94_1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/ostermillerutils-1.08.02.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/scala-library-2.9.1-1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/server-api-1.8.1.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/slf4j-api-1.6.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/slf4j-log4j12-1.6.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/weka-3.7.3.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/xercesImpl-2.10.0.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

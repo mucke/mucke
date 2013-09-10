@@ -1,7 +1,5 @@
 package mucke.config;
 
-import mucke.MUCKEManager;
-
 import org.apache.log4j.Logger;
 
 /**

@@ -14,14 +14,14 @@ import org.apache.log4j.Logger;
  * 
  * @author Ralf Bierig
  */
-public class MUCKEManager {
+public class SystemManager {
 
-    static Logger logger = Logger.getLogger(MUCKEManager.class);
+    static Logger logger = Logger.getLogger(SystemManager.class);
 
     private ConfigurationManager configManager = null;
 
     /** Constructor */
-    public MUCKEManager() {
+    public SystemManager() {
 
 	// initialize the ConfigurationManager upon instantiation
 	configManager = new ConfigurationManager();
@@ -43,8 +43,9 @@ public class MUCKEManager {
 	logger.debug("Loading Runs...");
 	List<String> runConfigFilenames = configManager.getRuns();
 	// execute each run
-	int i = 1;
+	int i = 0;
 	for (String runConfigFilename : runConfigFilenames) {
+	    i++;
 	    logger.debug("Run # " + (i) + ":" + runConfigFilename);
 
 	    // instantiate and execute Run
@@ -64,7 +65,7 @@ public class MUCKEManager {
     public static void main(String[] args) {
 
 	// Initialize manager
-	MUCKEManager manager = new MUCKEManager();
+	SystemManager manager = new SystemManager();
 	manager.execute();
 
     }

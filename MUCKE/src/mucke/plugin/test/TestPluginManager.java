@@ -33,6 +33,7 @@ public class TestPluginManager extends PluginManager {
     /** Runs the Test Plugin */
     public void run(String propertiesFile) {
 	super.run(propertiesFile);
+	logger.info("Testing TestPlugin.... OK!");
     }
 
 }

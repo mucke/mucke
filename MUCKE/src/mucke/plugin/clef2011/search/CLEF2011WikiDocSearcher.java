@@ -8,6 +8,7 @@ import mucke.config.ConfigurationManager;
 import mucke.plugin.clef2011.ConfigConstants;
 import mucke.plugin.clef2011.search.result.DocumentResult;
 
+import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -29,6 +30,7 @@ import org.apache.lucene.util.Version;
 public class CLEF2011WikiDocSearcher {
 
     private ConfigurationManager configManager = null;
+    static Logger logger = Logger.getLogger(ConfigurationManager.class);
 
     /** Constructor */
     public CLEF2011WikiDocSearcher(ConfigurationManager configManager) {
@@ -64,7 +66,7 @@ public class CLEF2011WikiDocSearcher {
 	    System.out.println("		document query: " + query.toString());
 	    System.out.println("		number of results considered: " + System.getProperty(ConfigConstants.RESULTLIST_DOC_LENGTH));
 	    
-	    TopDocs topDocs = searcher.search(query, Integer.getInteger(System.getProperty(ConfigConstants.RESULTLIST_DOC_LENGTH)));
+	    TopDocs topDocs = searcher.search(query, Integer.valueOf(System.getProperty(ConfigConstants.RESULTLIST_DOC_LENGTH)));
 	    ScoreDoc[] hits = topDocs.scoreDocs;
 
 	    for (int i = 0; i < hits.length; i++) {
@@ -83,7 +85,8 @@ public class CLEF2011WikiDocSearcher {
 	} catch (Exception e) {
 	    System.out.println("Exception while searching for topic: '" + queryText + "': " + e.getMessage());
 	    e.printStackTrace();
-	}
+	}	
+	
 	return docResults;
     }
 

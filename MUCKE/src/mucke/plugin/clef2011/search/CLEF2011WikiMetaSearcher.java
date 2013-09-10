@@ -80,14 +80,14 @@ public class CLEF2011WikiMetaSearcher {
 	    System.out.println("		metadata query: " + query.toString());
 
 	    // filtering
-	    Filter docIDFilter = null;
-	    if (System.getProperty(ConfigConstants.FILTER_META_FIELD) != null) {
-		docIDFilter = new PrefixFilter(new Term(System.getProperty(ConfigConstants.FILTER_META_FIELD), documentID));
-		System.out.println("	Filtering based on field: " + docIDFilter.toString());
-	    }
-
-	    TopDocs topDocs = searcher.search(query, docIDFilter,
-		    Integer.getInteger(System.getProperty(ConfigConstants.RESULTLIST_META_LENGTH)));
+	    //Filter docIDFilter = null;
+	    //if (System.getProperty(ConfigConstants.FILTER_META_FIELD) != null) {
+	    //	docIDFilter = new PrefixFilter(new Term(System.getProperty(ConfigConstants.FILTER_META_FIELD), documentID));
+	    //	System.out.println("	Filtering based on field: " + docIDFilter.toString());
+	    //}
+	   
+	    TopDocs topDocs = searcher.search(query, //docIDFilter,
+		    Integer.valueOf(System.getProperty(ConfigConstants.RESULTLIST_META_LENGTH)));
 	    ScoreDoc[] hits = topDocs.scoreDocs;
 
 	    for (int i = 0; i < hits.length; i++) {
