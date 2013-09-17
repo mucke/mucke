@@ -17,11 +17,10 @@ public class Document {
 
     public Document() {
         fields = new ArrayList<Field>();
-        for (int i = 0; i < 3; i++) {
-            fields.add(new TagField());
-            fields.add(new TextField());
-            fields.add(new ImageField());
-        }
+    }
+    
+    public Document(List<Field> fields) {
+    	this.fields = fields;
     }
     
     public List<Field> getFields() {
