@@ -7,6 +7,12 @@ package mucke.concept;
 import java.util.ArrayList;
 import java.util.List;
 
+import mucke.concept.model.Document;
+import mucke.concept.model.Field;
+import mucke.concept.model.ImageField;
+import mucke.concept.model.TagField;
+import mucke.concept.model.TextField;
+
 /**
  *
  * @author Alexandra

@@ -6,6 +6,10 @@ package mucke.concept;
 
 import java.util.List;
 
+import mucke.concept.model.Concept;
+import mucke.concept.model.Document;
+import mucke.concept.model.Field;
+
 /**
  *
  * @author Alexandra

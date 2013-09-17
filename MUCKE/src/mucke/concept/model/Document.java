@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package mucke.concept;
+package mucke.concept.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Represents an abstract document
  * @author Alexandra
  */
 public class Document {
