@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ro.uaic.mucke.client;
+package mucke.ui;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import ro.uaic.mucke.client.helpers.ConfigHelper;
+import mucke.ui.helpers.ConfigHelper;
 
 /**
  *

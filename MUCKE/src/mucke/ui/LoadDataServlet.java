@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ro.uaic.mucke.client;
+package mucke.ui;
 
 import java.io.BufferedReader;
 import java.io.IOException;

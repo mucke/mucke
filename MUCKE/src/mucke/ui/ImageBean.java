@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ro.uaic.mucke.client;
+package mucke.ui;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.simple.JSONObject;
 
-import ro.uaic.mucke.client.helpers.ConfigHelper;
+import mucke.ui.helpers.*;
 
 /**
  *
