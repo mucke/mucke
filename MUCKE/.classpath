@@ -43,5 +43,7 @@
 	<classpathentry kind="var" path="MUCKE_LIB/xercesImpl-2.10.0.jar"/>
 	<classpathentry kind="var" path="MUCKE_LIB/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

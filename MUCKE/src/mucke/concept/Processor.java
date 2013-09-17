@@ -24,7 +24,7 @@ public class Processor {
 
     public Concept[] process(Document doc) {
         List<Field> fields = doc.getFields();
-        if (fields.size() > 0) {
+        if (fields != null) {
             for (Field field : fields) {
                 field.accept(visitor);
             }

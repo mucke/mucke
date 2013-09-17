@@ -24,7 +24,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import ro.uaic.mucke.client.helpers.ConfigHelper;
+import mucke.ui.helpers.*;
 
 /**
  *

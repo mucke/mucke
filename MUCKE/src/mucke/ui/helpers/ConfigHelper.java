@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ro.uaic.mucke.client.helpers;
+package mucke.ui.helpers;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

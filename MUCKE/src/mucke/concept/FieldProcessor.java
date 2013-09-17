@@ -15,7 +15,7 @@ import mucke.concept.model.TextField;
  *
  * @author Alexandra
  */
-class FieldProcessor implements Visitor{
+public class FieldProcessor implements Visitor{
     @Override
     public List<Concept> process(TextField textField) {
         System.out.println("Processing text field");
