@@ -1,4 +1,4 @@
-package mucke.concept;
+package mucke.concept.model;
 
 import java.net.URI;
 
