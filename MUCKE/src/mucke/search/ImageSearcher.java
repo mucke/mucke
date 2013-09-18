@@ -14,7 +14,7 @@ public class ImageSearcher {
      * @param filterResults List of already existing results as a filter for the results found by 
      * the search. Results outside that list will be ignored. If the result list is null, a normal 
      * search will be performed with all results considered. */
-    public List<Result> searchConcepts(String imageID, List<Result> results){
+    public List<Result> search(String imageID, List<Result> results){
 
 	// logging
 	logger.info("Searching for the following image:" + imageID);
