@@ -11,8 +11,8 @@ import mucke.concept.model.Document;
 import mucke.concept.model.Field;
 
 /**
- *
- * @author Alexandra
+ * 
+ * @author Alexandra-Mihaela Siriteanu
  */
 public class Processor {
 

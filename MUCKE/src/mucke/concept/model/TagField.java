@@ -10,8 +10,8 @@ import mucke.concept.model.Concept;
 import mucke.concept.Visitor;
 
 /**
- *
- * @author Alexandra
+ * Defines a field that describes a tag
+ * @author Alexandra-Mihaela Siriteanu
  */
 public class TagField extends Field {
 

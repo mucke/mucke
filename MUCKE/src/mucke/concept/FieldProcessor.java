@@ -12,8 +12,9 @@ import mucke.concept.model.TagField;
 import mucke.concept.model.TextField;
 
 /**
- *
- * @author Alexandra
+ * Processes document fields using different methods. Selectively overwriting the methods
+ * allows to further adapt the functionality of the processor. 
+ * @author Alexandra-Mihaela Siriteanu
  */
 public class FieldProcessor implements Visitor{
     @Override

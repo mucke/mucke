@@ -10,8 +10,8 @@ import mucke.concept.model.Concept;
 import mucke.concept.Visitor;
 
 /**
- *
- * @author Alexandra
+ * Defines a field that describes an image
+ * @author Alexandra-Mihaela Siriteanu
  */
 public class ImageField extends Field{
     @Override

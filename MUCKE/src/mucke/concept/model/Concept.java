@@ -14,9 +14,8 @@ public class Concept {
 	return id;
     }
 
-    /**
-     * Construct a concept
-     * 
+    /** 
+     * Constructor
      * @param URI id
      */
     public Concept(URI id) {

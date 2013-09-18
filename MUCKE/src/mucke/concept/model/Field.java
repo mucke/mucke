@@ -10,8 +10,9 @@ import mucke.concept.Visitor;
 
 
 /**
- *
- * @author Alexandra
+ * Determines an abstract content type that can be added to a document.  
+ * 
+ * @author Alexandra-Mihaela Siriteanu
  */
 public abstract class Field {
 

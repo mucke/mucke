@@ -12,7 +12,7 @@ import mucke.concept.model.TagField;
 import mucke.concept.model.TextField;
 
 /**
- *
+ * 
  * @author Alexandra
  */
 public interface Visitor {

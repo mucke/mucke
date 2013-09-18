@@ -5,14 +5,13 @@
 package mucke.credibility;
 
 import mucke.concept.model.Document;
-import mucke.plugin.PluginManager;
 
 import org.apache.log4j.Logger;
 
 
 /**
  *
- * @author Alexandra
+ * @author Alexandra-Mihaela Siriteanu
  */
 public class Main {
     

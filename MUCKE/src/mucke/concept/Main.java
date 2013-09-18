@@ -14,8 +14,8 @@ import mucke.concept.model.TagField;
 import mucke.concept.model.TextField;
 
 /**
- *
- * @author Alexandra
+ * Test Class for the Concept Package
+ * @author Alexandra-Mihaela Siriteanu
  */
 public class Main {
     

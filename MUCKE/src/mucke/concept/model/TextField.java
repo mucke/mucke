@@ -10,8 +10,8 @@ import mucke.concept.model.Concept;
 import mucke.concept.Visitor;
 
 /**
- *
- * @author Alexandra
+ * Defines a field that describes text
+ * @author Alexandra-Mihaela Siriteanu
  */
 public class TextField extends Field {
 
