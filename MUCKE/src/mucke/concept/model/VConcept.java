@@ -1,24 +1,27 @@
 package mucke.concept.model;
 
 import java.net.URI;
-import mucke.concept.Classifier;
 
 /** 
  * Represents a visual concept 
  * 
- * @author Ralf Bierig and Alexandra-Mihaela Siriteanu 
+ * @author Alexandra-Mihaela Siriteanu 
  */
 public class VConcept extends Concept {
 
-    private Classifier classifier;
+    /** Model state provided by a visual classifier that represents the state of the visual concept */
+    private ClassifierModel modelClassifier;
     
-    public VConcept(URI id, Classifier classifier) {
+    public VConcept(URI id, ClassifierModel modelClassifier) {
 	super(id);
-	this.classifier = classifier;
+	this.modelClassifier = modelClassifier;
     }
     
-    public Classifier getClassifier(){
-	return this.classifier;
+    /**
+     * @return the modelClassifier
+     */
+    public ClassifierModel getModelClassifier(){
+	return this.modelClassifier;
     }
 
 }

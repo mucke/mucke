@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mucke.concept;
 
 import java.util.List;
@@ -11,19 +7,21 @@ import mucke.concept.model.Document;
 import mucke.concept.model.Field;
 
 /**
- * 
+ * Main service interface for concept identification that transforms documents into lists of concepts. 
  * @author Alexandra-Mihaela Siriteanu
  */
-public class Processor {
+public class ConceptManager {
 
-    private Visitor visitor;
+    private DocumentFieldProcessor visitor;
 
-    public Processor() {
-        visitor = new FieldProcessor();
+    public ConceptManager() {
+        visitor = new StandardDocumentFieldProcessor();
     }
 
     public Concept[] process(Document doc) {
+	
         List<Field> fields = doc.getFields();
+        
         if (fields != null) {
             for (Field field : fields) {
                 field.accept(visitor);

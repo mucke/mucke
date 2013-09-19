@@ -1,19 +1,24 @@
 package mucke.query;
 
+/**
+ * Tests the query package
+ * 
+ * @author Alexandra-Mihaela Siriteanu
+ */
 public class Main {
 
+    /** Tests the query package */
+    public static void main(String[] args) {
 	
-	public static void main(String[] args) {
-		String testQuery = "hello world";
-		QueryProcessor qProcessor = new QueryProcessor();
-		
-		
-		PrepareQueryStrategy testStrategy = new PrepareTestQueryStrategy();
-		Query query = qProcessor.prepare(testQuery, testStrategy);
-		
-		PrepareCollectionStrategy testCollStrategy = new PrepareTestCollectionStrategy();
-		qProcessor.prepareCollection(testQuery, testCollStrategy);
-	
-		qProcessor.process(query);
-	}
+	String queryText = "hello world";
+	QueryManager qProcessor = new QueryManager();
+
+	QueryReader testStrategy = new TestQueryReader();
+	Query query = qProcessor.prepare(queryText, testStrategy);
+
+	QueryCollectionReader testCollStrategy = new TestQueryCollectionReader();
+	qProcessor.prepareCollection(queryText, testCollStrategy);
+
+	qProcessor.process(query);
+    }
 }

@@ -6,7 +6,7 @@ import java.net.URI;
 /** 
  * Represents a text concept
  * 
- * @author Ralf Bierig and Alexandra-Mihaela Siriteanu
+ * @author Alexandra-Mihaela Siriteanu
  */
 public class TConcept extends Concept {
 

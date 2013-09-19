@@ -7,16 +7,16 @@ package mucke.concept.model;
 import java.util.List;
 
 import mucke.concept.model.Concept;
-import mucke.concept.Visitor;
+import mucke.concept.DocumentFieldProcessor;
 
 /**
- * Defines a field that describes text
+ * Defines an text field that is used for a document
  * @author Alexandra-Mihaela Siriteanu
  */
 public class TextField extends Field {
 
     @Override
-    public List<Concept> accept(Visitor visitor) {
+    public List<Concept> accept(DocumentFieldProcessor visitor) {
         return visitor.process(this);
     }
 }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mucke.concept;
 
 import java.util.ArrayList;
@@ -14,13 +10,14 @@ import mucke.concept.model.TagField;
 import mucke.concept.model.TextField;
 
 /**
- * Test Class for the Concept Package
+ * Tests the concept package
  * @author Alexandra-Mihaela Siriteanu
  */
 public class Main {
     
+    /** Tests the concept package */
     public static void main(String[] args) {
-        Processor processor = new Processor();
+        ConceptManager processor = new ConceptManager();
         List<Field> fields = new ArrayList<Field>();
         for (int i = 0; i < 3; i++) {
             fields.add(new TagField());

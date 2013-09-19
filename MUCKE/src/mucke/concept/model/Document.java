@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mucke.concept.model;
 
 import java.util.ArrayList;
@@ -9,7 +5,8 @@ import java.util.List;
 
 /**
  * Represents an abstract document consisting of a list of fields.
- * @author Alexandra
+ * 
+ * @author Alexandra-Mihaela Siriteanu
  */
 public class Document {
 
@@ -29,7 +26,8 @@ public class Document {
     
     /** 
      * Return fields of the document
-     * @return fields */
+     * @return fields 
+     */
     public List<Field> getFields() {
         return fields;
     }
