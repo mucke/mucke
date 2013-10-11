@@ -16,9 +16,9 @@
    id="svg2"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="MUCKEArchitecture_WPMapping.svg"
-   inkscape:export-filename="C:\Users\rbierig.INTERN\git\mucke\MUCKE\doc\systemarchitecture\MUCKEArchitecture_v5.png"
-   inkscape:export-xdpi="300"
-   inkscape:export-ydpi="300">
+   inkscape:export-filename="C:\Users\rbierig.INTERN\git\mucke\MUCKE\doc\systemarchitecture\MUCKEArchitecture_WPMapping.png"
+   inkscape:export-xdpi="200"
+   inkscape:export-ydpi="200">
   <metadata
      id="metadata505">
     <rdf:RDF>
@@ -27,7 +27,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -46,7 +46,7 @@
      showgrid="false"
      inkscape:zoom="3.0246075"
      inkscape:cx="188.80537"
-     inkscape:cy="168.30623"
+     inkscape:cy="217.19573"
      inkscape:window-x="1592"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -2276,4 +2276,52 @@
        x="192.43741"
        y="149.01962"
        style="font-size:4.80000019px;font-weight:bold;fill:#ff0000;fill-opacity:1;-inkscape-font-specification:Sans Bold">WP4</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:4.80000019px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+     x="198.80267"
+     y="207.4442"
+     id="text5522-27-1"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan5524-79-7"
+       x="198.80267"
+       y="207.4442"
+       style="font-size:4.80000019px;font-weight:bold;fill:#ff0000;fill-opacity:1;-inkscape-font-specification:Sans Bold">WP6</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:4.80000019px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+     x="183.72635"
+     y="242.88681"
+     id="text5522-27-4"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan5524-79-0"
+       x="183.72635"
+       y="242.88681"
+       style="font-size:4.80000019px;font-weight:bold;fill:#ff0000;fill-opacity:1;-inkscape-font-specification:Sans Bold">WP6</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:4.80000019px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+     x="86.391396"
+     y="89.213982"
+     id="text5522-27-9"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan5524-79-4"
+       x="86.391396"
+       y="89.213982"
+       style="font-size:4.80000019px;font-weight:bold;fill:#ff0000;fill-opacity:1;-inkscape-font-specification:Sans Bold">WP6</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:4.80000019px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+     x="198.27368"
+     y="86.304504"
+     id="text5522-27-8"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan5524-79-8"
+       x="198.27368"
+       y="86.304504"
+       style="font-size:4.80000019px;font-weight:bold;fill:#ff0000;fill-opacity:1;-inkscape-font-specification:Sans Bold">WP6</tspan></text>
 </svg>
