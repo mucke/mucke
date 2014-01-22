@@ -67,7 +67,7 @@ public class CLEF2011WikiMetaSearcher {
 
 	    // extract image search fields from configuration
 	    List<String> searchDocFields = new ArrayList<String>();
-	    configManager.getProperties(ConfigConstants.SEARCH_IMG_FIELDS, searchDocFields);
+	    configManager.getProperties(ConfigConstants.SEARCH_IMG_FIELDS, searchDocFields, true);
 	    String[] iFields = new String[searchDocFields.size()];
 	    for (int i = 0; i < searchDocFields.size(); i++) {
 		iFields[i] = searchDocFields.get(i);

@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import mucke.index.IndexFieldGenerator;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.chainsaw.Main;
+
+import com.hp.hpl.jena.tdb.index.Index;
 
 public class ConfigurationManager {
 
@@ -114,14 +118,14 @@ public class ConfigurationManager {
 	}
 	return run;
     }
-
+    
     
     /**
      * Recursively looks up multiple comma-separated configuration properties of the form "prop1 = prop2" where "prop2 = value1, value2".
      * When "prop1" is looked up, it returns a list of Strings containing "prop1" and "prop2". Since this is done recursively, it allows for
      * properties being reused and linked up in multiple functions.
      */
-    public void getProperties(String property, List<String> values) {
+    public void getProperties(String property, List<String> values, boolean recursive) {
 	
 	// extract value and split all children
 	String value = System.getProperty(property);
@@ -129,17 +133,23 @@ public class ConfigurationManager {
 	
 	// iterate over each token
 	while (tokenizer.hasMoreTokens()){
-	    
-	    // check token
+	    // extract token
 	    String token = tokenizer.nextToken().trim();
-	    if(this.isProperty(token)) {
-		getProperties(token, values);	
+	    
+	    if (recursive){
+		// check token
+		if(this.isProperty(token)) {
+		    getProperties(token, values, recursive);	
+		} else {
+		    values.add(token);
+		}
 	    } else {
-		values.add(token);
+		 values.add(token);
 	    }
 	}
     }
-
+    
+    
     /**
      * Checks if the given property is an active configuration property
      * 
@@ -164,7 +174,7 @@ public class ConfigurationManager {
 	
 	// extract property values 
 	List<String> values = new ArrayList<String>();
-	configManager.getProperties(property, values);
+	configManager.getProperties(property, values, true);
 	logger.info("Property values found: " + values.size());
 	for (int i = 0; i < values.size(); i++) {
 	    logger.info((i + 1) + ": " + values.get(i));

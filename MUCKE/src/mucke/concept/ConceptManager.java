@@ -8,6 +8,7 @@ import mucke.concept.model.Field;
 
 /**
  * Main service interface for concept identification that transforms documents into lists of concepts. 
+ * 
  * @author Alexandra-Mihaela Siriteanu
  */
 public class ConceptManager {

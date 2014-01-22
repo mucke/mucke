@@ -55,7 +55,7 @@ public class CLEF2011WikiDocSearcher {
 
 	    // extract search fields from configuration
 	    List<String> searchDocFields = new ArrayList<String>();
-	    configManager.getProperties(ConfigConstants.SEARCH_DOC_FIELDS, searchDocFields);
+	    configManager.getProperties(ConfigConstants.SEARCH_DOC_FIELDS, searchDocFields, true);
 	    String[] sFields = new String[searchDocFields.size()];
 	    for (int i = 0; i < searchDocFields.size(); i++) {
 		sFields[i] = searchDocFields.get(i);
