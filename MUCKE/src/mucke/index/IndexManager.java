@@ -36,7 +36,7 @@ public class IndexManager {
      * class is named by it fully qualified name (e.g. mucke.index.IndexFieldGenerator). 
      * @param indexName The name of the index 
      * @return true, if the parameters are defined correctly, false otherwise */
-    public boolean checkIndexParameters(String indexName){
+    private boolean checkIndexParameters(String indexName){
 	
 	String indexFieldsProperty = indexName + ".fields";
 	String indexFieldsGeneratorProperty = indexFieldsProperty + ".generator";
@@ -125,7 +125,8 @@ public class IndexManager {
 		generators.add(generator);
 		
 	    } catch (Exception e){
-		logger.error("Exception while creating IndexFieldGenerator. Class either does not exist or has no such constructor. Check configuration file.");
+		logger.error("Exception while creating IndexFieldGenerator. Class either does not exist or " +
+				"has no such constructor. Check configuration file.");
 	    }
 	}
 	
@@ -133,7 +134,8 @@ public class IndexManager {
     }
     
     
-    /** Calls the text indexer to index the given content directory and store the index in the given index directory
+    /** Calls the text indexer to index (defined by the indexName) the given content directory and store the index 
+     * in the given index directory
      * @param contentDirectory
      * @param indexDirectory 
      * @param indexName A unique name of the index that is also used in the configuration file to refer to the fields
@@ -151,22 +153,29 @@ public class IndexManager {
     }
        
     
-    
-    
-    
-    /** Calls the image indexer to index the given content directory and store the index in the given index directory
+    /** Calls the image indexer to index (defined by the indexName) the given content directory and store the index 
+     * in the given index directory
      * @param contentDirectory
      * @param indexDirectory 
      */
-    public void indexImage(String contentDirectory, String indexDirectory){
+    public void indexImage(String contentDirectory, String indexDirectory, String indexName){
+
+	// create generators
+	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
+    
 	// TODO
     }
     
-    /** Calls the concept indexer to index the given content directory and store the index in the given index directory
+    /** Calls the concept indexer to index (defined by the indexName) the given content directory and store the index 
+     * in the given index directory
      * @param contentDirectory
      * @param indexDirectory 
      */
-    public void indexConcept(String contentDirectory, String indexDirectory){
+    public void indexConcept(String contentDirectory, String indexDirectory, String indexName){
+	
+	// create generators
+	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
+	
 	// TODO
     }
     

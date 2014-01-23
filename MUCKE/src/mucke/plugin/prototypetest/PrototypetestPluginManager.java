@@ -37,8 +37,11 @@ public class PrototypetestPluginManager extends PluginManager {
 	super.run(propertiesFile);
 	logger.info("Start");
 	
-	IndexManager indexManager = new IndexManager(this.configManager);
-	indexManager.indexText(System.getProperty(ConfigConstants.WIKI_DOC_DIR), System.getProperty(ConfigConstants.WIKI_DOC_INDEXDIR), "index1");
+	//IndexManager indexManager = new IndexManager(this.configManager);
+	//indexManager.indexText(System.getProperty(ConfigConstants.WIKI_DOC_DIR), System.getProperty(ConfigConstants.WIKI_DOC_INDEXDIR), "index1");
+	
+	IndexManager indexManager2 = new IndexManager(this.configManager);
+	indexManager2.indexText(System.getProperty(ConfigConstants.WIKI_META_DIR), System.getProperty(ConfigConstants.WIKI_META_INDEXDIR), "index2");
 	
 	logger.info("Done!");
 	

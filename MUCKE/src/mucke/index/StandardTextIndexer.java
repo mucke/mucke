@@ -53,6 +53,9 @@ public class StandardTextIndexer implements Indexer {
 	boolean create = false;
 
 	// check if data directory exists
+	
+	logger.debug("content Dir = " + contentDirectory);
+	
 	final File docDir = new File(contentDirectory);
 	if (!docDir.exists() || !docDir.canRead()) {
 	    logger.error("Document directory '" + docDir.getAbsolutePath()
@@ -94,6 +97,11 @@ public class StandardTextIndexer implements Indexer {
 	}
     }
 
+    /** Indexes individual document with a set of configured IndexFieldGenerators.  
+     * @param IndexWriter A writing handle to the index
+     * @param File The file to be indexed 
+     * @param List<IndexFieldGenerator> A list of generators that populate the fields with content
+     * @throws IOException */
     private void indexDocuments(IndexWriter writer, File file, List<IndexFieldGenerator> fieldGenerators) throws IOException {
 	
 	// do not try to index files that cannot be read
