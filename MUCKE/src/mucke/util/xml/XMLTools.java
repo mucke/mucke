@@ -57,22 +57,12 @@ public class XMLTools {
 	    nodeList = (NodeList) expr.evaluate(document, XPathConstants.NODESET);
 	} catch (Exception e) {
 	    System.err.println("EXCEPTION while extracting xPath '" + xPath + "': " + e.getMessage());
-	    e.printStackTrace();
+	    //e.printStackTrace();
 	}
 	if (nodeList == null || nodeList.getLength() == 0) {
 	    // System.err.println("EMPTY node list. Check your XPath expression!");
 	}
 	return nodeList;
-    }
-
-    public static void main(String[] args) {
-	
-	NodeList nodeList = XMLTools.getNodes(new File("./data/ImageCLEF2011/all_text/metadata/1/1.xml"),
-		"/image/text[@lang='en']/caption/@article");
-	for (int i = 0; i < nodeList.getLength(); i++) {
-	    System.out.println(i + ") " + nodeList.item(i).getTextContent());
-	}
-
     }
 
 }

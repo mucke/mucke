@@ -35,6 +35,7 @@ public class PrototypetestPluginManager extends PluginManager {
     /** Runs the Test Plugin */
     public void run(String propertiesFile) {
 	super.run(propertiesFile);
+	
 	logger.info("Start");
 	
 	//IndexManager indexManager = new IndexManager(this.configManager);

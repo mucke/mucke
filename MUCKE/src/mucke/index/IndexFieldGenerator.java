@@ -13,7 +13,8 @@ import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
 
 /** 
- * Creates Lucene index fields from content files
+ * Creates Lucene index fields from content files. Signatures define which part of the files content will be used for the field. 
+ * The generator also has an optional translator that can be used to translate its content into another language.
  * 
  * @author Ralf Bierig
  */
@@ -22,6 +23,7 @@ public class IndexFieldGenerator {
     static Logger logger = Logger.getLogger(ConfigurationManager.class);
     private String fieldname = "UNDEFINED";
     private String signature = "UNDEFINED";
+    private IndexFieldTranslator translator = null; 
     
     
     /** Constructor. Defines the field this IndexFieldGenerator produces. */
@@ -32,7 +34,12 @@ public class IndexFieldGenerator {
 	} else {
 	    this.signature = signature;    
 	}
-	logger.debug("Building IndexFieldGenerator for field '" + this.fieldname + "' with signature '" + this.signature + "'");
+	//this.translator = translator;
+	//logger.debug("Building IndexFieldGenerator for field '" + this.fieldname + "' with signature '" + this.signature + "'");
+	//if (this.translator != null){
+	//    logger.debug("Index field has a translator for " + translator.getLanguage().name());   
+	//}
+
     }
         
     /** Generates a Lucene index field with the given name based on the given file and the given signature. 

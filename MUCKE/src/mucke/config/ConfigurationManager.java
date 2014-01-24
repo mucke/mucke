@@ -34,6 +34,7 @@ public class ConfigurationManager {
 
 	    // load primary properties file
 	    logger.debug("Loading primary properties...");
+	    
 	    System.getProperties().load(Main.class.getClassLoader().getResourceAsStream("primary.properties"));
 	    logger.info("Primary properties successfully loaded.");
 
@@ -129,7 +130,7 @@ public class ConfigurationManager {
 	
 	// extract value and split all children
 	String value = System.getProperty(property);
-	StringTokenizer tokenizer = new StringTokenizer(value, ",");
+	StringTokenizer tokenizer = new StringTokenizer(value, ";");
 	
 	// iterate over each token
 	while (tokenizer.hasMoreTokens()){
