@@ -18,7 +18,7 @@ public class Document {
     }
     
     /** Constructor
-     * @param List<Field> fields
+     * @param fields A list of fields
      */
     public Document(List<Field> fields) {
     	this.fields = fields;

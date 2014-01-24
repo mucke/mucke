@@ -16,7 +16,6 @@ public class IndexFieldTranslator {
     
     /** Traverses the list of String texts and translates the first one it finds into the given language, then stops. If the resultText already exists,
      * returns this one and stops.  
-     * @param language The destination language the text is translated to
      * @param texts An array of text in descending order of importance
      * @param resultText The result of the translation */
     public String translateFirst(String[] texts, String resultText) {

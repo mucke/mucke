@@ -69,8 +69,8 @@ public class Logger {
      * Writes a log of columns, represented in a String array, directly to the logging file. Checks the number of columns with the number of
      * column headers when the Logger was created and throws an error if they differ.
      * 
-     * @param String[] columns
-     * @return true if the log was successfully writen, false otherwise
+     * @param columns An array of logging columns
+     * @return true if the log was successfully written, false otherwise
      */
     public boolean log(String[] columns) {
 

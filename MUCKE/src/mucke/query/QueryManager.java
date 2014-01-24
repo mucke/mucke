@@ -19,8 +19,8 @@ public class QueryManager {
     }
 
     /** Prepare query into Query object with the given reader
-     * @param String query
-     * @param QueryReader reader
+     * @param query
+     * @param reader
      * @return Query
      */
     public Query prepare(String query, QueryReader reader) {
@@ -28,8 +28,8 @@ public class QueryManager {
     }
 
     /** Prepare query collection (as provided by an IR collection) into a list of Query objects 
-     * @param (String listOfQueries
-     * @param QueryCollectionReader reader
+     * @param listOfQueries
+     * @param reader
      * @return List<Query>
      */
     public List<Query> prepareCollection(String listOfQueries, QueryCollectionReader reader) {
@@ -38,8 +38,8 @@ public class QueryManager {
 
     /** 
      * Transforms a query into a list of concepts contained in the query 
-     * @param Query query
-     * @return List<Query> 
+     * @param query The query
+     * @return A list of concepts
      */
     public List<Concept> process(Query query) {
 	List<Field> fields = query.getFields();

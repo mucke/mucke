@@ -5,8 +5,8 @@ public interface QueryReader {
 
     /** 
      * Transforms a query string into a Query object 
-     * @param String query
-     * @return Query
+     * @param query The query string
+     * @return A query
      */
     public abstract Query prepare(String query);
     

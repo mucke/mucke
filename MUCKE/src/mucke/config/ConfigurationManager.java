@@ -46,12 +46,8 @@ public class ConfigurationManager {
 	}
     }
 
-    /**
-     * Load configuration for a single run.
-     * 
-     * @param String propertiesFilename
-     * @throws Exception if the configuration file was not loaded
-     */
+    /** Load configuration for a single run.
+     * @param propertiesFilename The file with the properties */
     public void loadRunPropoerties(String propertiesFilename) {
 
 	try {
@@ -154,7 +150,7 @@ public class ConfigurationManager {
     /**
      * Checks if the given property is an active configuration property
      * 
-     * @param String property The configuration property to check
+     * @param property The configuration property to check
      * @return true, if the property is a configuration property, false otherwise
      */
     public boolean isProperty(String property) {

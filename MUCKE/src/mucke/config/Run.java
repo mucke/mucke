@@ -23,7 +23,6 @@ public interface Run {
     /**
      * Executes the evaluation run with the given configuration
      * 
-     * @param manager MUCKEManager Reference to responsible manager
      * @param propertiesFile File that further defines the run
      */
     public void run(String propertiesFile);

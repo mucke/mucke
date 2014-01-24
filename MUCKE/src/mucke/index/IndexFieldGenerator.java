@@ -44,14 +44,7 @@ public class IndexFieldGenerator {
         
     /** Generates a Lucene index field with the given name based on the given file and the given signature. 
      * Translates the field content if a translator is given
-     * 
-     * @param String fieldname
-     * @param File file 
-     * @param String signature The signature represents the formal expression of the location and structure of the 
-     * content selection that is added to the index field. This can for example be an XPath or a regular expression.
-     * @param BingLanguageTranslator translator Translates the field with the given translator, or does nothing if 
-     * set to null.
-     */
+     * @param file The file to generate an index field from */
     public Field generate(File file){
 	
 	// output

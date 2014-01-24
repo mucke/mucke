@@ -21,7 +21,7 @@ public class LanguageIdentifier {
      * Identifies the probable languages for the given sample using N-Gram-based
      * language models located at LC4J_LANGUAGE_MODELS_DIR. 
      * 
-     * @param String text sample
+     * @param sample A text sample
      * @return List of languages
      */
     public static List<String> identify(String sample) {

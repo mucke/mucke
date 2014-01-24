@@ -12,14 +12,14 @@ public class Concept {
 
     /** 
      * Constructor
-     * @param URI id
+     * @param id The URI of the concept
      */
     public Concept(URI id) {
 	this.id = id;
     }
     
     /**
-     * @return the id
+     * @return the id of the concept
      */
     public final URI getId() {
 	return id;

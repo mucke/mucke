@@ -28,9 +28,9 @@ public class XMLTools {
     /**
      * Extracts Nodes from the given file (encoded in latin ISO) based on the given xPath
      * 
-     * @param File The file to extract from
-     * @param String xPath query
-     * @return NodeList List of matching nodes
+     * @param file The file to extract from
+     * @param xPath The xPath query
+     * @return A list of matching nodes
      */
     public static NodeList getNodes(File file, String xPath) {
 	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

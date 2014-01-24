@@ -22,10 +22,10 @@ public class BingLanguageTranslator {
     /**
      * Translates the given text from the given fromLanguage to the given toLanguage
      * 
-     * @param String text The text to be translated
-     * @param String from
-     * @param String to
-     * @return String translated text
+     * @param text The text to be translated
+     * @param from The source language
+     * @param to The destination language
+     * @return The translated text
      */
     public static String translate(String text, Language from, Language to) {
 
