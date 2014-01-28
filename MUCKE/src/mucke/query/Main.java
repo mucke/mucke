@@ -11,14 +11,14 @@ public class Main {
     public static void main(String[] args) {
 	
 	String queryText = "hello world";
-	QueryManager qProcessor = new QueryManager();
+	QueryManager qManager = new QueryManager();
 
 	QueryReader testStrategy = new TestQueryReader();
-	Query query = qProcessor.prepare(queryText, testStrategy);
+	Query query = qManager.prepare(queryText, testStrategy);
 
 	QueryCollectionReader testCollStrategy = new TestQueryCollectionReader();
-	qProcessor.prepareCollection(queryText, testCollStrategy);
+	qManager.prepareCollection(queryText, testCollStrategy);
 
-	qProcessor.process(query);
+	qManager.process(query);
     }
 }

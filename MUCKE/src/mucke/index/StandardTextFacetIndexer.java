@@ -29,15 +29,15 @@ import org.apache.lucene.util.Version;
  * 
  * @author Ralf Bierig
  */
-public class StandardTextIndexer implements Indexer {
+public class StandardTextFacetIndexer implements FacetIndexer {
 
     private ConfigurationManager configManager = null;
 
     /** Logging facility */
-    static Logger logger = Logger.getLogger(StandardTextIndexer.class);
+    static Logger logger = Logger.getLogger(StandardTextFacetIndexer.class);
     
     /** Constructor */
-    public StandardTextIndexer(ConfigurationManager configManager) {
+    public StandardTextFacetIndexer(ConfigurationManager configManager) {
 	this.configManager = configManager; 
     }
 
@@ -54,9 +54,7 @@ public class StandardTextIndexer implements Indexer {
 	boolean create = false;
 
 	// check if data directory exists
-	
 	logger.debug("content Dir = " + contentDirectory);
-	
 	final File docDir = new File(contentDirectory);
 	if (!docDir.exists() || !docDir.canRead()) {
 	    logger.error("Document directory '" + docDir.getAbsolutePath()

@@ -1,21 +1,22 @@
 package mucke.query;
 
 import java.util.List;
-import mucke.concept.DocumentFieldProcessor;
-import mucke.concept.model.Concept;
-import mucke.concept.model.Field;
-import mucke.concept.StandardDocumentFieldProcessor;
+
+import mucke.concept.Concept;
+import mucke.concept.DocumentFacetProcessor;
+import mucke.concept.StandardDocumentFacetProcessor;
+import mucke.documentmodel.Facet;
 
 /** Prepares queries from the user input and from collections (i.e. sets of queries) by turning 
  * them into Query objects and lists of Query objects and processes queries into Concepts with 
  * the use of the concept package. */
 public class QueryManager {
 
-    private DocumentFieldProcessor visitor;
+    private DocumentFacetProcessor visitor;
 
     /** Standard Constructor */
     public QueryManager() {
-	visitor = new StandardDocumentFieldProcessor();
+	visitor = new StandardDocumentFacetProcessor();
     }
 
     /** Prepare query into Query object with the given reader
@@ -42,9 +43,9 @@ public class QueryManager {
      * @return A list of concepts
      */
     public List<Concept> process(Query query) {
-	List<Field> fields = query.getFields();
+	List<Facet> fields = query.getFields();
 	if (fields != null) {
-	    for (Field field : fields) {
+	    for (Facet field : fields) {
 		field.accept(visitor);
 	    }
 	}

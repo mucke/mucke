@@ -1,6 +1,6 @@
 package mucke.credibility;
 
-import mucke.concept.model.Document;
+import mucke.documentmodel.Document;
 
 import org.apache.log4j.Logger;
 

@@ -3,14 +3,14 @@ package mucke.index;
 import java.util.List;
 
 /**
- * Indexes collection content.
+ * Implement this interface if you want to write a new indexer for a particular facet type.
  * 
  * @author Ralf Bierig
  */
-public interface Indexer {
+public interface FacetIndexer {
 
     /**
-     * Indexes all content files stored in the given directory
+     * Indexes all content files of a specific facet stored in the given directory
      * 
      * @param contentDirectory File path to content directory
      * @param indexDirectory File path to index directory to be produced

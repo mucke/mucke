@@ -2,9 +2,8 @@ package mucke.concept;
 
 import java.util.List;
 
-import mucke.concept.model.Concept;
-import mucke.concept.model.Document;
-import mucke.concept.model.Field;
+import mucke.documentmodel.Document;
+import mucke.documentmodel.Facet;
 
 /**
  * Main service interface for concept identification that transforms documents into lists of concepts. 
@@ -13,19 +12,19 @@ import mucke.concept.model.Field;
  */
 public class ConceptManager {
 
-    private DocumentFieldProcessor visitor;
+    private DocumentFacetProcessor visitor;
 
     public ConceptManager() {
-        visitor = new StandardDocumentFieldProcessor();
+        visitor = new StandardDocumentFacetProcessor();
     }
 
     public Concept[] process(Document doc) {
 	
-        List<Field> fields = doc.getFields();
+        List<Facet> facets = doc.getFacets();
         
-        if (fields != null) {
-            for (Field field : fields) {
-                field.accept(visitor);
+        if (facets != null) {
+            for (Facet facet : facets) {
+        	facet.accept(visitor);
             }
         }
         return null;

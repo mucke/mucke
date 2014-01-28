@@ -8,8 +8,8 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-import mucke.concept.model.Concept;
-import mucke.concept.model.Document;
+import mucke.concept.Concept;
+import mucke.documentmodel.Document;
 
 import org.apache.log4j.Logger;
 

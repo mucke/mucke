@@ -2,19 +2,19 @@ package mucke.query;
 
 import java.util.List;
 
-import mucke.concept.model.Field;
+import mucke.documentmodel.Facet;
 
 /** A user query consisting of fields. Like documents, each query can be using text, tag or images.
- * CAN THIS BE MAPPED TO A LUCENE QUERY. */
+ * CAN THIS BE MAPPED TO A LUCENE QUERY? */
 public class Query {
 
-    private List<Field> fields;
+    private List<Facet> fields;
 
     /** 
      * Return fields of the Query
      * @return fields 
      */
-    public List<Field> getFields() {
+    public List<Facet> getFields() {
 	return fields;
     }
 }

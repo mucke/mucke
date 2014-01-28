@@ -1,6 +1,7 @@
-package mucke.concept.model;
+package mucke.concept;
 
 import java.net.URI;
+
 
 
 /** 

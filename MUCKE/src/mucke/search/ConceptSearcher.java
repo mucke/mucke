@@ -3,7 +3,7 @@ package mucke.search;
 import java.util.ArrayList;
 import java.util.List;
 
-import mucke.concept.model.Concept;
+import mucke.concept.Concept;
 
 import org.apache.log4j.Logger;
 

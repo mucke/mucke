@@ -3,11 +3,11 @@ package mucke.concept;
 import java.util.ArrayList;
 import java.util.List;
 
-import mucke.concept.model.Document;
-import mucke.concept.model.Field;
-import mucke.concept.model.ImageField;
-import mucke.concept.model.TagField;
-import mucke.concept.model.TextField;
+import mucke.documentmodel.Document;
+import mucke.documentmodel.Facet;
+import mucke.documentmodel.ImageFacet;
+import mucke.documentmodel.TagFacet;
+import mucke.documentmodel.TextFacet;
 
 /**
  * Tests the concept package
@@ -17,14 +17,17 @@ public class Main {
     
     /** Tests the concept package */
     public static void main(String[] args) {
-        ConceptManager processor = new ConceptManager();
-        List<Field> fields = new ArrayList<Field>();
+        
+	ConceptManager processor = new ConceptManager();
+        List<Facet> facets = new ArrayList<Facet>();
+        
         for (int i = 0; i < 3; i++) {
-            fields.add(new TagField());
-            fields.add(new TextField());
-            fields.add(new ImageField());
+            facets.add(new TagFacet());
+            facets.add(new TextFacet());
+            facets.add(new ImageFacet());
         }
-        Document doc = new Document(fields);
+        
+        Document doc = new Document(facets);
         processor.process(doc);
     }
 }

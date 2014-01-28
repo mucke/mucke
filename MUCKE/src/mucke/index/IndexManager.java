@@ -145,11 +145,31 @@ public class IndexManager {
 	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
 	    
 	// create and start the indexer with generators
-	StandardTextIndexer indexer = new StandardTextIndexer(configManager);
+	StandardTextFacetIndexer indexer = new StandardTextFacetIndexer(configManager);
 	logger.info("Lets start!");
 	indexer.index(contentDirectory, indexDirectory, generators);
     }
        
+    
+    /** Calls the tag indexer to index (defined by the indexName) the given content directory and store the index 
+     * in the given index directory
+     * @param contentDirectory
+     * @param indexDirectory 
+     * @param indexName A unique name of the index that is also used in the configuration file to refer to the fields
+     * that are used and the generator that is applied to create the fields.
+     */
+    public void indexTag(String contentDirectory, String indexDirectory, String indexName){
+	
+	// create generators
+	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
+	    
+	// create and start the indexer with generators
+	StandardTagFacetIndexer indexer = new StandardTagFacetIndexer(configManager);
+	logger.info("Lets start!");
+	indexer.index(contentDirectory, indexDirectory, generators);
+    }
+    
+    
     
     /** Calls the image indexer to index (defined by the indexName) the given content directory and store the index 
      * in the given index directory
