@@ -9,8 +9,8 @@ import org.apache.log4j.Logger;
 
 /**
  * This is the Main class that regulates everything the system does at the top level. It reads the configuration file "primary.properties"
- * and executes a list of runs (defined by the property 'run.properties'). Each run is configured individually and independently and my work
- * on a different collection. Runs execute sequentially in their own parametric environment.
+ * and executes a list of runs (defined by the property 'run.properties'). Each run is configured individually and independently and may work
+ * on a different collection. Each runs executes sequentially in its own, separate parametric environment.
  * 
  * @author Ralf Bierig
  */

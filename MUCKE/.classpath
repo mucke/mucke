@@ -45,5 +45,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="var" path="MUCKE_LIB/commons-io-2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

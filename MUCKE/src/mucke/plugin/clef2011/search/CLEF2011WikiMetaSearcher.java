@@ -66,8 +66,7 @@ public class CLEF2011WikiMetaSearcher {
 	    searcher.setSimilarity(new TFSimilarity());
 
 	    // extract image search fields from configuration
-	    List<String> searchDocFields = new ArrayList<String>();
-	    configManager.getProperties(ConfigConstants.SEARCH_IMG_FIELDS, searchDocFields, true);
+	    List<String> searchDocFields = configManager.getProperties(ConfigConstants.SEARCH_IMG_FIELDS, true);
 	    String[] iFields = new String[searchDocFields.size()];
 	    for (int i = 0; i < searchDocFields.size(); i++) {
 		iFields[i] = searchDocFields.get(i);

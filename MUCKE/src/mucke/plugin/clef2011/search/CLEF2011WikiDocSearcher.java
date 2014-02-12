@@ -54,8 +54,7 @@ public class CLEF2011WikiDocSearcher {
 	    Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_42);
 
 	    // extract search fields from configuration
-	    List<String> searchDocFields = new ArrayList<String>();
-	    configManager.getProperties(ConfigConstants.SEARCH_DOC_FIELDS, searchDocFields, true);
+	    List<String> searchDocFields = configManager.getProperties(ConfigConstants.SEARCH_DOC_FIELDS, true);
 	    String[] sFields = new String[searchDocFields.size()];
 	    for (int i = 0; i < searchDocFields.size(); i++) {
 		sFields[i] = searchDocFields.get(i);

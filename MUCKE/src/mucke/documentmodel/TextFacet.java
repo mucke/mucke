@@ -10,7 +10,7 @@ import mucke.concept.DocumentFacetProcessor;
  * @author Alexandra-Mihaela Siriteanu
  */
 public class TextFacet extends Facet {
-
+    
     @Override
     public List<Concept> accept(DocumentFacetProcessor visitor) {
         return visitor.process(this);

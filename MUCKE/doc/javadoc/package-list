@@ -1,13 +1,12 @@
 mucke
 mucke.clustering
 mucke.concept
-mucke.concept.model
 mucke.config
 mucke.credibility
+mucke.data
+mucke.documentmodel
 mucke.index
-mucke.plugin
 mucke.plugin.prototypetest
-mucke.plugin.test
 mucke.query
 mucke.search
 mucke.util

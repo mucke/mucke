@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import mucke.data.DBManager;
 import mucke.index.IndexFieldGenerator;
 
 import org.apache.log4j.Logger;
@@ -15,12 +16,18 @@ import com.hp.hpl.jena.tdb.index.Index;
 public class ConfigurationManager {
 
     static Logger logger = Logger.getLogger(ConfigurationManager.class);
+    
+    private DBManager dbManager = null; 
 
     /** Manages the system configuration file and the handling of system runs */
     public ConfigurationManager() {
 
 	// load primary.properties configuration file
 	this.loadPrimaryPropoerties();
+	
+	// initilize system database
+	dbManager = new DBManager(this);
+	dbManager.createTables();
     }
 
     /**
@@ -72,7 +79,7 @@ public class ConfigurationManager {
     public List<String> getRuns() {
 
 	List<String> runs = new ArrayList<String>();
-	StringTokenizer tokenizer = new StringTokenizer(System.getProperties().getProperty("run.properties"), ",");
+	StringTokenizer tokenizer = new StringTokenizer(System.getProperties().getProperty("run.properties"), ";");
 	while (tokenizer.hasMoreTokens()) {
 	    String run = tokenizer.nextToken().trim();
 	    if (run.length() > 0) {
@@ -116,13 +123,44 @@ public class ConfigurationManager {
 	return run;
     }
     
-    
     /**
-     * Recursively looks up multiple comma-separated configuration properties of the form "prop1 = prop2" where "prop2 = value1, value2".
-     * When "prop1" is looked up, it returns a list of Strings containing "prop1" and "prop2". Since this is done recursively, it allows for
-     * properties being reused and linked up in multiple functions.
+     * Creates instance of a class by name and cast it to a interface.
+     * 
+     * @param class
+     * @param propertiesFilename The configuration file of the run
      */
-    public void getProperties(String property, List<String> values, boolean recursive) {
+    public Object getClass(String clazzName) {
+
+	Object object = null;
+
+	try {
+	    
+	    // instantiate Run class by name (standard constructor)
+	    Class<?> clazz = Class.forName(clazzName);
+	    Constructor constructor = clazz.getConstructor(ConfigurationManager.class);
+	    object = constructor.newInstance(this);
+	    
+	} catch (Exception e) {
+	    logger.error("Exception while reading and creating Object instance: " + e.getMessage());
+	    e.printStackTrace();
+	}
+	return object;
+    }    
+    
+    /** Extracts configuration properties that may contain multiple, comma-separated values of the form:
+     * <li>
+     * <ul>non-recursive, such as "prop1 = value_1; value_2; ...; value_n.".</ul>
+     * <ul>recursive, such as "prop1 = value_1; prop_2" and "prop_2 = value_2" resulting in a result list
+     * containing value_1 and value_2. Recursive properties can be build and linked hierarchically inside
+     * the configuration file.</ul>
+     *</li>
+     * @param property The property to be extracted
+     * @param recursive traversal, if true, non-recursive otherwise
+     * @return List of values
+     */
+    public List<String> getProperties(String property, boolean recursive) {
+	
+	List<String> values = new ArrayList<String>();
 	
 	// extract value and split all children
 	String value = System.getProperty(property);
@@ -130,22 +168,40 @@ public class ConfigurationManager {
 	
 	// iterate over each token
 	while (tokenizer.hasMoreTokens()){
+	    
 	    // extract token
 	    String token = tokenizer.nextToken().trim();
 	    
 	    if (recursive){
 		// check token
 		if(this.isProperty(token)) {
-		    getProperties(token, values, recursive);	
+		    // collect recursive values
+		    List<String> moreValues = getProperties(token, recursive);
+		    // and add to own values
+		    values.addAll(moreValues);
 		} else {
+		    // just add to own values
 		    values.add(token);
 		}
 	    } else {
-		 values.add(token);
+		// just add to own values
+		values.add(token);
 	    }
 	}
+	
+	// return the result values
+	return values; 
     }
     
+
+    /** Extracts simple property. Does not recognize comma-separated values. */
+    public String getProperty(String property) {
+	if (!isProperty(property)){
+	    logger.error("No such property: " + property);
+	    return "";
+	}
+	return System.getProperty(property);
+    }
     
     /**
      * Checks if the given property is an active configuration property
@@ -161,21 +217,10 @@ public class ConfigurationManager {
 	return false;
     }
 
-    public static void main(String[] args) {
-
-	ConfigurationManager configManager = new ConfigurationManager();
-
-	// test property
-	String property = "run.properties";
-	logger.info("Property: " + property);
-	
-	// extract property values 
-	List<String> values = new ArrayList<String>();
-	configManager.getProperties(property, values, true);
-	logger.info("Property values found: " + values.size());
-	for (int i = 0; i < values.size(); i++) {
-	    logger.info((i + 1) + ": " + values.get(i));
-	}
+    /**
+     * @return the dbManager
+     */
+    public final DBManager getDbManager() {
+        return dbManager;
     }
-
 }
