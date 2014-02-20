@@ -31,13 +31,15 @@ import org.apache.lucene.util.Version;
  */
 public class StandardTagFacetIndexer implements FacetIndexer {
 
+    private String facetName = null;
     private ConfigurationManager configManager = null;
 
     /** Logging facility */
     static Logger logger = Logger.getLogger(StandardTagFacetIndexer.class);
     
     /** Constructor */
-    public StandardTagFacetIndexer(ConfigurationManager configManager) {
+    public StandardTagFacetIndexer(String facetName, ConfigurationManager configManager) {
+	this.facetName = facetName;
 	this.configManager = configManager; 
     }
 

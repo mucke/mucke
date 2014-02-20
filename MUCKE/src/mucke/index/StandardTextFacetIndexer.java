@@ -7,8 +7,10 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import mucke.config.ConfigConstants;
 import mucke.config.ConfigurationManager;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -31,13 +33,15 @@ import org.apache.lucene.util.Version;
  */
 public class StandardTextFacetIndexer implements FacetIndexer {
 
+    private String facetName = null;
     private ConfigurationManager configManager = null;
 
     /** Logging facility */
     static Logger logger = Logger.getLogger(StandardTextFacetIndexer.class);
     
     /** Constructor */
-    public StandardTextFacetIndexer(ConfigurationManager configManager) {
+    public StandardTextFacetIndexer(String facetName, ConfigurationManager configManager) {
+	this.facetName = facetName;
 	this.configManager = configManager; 
     }
 
@@ -136,19 +140,39 @@ public class StandardTextFacetIndexer implements FacetIndexer {
 		    //
 		    // default fields each index must have
 		    //
+
+		    // extract facetid
+		    String facetIdSignature = configManager.getProperty(facetName + ".field.facetid");
+		    String facetId = null;
+		    if (facetIdSignature.equals("FILENAME")){
+			facetId = FilenameUtils.removeExtension(file.getName());
+		    } else if (facetIdSignature.equals("XPATH")){
+			logger.info("TODO: implement facetId extraction via xPath!");
+		    } else if (facetIdSignature.equals("REGEX")){
+			logger.info("TODO: implement facetId extraction via regular expression!");
+		    } else {
+			logger.error("Error in configuration. facetId has false format. Check parameter: " + 
+				configManager.getProperty(ConfigConstants.DOCINDEX_DOCID));
+		    }
+		    // check if docId was read successfully, stop if not
+		    if (facetId == null){
+			logger.error("Facet Id unknown for file: '" + file.getName() + "'. Nothing done.");
+			return;
+		    } else {
+			logger.debug("facetId = " + facetId);
+		    }
+		    
+		    // filename of the indexed file
+		    Field filenameField = new StringField("filename", file.getName(), Field.Store.YES);
+		    doc.add(filenameField);
 		    
 		    // path of the indexed file
 		    Field pathField = new StringField("path", file.getPath(), Field.Store.YES);
 		    doc.add(pathField);
 
-		    // filename of the indexed file
-		    Field filenameField = new StringField("filename", file.getName(), Field.Store.YES);
-		    doc.add(filenameField);
-
 		    // last modified date of the file. Uses a LongField that is indexed (i.e. efficiently
 		    // filterable with NumericRangeFilter) which uses a milli-second resolution.
-		    doc.add(new LongField("modified", file.lastModified(), Field.Store.NO));
-
+		    doc.add(new LongField("modified", file.lastModified(), Field.Store.NO));    
 		    //
 		    // optional fields defines by fieldGenerators
 		    //

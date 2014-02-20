@@ -124,12 +124,12 @@ public class ConfigurationManager {
     }
     
     /**
-     * Creates instance of a class by name and cast it to a interface.
+     * Creates instance of a FacetIndexer class by name and cast it to a interface.
      * 
      * @param class
      * @param propertiesFilename The configuration file of the run
      */
-    public Object getClass(String clazzName) {
+    public Object getFacetIndexerClass(String indexName, String clazzName) {
 
 	Object object = null;
 
@@ -137,8 +137,8 @@ public class ConfigurationManager {
 	    
 	    // instantiate Run class by name (standard constructor)
 	    Class<?> clazz = Class.forName(clazzName);
-	    Constructor constructor = clazz.getConstructor(ConfigurationManager.class);
-	    object = constructor.newInstance(this);
+	    Constructor constructor = clazz.getConstructor(String.class, ConfigurationManager.class);
+	    object = constructor.newInstance(indexName, this);
 	    
 	} catch (Exception e) {
 	    logger.error("Exception while reading and creating Object instance: " + e.getMessage());

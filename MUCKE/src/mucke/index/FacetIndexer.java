@@ -8,7 +8,8 @@ import java.util.List;
  * @author Ralf Bierig
  */
 public interface FacetIndexer {
-
+    
+    
     /**
      * Indexes all content files of a specific facet stored in the given directory
      * 

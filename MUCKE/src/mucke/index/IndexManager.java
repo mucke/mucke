@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import mucke.config.ConfigConstants;
 import mucke.config.ConfigurationManager;
 import mucke.data.DBManager;
 import mucke.index.FacetIdSignature;
@@ -18,8 +19,7 @@ import org.apache.log4j.Logger;
  */
 public class IndexManager {
     
-    // TODO Move to ConfigConstants
-    public static final String FACET_INDEXERS = "facetindexes";
+    
     
     static Logger logger = Logger.getLogger(IndexManager.class);
     
@@ -35,15 +35,15 @@ public class IndexManager {
     public void index(){
 	
 	// create document index
-	this.indexDocument();
+	//this.indexDocument();
 	
 	// extract the facet indexers
-	//List<String> facetIndexers = configManager.getProperties(FACET_INDEXERS, false);
+	List<String> facetIndexers = configManager.getProperties(ConfigConstants.DOCINDEX_FACETS, false);
 	
 	// dispatches facets indexers
-	//for (String facetIndexName : facetIndexers){
-	//    dispatchIndexer(facetIndexName);
-	//}
+	for (String facetIndexName : facetIndexers){
+	    dispatchIndexer(facetIndexName);
+	}
 	
     }
     
@@ -66,6 +66,7 @@ public class IndexManager {
 		logger.error("Facet must provide facet id signature and facet type. Something is missing!");
 		return; 
 	    }
+	    
 	    FacetIdSignature signature = new FacetIdSignature(facetName, facetDetails.get(0), facetDetails.get(1));
 	    facetIdSignatures.add(signature);
 	    
@@ -102,7 +103,7 @@ public class IndexManager {
 	logger.debug("indexClassName:" + indexClassName);
 	
 	logger.debug("Instantiating...");
-	FacetIndexer indexer = (FacetIndexer) configManager.getClass(indexClassName);
+	FacetIndexer indexer = (FacetIndexer) configManager.getFacetIndexerClass(facetIndexName, indexClassName);
 	
 	if (indexer != null){
 	    logger.debug("Calling indexer...");
@@ -125,7 +126,7 @@ public class IndexManager {
 	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
 	    
 	// create and start the indexer with generators
-	StandardTextFacetIndexer indexer = new StandardTextFacetIndexer(configManager);
+	StandardTextFacetIndexer indexer = new StandardTextFacetIndexer(indexName, configManager);
 	logger.info("Lets start!");
 	indexer.index(contentDirectory, indexDirectory, generators);
     }
@@ -144,24 +145,27 @@ public class IndexManager {
 	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
 	    
 	// create and start the indexer with generators
-	StandardTagFacetIndexer indexer = new StandardTagFacetIndexer(configManager);
+	StandardTagFacetIndexer indexer = new StandardTagFacetIndexer(indexName, configManager);
 	logger.info("Lets start!");
 	indexer.index(contentDirectory, indexDirectory, generators);
     }
-    
-    
     
     /** Calls the image indexer to index (defined by the indexName) the given content directory and store the index 
      * in the given index directory
      * @param contentDirectory
      * @param indexDirectory 
+     * @param indexName A unique name of the index that is also used in the configuration file to refer to the fields
+     * that are used and the generator that is applied to create the fields.
      */
     public void indexImage(String contentDirectory, String indexDirectory, String indexName){
 
 	// create generators
 	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
-    
-	// TODO
+	
+	// create and start the indexer with generators
+	StandardImageFacetIndexer indexer = new StandardImageFacetIndexer(indexName, configManager);
+	logger.info("Lets start indexing images!");
+	//indexer.index(contentDirectory, indexDirectory, generators);
     }
     
     /** Calls the concept indexer to index (defined by the indexName) the given content directory and store the index 
@@ -263,7 +267,14 @@ public class IndexManager {
 	
 	// extract index fields
 	for (String indexField : indexFields){
-	     List<String> values = configManager.getProperties(indexField, false);	// simple lookup
+	    
+	    // option NONE stops the process
+	    if (indexField.equals("NONE")){
+		logger.debug("No Index Fields declared. Nothing to parse.");
+		continue;
+	    }
+	    
+	    List<String> values = configManager.getProperties(indexField, false);	// simple lookup
 	    if (values.size() != 2){
 		logger.error("Index field '" + indexField + "' is incorrect. It requires one name and one signature. Please modify configuration.");
 		break;
@@ -271,9 +282,7 @@ public class IndexManager {
 	    
 	    // extract field, signature pair
 	    String fieldToken = values.get(0);
-	    //logger.debug("field: " + fieldToken);
 	    String signatureToken = values.get(1);
-	    //logger.debug("signatureToken: " + signatureToken);
 	    
 	    try {
 		

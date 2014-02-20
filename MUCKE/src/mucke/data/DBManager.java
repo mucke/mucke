@@ -43,6 +43,7 @@ public class DBManager {
      * @return Connection Connection to the system database */
     public Connection getDBConnection() {
 
+	// only create a new connection the first time
 	if (this.connection != null){
 	
 	    return this.connection;
@@ -59,13 +60,10 @@ public class DBManager {
 		    e.printStackTrace();
 		}
 
-		String driver = configManager.getProperty(ConfigConstants.DRIVER);
-		String user = System.getProperty(ConfigConstants.USER);
-		String pass = System.getProperty(ConfigConstants.PASS);
-
 		try {
 
-		    connection = DriverManager.getConnection(driver, user, pass);
+		    connection = DriverManager.getConnection(configManager.getProperty(ConfigConstants.DRIVER), 
+			    System.getProperty(ConfigConstants.USER), System.getProperty(ConfigConstants.PASS));
 
 		} catch (SQLException e) {
 
@@ -116,6 +114,7 @@ public class DBManager {
      * @param facetType The facet type
      */
     public void insertDocument(String docId, String facetId, String facetIndex, String facetType){
+	
 	String sql = "INSERT INTO `" + DBConstants.DOCINDEX_TABLE_NAME + 
 		"` (`" + DBConstants.DOCINDEX_DOCID + "`, `" + DBConstants.DOCINDEX_FACETID + "`, `" + 
 		DBConstants.DOCINDEX_FACETNAME + "`, `" + DBConstants.DOCINDEX_FACETTYPE + "`) " +

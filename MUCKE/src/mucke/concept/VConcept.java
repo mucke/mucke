@@ -2,7 +2,6 @@ package mucke.concept;
 
 import java.net.URI;
 
-import mucke.documentmodel.ClassifierModel;
 
 /** 
  * Represents a visual concept 

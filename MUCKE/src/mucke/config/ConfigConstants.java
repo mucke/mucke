@@ -30,4 +30,34 @@ public class ConfigConstants {
     /** Defines which facets are used by the document indexer */
     public final static String DOCINDEX_FACETS = "docindex.facets";
     
+        
+    /** ImageFacetIndexer AutoColorCorrelogram feature name */
+    public final static String IMAGEFACET_FEATURE_AUTOCOLORCORRELOGRAM = "AutoColorCorrelogram";
+    /** ImageFacetIndexer CEDD feature name */
+    public final static String IMAGEFACET_FEATURE_CEDD = "CEDD";
+    /** ImageFacetIndexer CEDD feature name */
+    public final static String IMAGEFACET_FEATURE_COLORHIST = "ColorHistogram";
+    /** ImageFacetIndexer CEDD feature name */
+    public final static String IMAGEFACET_FEATURE_COLOR = "ColorLayout";
+    /** ImageFacetIndexer CEDD feature name */
+    public final static String IMAGEFACET_FEATURE_EDGEHIST = "EdgeHistogram";
+    /** ImageFacetIndexer CEDD feature name */
+    public final static String IMAGEFACET_FEATURE_FCTH = "FCTH";
+    /** ImageFacetIndexer CEDD feature name */
+    public final static String IMAGEFACET_FEATURE_FULL = "Full";
+    /** ImageFacetIndexer CEDD feature name */
+    public final static String IMAGEFACET_FEATURE_GABOR = "Gabor";
+    /** ImageFacetIndexer CEDD feature name */
+    public final static String IMAGEFACET_FEATURE_JCD = "JCD";
+    /** ImageFacetIndexer CEDD feature name */
+    public final static String IMAGEFACET_FEATURE_JOINTHIST = "JointHistogram";
+    /** ImageFacetIndexer CEDD feature name */
+    public final static String IMAGEFACET_FEATURE_JPEG = "JpegCoefficientHistogram";
+    /** ImageFacetIndexer xxx feature name */
+    public final static String IMAGEFACET_FEATURE_OPPONENTHIST = "OpponentHistogram";
+    /** ImageFacetIndexer Scalable feature name that creates a fast (byte[] based) version of the MPEG-7 ColorLayout. */
+    public final static String IMAGEFACET_FEATURE_SCALABLECOLOR = "Scalable";
+    /** ImageFacetIndexer Tamura feature name that creates three Tamura features*/
+    public final static String IMAGEFACET_FEATURE_TAMURA = "Tamura";
+    
 }
