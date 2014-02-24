@@ -46,5 +46,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="var" path="MUCKE_LIB/commons-io-2.4.jar"/>
+	<classpathentry kind="var" path="MUCKE_LIB/lire.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

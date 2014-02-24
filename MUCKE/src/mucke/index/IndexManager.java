@@ -127,7 +127,6 @@ public class IndexManager {
 	    
 	// create and start the indexer with generators
 	StandardTextFacetIndexer indexer = new StandardTextFacetIndexer(indexName, configManager);
-	logger.info("Lets start!");
 	indexer.index(contentDirectory, indexDirectory, generators);
     }
        
@@ -146,7 +145,6 @@ public class IndexManager {
 	    
 	// create and start the indexer with generators
 	StandardTagFacetIndexer indexer = new StandardTagFacetIndexer(indexName, configManager);
-	logger.info("Lets start!");
 	indexer.index(contentDirectory, indexDirectory, generators);
     }
     
@@ -164,8 +162,7 @@ public class IndexManager {
 	
 	// create and start the indexer with generators
 	StandardImageFacetIndexer indexer = new StandardImageFacetIndexer(indexName, configManager);
-	logger.info("Lets start indexing images!");
-	//indexer.index(contentDirectory, indexDirectory, generators);
+	indexer.index(contentDirectory, indexDirectory, generators);
     }
     
     /** Calls the concept indexer to index (defined by the indexName) the given content directory and store the index 
@@ -175,54 +172,79 @@ public class IndexManager {
      */
     public void indexConcept(String contentDirectory, String indexDirectory, String indexName){
 	
-	// create generators
-	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
-	
 	// TODO
     }
     
     /** Verifies the common parameters for an index. Index parameters consist of:
      * <ul>
      * 	<li> The indexer (defined e.g. defined in textindex)</li>
-     * 	<li> The content folder where the indexer can find the content (defined e.g. defined in textindex.contentfolder)</li>
-     * 	<li> The location of the content to index (defined e.g. in textindex.contentfolder) </li>
-     *  <li> A list of index fields (defined e.g. in textindex.fields). The list of index fields points to index 
-     *  field properties that are also declared in the properties file (consisting of a name and a signature). 
-     *  It is necessary that at least one index field is declared in the list. </li>
+     * 	<li> The content folder where the indexer can find the content </li>
+     * 	<li> The index folder where the indexer places the index </li>
+     * 	<li> The facet id that defines what is used as a unique identifier for the indexed items in this facet </li>
+     *  <li> A list of index fields that are declared afterwards by a name and a signature. At least one
+     *  index field needs to be declared. </li>
      * 	<li> An IndexFieldGenerator (defined e.g. in textindex.fields.generator). The IndexFieldGenerator is a 
      * class that transforms content into Lucene index fields based on the name and the signature of the field 
      * provided by the list. The class is named by it fully qualified name (e.g. mucke.index.IndexFieldGenerator)</li>
      * </ul>
      * @param indexName The name of the index 
-     * @return true, if the parameters are defined correctly, false otherwise */
+     * @return true, if all parameters are correctly defined, false otherwise */
     private boolean checkIndexParameters(String indexName){
 	
-	String indexContentFolderProperty = indexName + ".contentfolder";
-	String indexFieldsProperty = indexName + ".fields";
-	String indexFieldsGeneratorProperty = indexFieldsProperty + ".generator";
-	
-	if (!configManager.isProperty(indexContentFolderProperty)){
-	    logger.error("No content folder provided for indexer " + indexContentFolderProperty + 
-		    ". You must declare a content folder in the properties.");
-	    return false;
-	}if (!configManager.isProperty(indexName)){
-	    logger.error("No indexer " + indexName + ". You must at least declare one indexer in the properties.");
+	// check indexName
+	if (indexName == null || indexName.equals("")){
+	    logger.error("No indexer defined. You must at least declare one indexer in the properties.");
 	    return false;
 	}
+	if (!configManager.isProperty(indexName)){
+	    logger.error("No such indexer '" + indexName + "'. You must at least declare one indexer in the properties.");
+	    return false;
+	}
+	
+	// checks content folder
+	String indexContentFolderProperty = indexName + ".contentfolder";
+	if (!configManager.isProperty(indexContentFolderProperty)){
+	    logger.error("No content folder provided for facet index " + indexName + 
+		    ". You must declare a content folder in the properties.");
+	    return false;
+	}
+	
+	// checks index folder
+	String indexFolderProperty = indexName + ".indexfolder";
+	if (!configManager.isProperty(indexFolderProperty)){
+	    logger.error("No index folder provided for facet index " + indexName + 
+		    ". You must declare an index folder in the properties.");
+	    return false;
+	}
+	
+	// checks facet id -- every facet needs an ID
+	String facetIdProperty = indexName + "field.facetid";
+	if (!configManager.isProperty(facetIdProperty) || configManager.getProperty(facetIdProperty) == null || configManager.getProperty(facetIdProperty).equals("")){
+	    logger.error("No facet id defined for index '" + indexName + "'. You must declare one id field for this index.");
+	    return false;
+	}
+	
+	// check index fields definition
+	String indexFieldsProperty = indexName + ".fields";
 	if (!configManager.isProperty(indexFieldsProperty)){
 	    logger.error("No index fields for " + indexName + ". You must at least declare one index field in the properties.");
 	    return false;
 	}
+	
+	// check IndexFieldGenerator
+	String indexFieldsGeneratorProperty = indexFieldsProperty + ".generator";
 	if (!configManager.isProperty(indexFieldsGeneratorProperty)){
 	    logger.error("No index field generator defined for '" + indexName + "'. Please declare in the properties.");
 	    return false;
 	}
+	
+	// check index fields in detail
 	List<String> fields = configManager.getProperties(indexFieldsProperty, false);
 	if (fields.size() == 0){
 	    logger.error("No index fields for " + indexName + ". You must at least declare one index field in the properties.");
 	    return false;
 	}
-	 List<String> generators = configManager.getProperties(indexFieldsGeneratorProperty, false);
+	List<String> generators = configManager.getProperties(indexFieldsGeneratorProperty, false);
 	if (generators.size() == 0){
 	    logger.error("No index field generator defined for " + indexName + ". Please declare in the properties.");
 	    return false;
@@ -231,7 +253,7 @@ public class IndexManager {
 	    return false;
 	}
 	
-	// everything looked fine 
+	// at this point, everything looked fine
 	return true;
     }
     
@@ -275,6 +297,7 @@ public class IndexManager {
 	    }
 	    
 	    List<String> values = configManager.getProperties(indexField, false);	// simple lookup
+	   
 	    if (values.size() != 2){
 		logger.error("Index field '" + indexField + "' is incorrect. It requires one name and one signature. Please modify configuration.");
 		break;
@@ -300,5 +323,4 @@ public class IndexManager {
 	
 	return generators;
     }
-    
 }

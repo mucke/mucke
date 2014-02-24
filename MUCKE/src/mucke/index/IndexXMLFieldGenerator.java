@@ -28,7 +28,10 @@ public class IndexXMLFieldGenerator extends IndexFieldGenerator {
 	String result = "";
 	
 	// extract nodes
+	logger.debug("Before getting nodes with sig: " + this.getSignature());
 	NodeList nodes = XMLTools.getNodes(file, this.getSignature());
+	logger.debug("After getting nodes: Total nodes # " + nodes.getLength());
+	
 	if (nodes != null && nodes.getLength() > 0) {
 	    result = nodes.item(0).getTextContent().trim();
 	}

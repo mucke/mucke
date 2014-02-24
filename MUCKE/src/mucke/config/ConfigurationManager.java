@@ -164,6 +164,13 @@ public class ConfigurationManager {
 	
 	// extract value and split all children
 	String value = System.getProperty(property);
+	
+	// check if lookup had result
+	if (value == null){
+	    logger.debug("Property '" + property + "' does not exist. Please check configuration file!");
+	    return null;
+	}
+	
 	StringTokenizer tokenizer = new StringTokenizer(value, ";");
 	
 	// iterate over each token

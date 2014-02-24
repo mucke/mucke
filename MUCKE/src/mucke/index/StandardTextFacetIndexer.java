@@ -158,8 +158,6 @@ public class StandardTextFacetIndexer implements FacetIndexer {
 		    if (facetId == null){
 			logger.error("Facet Id unknown for file: '" + file.getName() + "'. Nothing done.");
 			return;
-		    } else {
-			logger.debug("facetId = " + facetId);
 		    }
 		    
 		    // filename of the indexed file

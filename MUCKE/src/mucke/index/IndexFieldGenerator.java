@@ -63,7 +63,7 @@ public class IndexFieldGenerator {
 	    
 	    if (signature == null){
 		// simple case where all content is added to the field 
-		logger.debug("Generating a Lucene index default (TextField containing all content) field: " + fieldname + " for file: " + file.getName());
+		//logger.debug("Generating a Lucene index default (TextField containing all content) field: " + fieldname + " for file: " + file.getName());
 		field = new TextField(fieldname, new BufferedReader(new InputStreamReader(fis, "UTF-8")));    
 	    } else {
 		// TODO: Realistic case where content is added based on a regular expression

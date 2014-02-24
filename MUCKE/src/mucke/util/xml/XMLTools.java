@@ -47,6 +47,7 @@ public class XMLTools {
 		}
 	    } catch (IOException e) {
 		System.err.println("EXCEPTION while reading file: '" + file.getPath() + "'");
+		e.printStackTrace();
 	    } finally {
 		isr.close();
 	    }
