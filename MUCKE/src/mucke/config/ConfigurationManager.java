@@ -145,7 +145,31 @@ public class ConfigurationManager {
 	    e.printStackTrace();
 	}
 	return object;
-    }    
+    } 
+    
+    /**
+     * Creates instances of QueryReader class by name and cast it to a interface.
+     * 
+     * @param class
+     * @param propertiesFilename The configuration file of the run
+     */
+    public Object getQueryReaderClass(String clazzName) {
+
+	Object object = null;
+
+	try {
+	    
+	    // instantiate Run class by name (standard constructor)
+	    Class<?> clazz = Class.forName(clazzName);
+	    Constructor constructor = clazz.getConstructor(ConfigurationManager.class);
+	    object = constructor.newInstance(this);
+	    
+	} catch (Exception e) {
+	    logger.error("Exception while reading and creating QueryReader instance: " + e.getMessage());
+	    e.printStackTrace();
+	}
+	return object;
+    }
     
     /** Extracts configuration properties that may contain multiple, comma-separated values of the form:
      * <li>

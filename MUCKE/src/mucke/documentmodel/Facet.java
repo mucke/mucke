@@ -12,5 +12,11 @@ import mucke.concept.DocumentFacetProcessor;
  */
 public abstract class Facet {
 
+    protected String content; 
+    
     public abstract List<Concept> accept(DocumentFacetProcessor visitor);
+    
+    public String getContent(){
+	return content;
+    }
 }

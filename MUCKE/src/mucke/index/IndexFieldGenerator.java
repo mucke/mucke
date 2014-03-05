@@ -23,7 +23,7 @@ public class IndexFieldGenerator {
     static Logger logger = Logger.getLogger(ConfigurationManager.class);
     private String fieldname = "UNDEFINED";
     private String signature = "UNDEFINED";
-    private IndexFieldTranslator translator = null; 
+    //private IndexFieldTranslator translator = null; 
     
     
     /** Constructor. Defines the field this IndexFieldGenerator produces. */

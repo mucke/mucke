@@ -4,9 +4,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import mucke.plugin.clef2011.ConfigConstants;
+import mucke.config.ConfigConstants;
+import mucke.config.ConfigurationManager;
 import mucke.util.xml.XMLTools;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.ls.DOMImplementationLS;
@@ -15,30 +17,46 @@ import org.w3c.dom.ls.LSSerializer;
 /** Test implementation of a a PrepareCollectionStrategy */
 public class XMLQueryCollectionReader implements QueryCollectionReader {
 
+    static Logger logger = Logger.getLogger(XMLQueryCollectionReader.class);
+    private ConfigurationManager configManager;
+    private QueryReader queryReader;
+    
+    /** Constructor */
+    public XMLQueryCollectionReader(ConfigurationManager configManager){
+	this.configManager = configManager;
+	this.queryReader = new XMLQueryReader(configManager);
+    }
+    
     @Override
-    public List<Query> prepare(String listOfQueries) {
+    public List<Query> prepare() {
 
 	List<Query> queries = new ArrayList<Query>();
 	
-//	// extract XML topics from entire XML file
-//	NodeList topicList = XMLTools.getNodes(new File(System.getProperty(ConfigConstants.TOPICS_FILE)), xTopic);
-//
-//	// loop over each topic and create topic objects
-//	for (int i = 0; i < topicList.getLength(); i++) {
-//	    Node topicNode = topicList.item(i);
-//
-//	    // convert back into String representation
-//	    DOMImplementationLS domImplLS = (DOMImplementationLS) topicNode.getOwnerDocument().getImplementation();
-//	    LSSerializer serializer = domImplLS.createLSSerializer();
-//	    String topicString = serializer.writeToString(topicNode);
-//
-//	    // read single topic
-//	    OLD_CLEF2011Query topic = readTopic(topicString);
-//
-//	    // store
-//	    this.topics.add(topic);
-//
-//	}
+	// extract XML topics from entire XML file
+	File queryFile = new File(configManager.getProperty(ConfigConstants.QUERY_COLLECTION_FILE));
+	List<String> signatureParams = configManager.getProperties(ConfigConstants.QUERY_COLLECTION_SIG, false);
+	if (!signatureParams.get(0).equals("XPATH")){
+	    logger.error("Query collection signature type is '" + signatureParams.get(0) + 
+		    "'. This reader can only process XPATH signature types. Nothing done.");
+	    return null;
+	}
+	NodeList queryList = XMLTools.getNodes(queryFile, signatureParams.get(1));
+
+	// loop over each topic and create topic objects
+	for (int i = 0; i < queryList.getLength(); i++) {
+	    Node topicNode = queryList.item(i);
+
+	    // convert back into String representation
+	    DOMImplementationLS domImplLS = (DOMImplementationLS) topicNode.getOwnerDocument().getImplementation();
+	    LSSerializer serializer = domImplLS.createLSSerializer();
+	    String queryString = serializer.writeToString(topicNode);
+
+	    // generate single query
+	    logger.debug("Reading topic # " + (i+1) + " ...");
+	    Query query = queryReader.prepare(queryString);
+	    queries.add(query);
+
+	}
 	
 	return queries;
     }

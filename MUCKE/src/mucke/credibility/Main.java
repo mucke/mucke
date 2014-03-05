@@ -1,6 +1,9 @@
 package mucke.credibility;
 
+import java.util.ArrayList;
+
 import mucke.documentmodel.Document;
+import mucke.documentmodel.Facet;
 
 import org.apache.log4j.Logger;
 
@@ -21,8 +24,8 @@ public class Main {
 	User searcher = new User("bob123");
 	User producer = new User("sally999");
 
-	// document for testing
-	Document document = new Document();
+	// empty document for testing
+	Document document = new Document(new ArrayList<Facet>());
 
 	// test subjective credibility
 	logger.info("User crediblity between searcher: " + searcher.getId() + " and producer: " + producer.getId() + " is: "

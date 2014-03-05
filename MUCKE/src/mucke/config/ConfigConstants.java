@@ -18,6 +18,33 @@ public class ConfigConstants {
     public final static String PLUGIN_CLASS = "class";
     
     
+    //
+    // Query package
+    //
+    
+    /** Defines the location of the query collection*/
+    public final static String QUERY_COLLECTION_FILE = "querycollection.file";
+    
+    /** Defines the location of the query collection*/
+    public final static String QUERY_COLLECTION_READER = "querycollection.reader";
+    
+    /** Defines the query collection signature that identifies the element that distinguishes one query 
+     * in a collection of queries. The signature consists of two parts, the first part defines what language 
+     * is used to describe the signature (XPATH or REGEX) and the second part is the signature itself. */
+    public final static String QUERY_COLLECTION_SIG = "querycollection.signature";
+    
+    /** Defines the signature of the query id. The first part defines the language that is used to describe 
+     * the signature (XPATH or REGEX), second the signature itself.*/
+    public final static String QUERY_ID = "query.id";
+    
+    /** Defines the names of the query facets that are part of every query. */
+    public final static String QUERY_FACETS = "query.facets";
+        
+    
+    //
+    // Index package
+    //
+    
     /** Defines the location of the content that is parsed for the document index */
     public final static String DOCINDEX_CONTENTFOLDER = "docindex.contentfolder";
     

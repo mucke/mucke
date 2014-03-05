@@ -6,7 +6,6 @@ import java.util.List;
 
 import mucke.config.ConfigConstants;
 import mucke.config.ConfigurationManager;
-import mucke.data.DBManager;
 import mucke.index.FacetIdSignature;
 
 import org.apache.log4j.Logger;
@@ -35,7 +34,7 @@ public class IndexManager {
     public void index(){
 	
 	// create document index
-	//this.indexDocument();
+	this.indexDocument();
 	
 	// extract the facet indexers
 	List<String> facetIndexers = configManager.getProperties(ConfigConstants.DOCINDEX_FACETS, false);
@@ -62,12 +61,12 @@ public class IndexManager {
 	for (String facetName : facetNames){
 	    List<String> facetDetails = configManager.getProperties("docindex.facet." + facetName, false);
 	    // error check
-	    if (facetDetails.size() != 2){
+	    if (facetDetails.size() != 3){
 		logger.error("Facet must provide facet id signature and facet type. Something is missing!");
 		return; 
 	    }
 	    
-	    FacetIdSignature signature = new FacetIdSignature(facetName, facetDetails.get(0), facetDetails.get(1));
+	    FacetIdSignature signature = new FacetIdSignature(facetName, facetDetails.get(0), facetDetails.get(1), facetDetails.get(2));
 	    facetIdSignatures.add(signature);
 	    
 	}
@@ -85,7 +84,7 @@ public class IndexManager {
 	String contentFolder = facetIndexName + ".contentfolder";
 	
 	// check index parameters against errors
-	checkIndexParameters(facetIndexName);
+	checkParameters(facetIndexName);
 	
 	// extract content folder
 	String contentFolderValue = configManager.getProperty(contentFolder);
@@ -189,7 +188,7 @@ public class IndexManager {
      * </ul>
      * @param indexName The name of the index 
      * @return true, if all parameters are correctly defined, false otherwise */
-    private boolean checkIndexParameters(String indexName){
+    private boolean checkParameters(String indexName){
 	
 	// check indexName
 	if (indexName == null || indexName.equals("")){
@@ -218,9 +217,11 @@ public class IndexManager {
 	}
 	
 	// checks facet id -- every facet needs an ID
-	String facetIdProperty = indexName + "field.facetid";
+	String facetIdProperty = indexName + ".field.facetid";
 	if (!configManager.isProperty(facetIdProperty) || configManager.getProperty(facetIdProperty) == null || configManager.getProperty(facetIdProperty).equals("")){
 	    logger.error("No facet id defined for index '" + indexName + "'. You must declare one id field for this index.");
+	    logger.debug("facet index '" + indexName + "' is property?" +  configManager.isProperty(facetIdProperty));
+	    logger.debug("facetIdProperty: " + facetIdProperty);
 	    return false;
 	}
 	
@@ -282,7 +283,7 @@ public class IndexManager {
 	} 
 	
 	// check if index fields and generator are accurately declared
-	checkIndexParameters(indexName);
+	checkParameters(indexName);
 	
 	// read index configuration (fields and signatures for fields)
 	List<String> indexFields = configManager.getProperties(indexFieldsProperty, false);

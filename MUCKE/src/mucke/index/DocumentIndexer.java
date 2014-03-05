@@ -86,7 +86,7 @@ public class DocumentIndexer {
      */
     private void indexDocuments(File file, List<FacetIdSignature> signatures) throws IOException {
 
-	//logger.debug("----- Indexing file: " + file.getName() + " ------");
+	logger.debug("----- Indexing file: " + file.getName() + " ------");
 	
 	// do not try to index files that cannot be read
 	if (file.canRead()) {
@@ -138,39 +138,45 @@ public class DocumentIndexer {
 		    // reading all facet signatures
 		    for (FacetIdSignature signature : signatures){
 			
-			String sig = signature.getIdSignature();
-
+			logger.debug("signature parsertype=" + signature.getParsingType());
+			
+			
 			// collecting facet ids
 			List<String> facetIds = new ArrayList<String>();
 			
 			// first check the default constants where facet ids can be located  
-			if (sig.equals("FILENAME")){
-			    facetIds.add(FilenameUtils.removeExtension(file.getName()));
+			if (signature.getParsingType().equals("CONSTANT")){
+			    logger.debug("Signature Parsing Type = CONSTANT");
+			    if (signature.getIdSignature().equals("FILENAME")){
+				facetIds.add(FilenameUtils.removeExtension(file.getName()));				
+			    } else {
+				logger.debug("Unknown ID signature: " + signature.getIdSignature());
+				return;
+			    }
 			// than check their declared format
-			} else {
-			    if (configManager.getProperty(ConfigConstants.DOCINDEX_FACET_SIG_FORMAT).equals("XPATH")){
-				    
-				    // extract nodes
-				    NodeList nodes = XMLTools.getNodes(file, sig);
-				    if (nodes != null && nodes.getLength() > 0) {
-					//logger.debug("length=" + nodes.getLength());
-					for (int i = 0; i < nodes.getLength(); i++){
-					    facetIds.add(nodes.item(i).getTextContent().trim());
-					    //logger.debug("facetId added!");
-					}
-				    } else {
-					logger.debug("Empty nodelist!");
-				    }
-				    
-				} else if (configManager.getProperty(ConfigConstants.DOCINDEX_FACET_SIG_FORMAT).equals("REGEX")){
-				    logger.debug("Lets do RegEx!");
-				} else {
-				    logger.error("Error in configuraton file. Facet Signature has wrong format: '" + 
-					    configManager.getProperty(ConfigConstants.DOCINDEX_FACET_SIG_FORMAT) + "'");
+			} else if (signature.getParsingType().equals("XPATH")){
+			    
+			    // extract nodes
+			    NodeList nodes = XMLTools.getNodes(file, signature.getIdSignature());
+			    if (nodes != null && nodes.getLength() > 0) {
+				//logger.debug("length=" + nodes.getLength());
+				for (int i = 0; i < nodes.getLength(); i++){
+				    facetIds.add(nodes.item(i).getTextContent().trim());
+				    //logger.debug("facetId added!");
 				}
+			    } else {
+				logger.debug("Empty nodelist!");
+			    }
+				    
+			} else if (signature.getParsingType().equals("REGEX")){
+			    logger.debug("TODO: RegEx implementation still missing. Nothing done.");
+			    return;
+			} else {
+			    logger.error("Error in configuraton file. Facet Signature has wrong format: '" + 
+				    configManager.getProperty(ConfigConstants.DOCINDEX_FACET_SIG_FORMAT) + "'");
+			    return;
 			}
-
-			
+						
 			// check if facetId was read successfully, stop if not
 			if (facetIds.size() == 0){
 			    logger.error("Facet Id unknown for file: '" + file.getName() + "'. Nothing done.");

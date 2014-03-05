@@ -1,14 +1,11 @@
 package mucke.index;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
 
 import mucke.util.xml.XMLTools;
 
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.StringField;
-import org.apache.lucene.document.TextField;
 import org.w3c.dom.NodeList;
 
 /** 

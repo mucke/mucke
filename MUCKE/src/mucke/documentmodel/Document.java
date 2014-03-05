@@ -1,6 +1,5 @@
 package mucke.documentmodel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,11 +11,6 @@ public class Document {
 
     private List<Facet> facets;
 
-    /** Standard Constructor */
-    public Document() {
-	facets = new ArrayList<Facet>();
-    }
-    
     /** Constructor
      * @param facets A list of facets
      */

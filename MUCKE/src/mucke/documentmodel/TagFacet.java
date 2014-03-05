@@ -11,6 +11,10 @@ import mucke.concept.DocumentFacetProcessor;
  */
 public class TagFacet extends Facet {
 
+    public TagFacet(String content){
+	super.content = content;
+    }
+    
     @Override
     public List<Concept> accept(DocumentFacetProcessor visitor) {
         return visitor.process(this);

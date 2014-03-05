@@ -12,11 +12,14 @@ package mucke.index;
 public class FacetIdSignature {
 
     private String name = "";
+    private String parsingType = "";
     private String idSignature = "";
     private String type = "";
 
-    public FacetIdSignature(String name, String idSignature, String type) {
+    /** Constructor */
+    public FacetIdSignature(String name, String parsingType, String idSignature, String type) {
 	this.name = name;
+	this.parsingType = parsingType;
 	this.idSignature = idSignature;
 	this.type = type;
     }
@@ -24,21 +27,28 @@ public class FacetIdSignature {
     /**
      * @return the name
      */
-    protected final String getName() {
+    public final String getName() {
         return name;
+    }
+    
+    /**
+     * @return the parsingType
+     */
+    public final String getParsingType() {
+        return parsingType;
     }
     
     /**
      * @return the idSignature
      */
-    protected final String getIdSignature() {
+    public final String getIdSignature() {
         return idSignature;
     }
 
     /**
      * @return the type
      */
-    protected final String getType() {
+    public final String getType() {
         return type;
     }
 
