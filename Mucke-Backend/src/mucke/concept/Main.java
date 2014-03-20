@@ -29,9 +29,9 @@ public class Main {
         try {
       
             for (int i = 0; i < 3; i++) {
-                facets.add(new TagFacet("Elephant"));
-                facets.add(new TextFacet("This is an Elephant"));
-                facets.add(new ImageFacet("http://images.nationalgeographic.com/wpf/media-live/photos/000/004/cache/african-elephant_435_600x450.jpg"));
+                facets.add(new TagFacet("1", "elephantTag", "Elephant"));
+                facets.add(new TextFacet("2", "elephantText","This is an Elephant"));
+                facets.add(new ImageFacet("3", "elephantImage","http://images.nationalgeographic.com/wpf/media-live/photos/000/004/cache/african-elephant_435_600x450.jpg"));
             }
                 
         } catch (Exception e){

@@ -12,7 +12,9 @@ import mucke.concept.DocumentFacetProcessor;
  */
 public class ImageFacet extends Facet{
     
-    public ImageFacet(String content){
+    public ImageFacet(String id, String name, String content){
+	super.id = id;
+	super.name = name;
 	super.content = content;
     }
     

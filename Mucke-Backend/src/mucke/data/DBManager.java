@@ -2,11 +2,14 @@ package mucke.data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import mucke.config.ConfigConstants;
 import mucke.config.ConfigurationManager;
+import mucke.documentmodel.Document;
 
 import org.apache.log4j.Logger;
 
@@ -123,7 +126,30 @@ public class DBManager {
 	query(sql);
     }
     
-
+    /** Selects all documents for the given facetid 
+     * 
+     * @param facetId The facet identifier
+     * @return List of documents that contain the given facet
+     */
+    public List<Document> selectDocument(String facetId){
+	
+	// TODO --- IN PROGRESS
+	String sql = "SELECT * FROM `" + DBConstants.DOCINDEX_TABLE_NAME;
+	logger.info("Selecting document for facetId: " + facetId);
+	query(sql);
+	
+	// TODO!!!!
+	return null;
+	
+	
+    }
+    
+    /** Executes the given SQL query for a list of results */
+    private ResultSet queryResult(String query) {
+	// TODO
+	return null;
+    }
+    
     /** Executes the given SQL query */
     private boolean query(String query) {
 
@@ -150,4 +176,5 @@ public class DBManager {
 	
 	return false;
     }
+    
 }

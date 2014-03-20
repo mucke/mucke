@@ -62,9 +62,9 @@ public class PrototypetestPluginManager extends PluginManager {
 	    int j = 1;
 	    for (Facet f : facets){
 		if (f instanceof TextFacet){
-		    logger.info(" " + j + ") TEXTFACET " + f.getContent());
+		    logger.info(j +") id: " + f.getId() + " name: " + f.getName() + " type: TEXTFACET content: " + f.getContent());
 		} else if (f instanceof ImageFacet){
-		    logger.info(" " + j + ") IMAGEFACET " + f.getContent());
+		    logger.info(j +") id: " + f.getId() + " name: " + f.getName() + " type: IMAGEFACET content: " + f.getContent());
 		}
 		j++;
 	    }

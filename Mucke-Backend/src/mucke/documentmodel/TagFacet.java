@@ -11,7 +11,9 @@ import mucke.concept.DocumentFacetProcessor;
  */
 public class TagFacet extends Facet {
 
-    public TagFacet(String content){
+    public TagFacet(String id, String name, String content){
+	super.id = id;
+	super.name = name;
 	super.content = content;
     }
     

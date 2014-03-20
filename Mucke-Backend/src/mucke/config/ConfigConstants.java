@@ -42,6 +42,14 @@ public class ConfigConstants {
         
     
     //
+    // Search package
+    //
+    
+    /** Defines the location of the query collection*/
+    public final static String SEARCH_FACETSEARCHERS = "search.facetsearchers";
+    
+    
+    //
     // Index package
     //
     

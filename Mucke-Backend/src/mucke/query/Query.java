@@ -9,16 +9,12 @@ import mucke.documentmodel.Facet;
  * contain text and image facets. */
 public class Query {
 
+    /** List of query facets */
     private List<Facet> facets = new ArrayList<Facet>();
-
+    
     /** Adds a facet to the query */
     public void add(Facet facet){
 	facets.add(facet);
-    }
-    
-    /** Adds a facet to the query */
-    public void add(List<Facet> facets){
-	facets.addAll(facets);
     }
     
     /** 

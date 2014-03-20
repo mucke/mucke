@@ -1,6 +1,6 @@
 package mucke.search;
 
-import java.net.URI;
+import java.net.URL;
 
 /**
  * Stores the most essential information about search results.
@@ -9,10 +9,10 @@ import java.net.URI;
  */
 public class Result {
 
-    private URI id;
+    private URL id;
     private float score;
 
-    public Result(URI id, float score) {
+    public Result(URL id, float score) {
 	this.id = id;
 	this.score = score;
     }
@@ -20,7 +20,7 @@ public class Result {
     /**
      * @return the id
      */
-    public final URI getId() {
+    public final URL getId() {
 	return id;
     }
 

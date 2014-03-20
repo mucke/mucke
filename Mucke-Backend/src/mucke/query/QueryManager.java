@@ -136,5 +136,5 @@ public class QueryManager {
 	// at this point, everything looked fine
 	return true;
     }
-    
+       
 }

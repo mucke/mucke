@@ -43,7 +43,7 @@ public class XMLQueryReader implements QueryReader {
     @Override
     public Query prepare(String queryString) {
 	
-	System.out.println("Preparing single query: " + queryString);
+	//logger.debug("Preparing single query: " + queryString);
 	
 	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	DocumentBuilder builder = null;
@@ -74,6 +74,7 @@ public class XMLQueryReader implements QueryReader {
 		List<String> queryFacetNames = configManager.getProperties(ConfigConstants.QUERY_FACETS, false);
 			
 		// extract query facets for each 
+		int k = 1;
 		for (String queryFacetName : queryFacetNames){
 		    
 		    // extract facet and build signature object
@@ -100,19 +101,20 @@ public class XMLQueryReader implements QueryReader {
 		    if (type.equals("TEXT")){
 		
 			for (int i = 0; i < nodeList.getLength(); i++){
-			    query.add(new TextFacet(nodeList.item(i).getTextContent().trim()));
+			    query.add(new TextFacet("" + (k+i), queryFacetName, nodeList.item(i).getTextContent().trim()));
 			}
 		
 		    } else if (type.equals("IMAGE")){
 			
 			for (int i = 0; i < nodeList.getLength(); i++){
-			    query.add(new ImageFacet(nodeList.item(i).getTextContent().trim()));
+			    query.add(new ImageFacet("" + (k+i), queryFacetName, nodeList.item(i).getTextContent().trim()));
 			}
 			
 		    } else {
 			logger.error("Query facet '" + signature.getName() + "' has unknown type '" + type + 
 				"'. Check your configuration. Nothing done.");
 		    }
+		    k++;
 		}
 		    
 		

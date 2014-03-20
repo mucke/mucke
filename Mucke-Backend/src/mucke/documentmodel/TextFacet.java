@@ -11,7 +11,9 @@ import mucke.concept.DocumentFacetProcessor;
  */
 public class TextFacet extends Facet {
     
-    public TextFacet(String content){
+    public TextFacet(String id, String name, String content){
+	super.id = id;
+	super.name = name;
 	super.content = content;
     }
     

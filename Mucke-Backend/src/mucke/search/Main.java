@@ -39,13 +39,13 @@ public class Main {
 	
 	// refine search with text results
 	String query = "forest";
-	TextSearcher tsearcher = new TextSearcher();
-	List<Result> tResults = tsearcher.search(query, cResults);
+	TextFacetSearcher tsearcher = new TextFacetSearcher();
+	//List<Result> tResults = tsearcher.search(query, cResults);
 	
 	// refine search with image results
 	String imageId = "appletree";
-	ImageSearcher isearcher = new ImageSearcher();
-	List<Result> iResults = isearcher.search(imageId, cResults);
+	ImageFacetSearcher isearcher = new ImageFacetSearcher();
+	//List<Result> iResults = isearcher.search(imageId, cResults);
 	
     }
 }
