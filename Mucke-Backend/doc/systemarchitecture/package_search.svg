@@ -42,8 +42,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.2279853"
-     inkscape:cx="522.21238"
-     inkscape:cy="381.87902"
+     inkscape:cx="520.79383"
+     inkscape:cy="380.99352"
      inkscape:current-layer="layer1"
      id="namedview6338"
      showgrid="false"
@@ -60,7 +60,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -86,27 +86,27 @@
          id="tspan3676-45"
          style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.53485966;stroke-miterlimit:21.20000076;stroke-opacity:1;stroke-dasharray:none;font-family:Verdana;-inkscape-font-specification:Verdana">Search</tspan></text>
     <rect
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:3.54330707000000000;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:3.54330707;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
        id="rect6967"
        width="250.81734"
        height="167.75446"
-       x="93.64933"
-       y="121.12285" />
+       x="83.877228"
+       y="359.72507" />
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="168.5688"
-       y="156.13956"
+       x="158.79669"
+       y="394.74176"
        id="text6969"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan6971"
-         x="168.5688"
-         y="156.13956"
+         x="158.79669"
+         y="394.74176"
          style="font-size:32px">Result</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:3.54330709;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 94.463673,165.09731 c 250.002997,0 250.817337,0 250.817337,0 l 0,4.88606"
+       style="fill:none;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 84.691569,403.69951 c 250.003001,0 250.817341,0 250.817341,0 l 0,4.88606"
        id="path6973"
        inkscape:connector-curvature="0" />
     <rect
@@ -183,7 +183,7 @@
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart)"
-       d="M 344.46667,179.51138 483.5173,151.25002"
+       d="m 330.92824,359.72507 275.46925,-189.947"
        id="path7078"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -193,7 +193,7 @@
        inkscape:connection-end-point="d4" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart)"
-       d="m 344.46667,232.29992 141.08649,30.71271"
+       d="M 334.69456,409.11491 485.55316,367.6288"
        id="path7086"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -201,25 +201,20 @@
        inkscape:connection-start-point="d4"
        inkscape:connection-end="#rect6967-8-9"
        inkscape:connection-end-point="d4" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-start:url(#Arrow1Lstart)"
-       d="m 209.02511,291.49465 c 133.59181,241.84724 277.5485,257.39456 277.5485,257.39456"
-       id="path7100"
-       inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="113.19354"
-       y="187.8989"
+       x="103.42144"
+       y="426.5011"
        id="text7650"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7652"
-         x="113.19354"
-         y="187.8989">+ documentID</tspan><tspan
+         x="103.42144"
+         y="426.5011">+ documentID</tspan><tspan
          sodipodi:role="line"
-         x="113.19354"
-         y="207.8989"
+         x="103.42144"
+         y="446.5011"
          id="tspan7654">+ score</tspan></text>
     <text
        xml:space="preserve"
@@ -256,5 +251,44 @@
          id="tspan7658-5"
          x="514.65155"
          y="530.80579">- Result[ ]  search (String query, Result[] filterresults)</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:3.54330707;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+       id="rect6967-7"
+       width="250.81734"
+       height="167.75446"
+       x="70.440575"
+       y="112.97943" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="145.36005"
+       y="147.99612"
+       id="text6969-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6971-0"
+         x="145.36005"
+         y="147.99612"
+         style="font-size:32px">Result</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 71.254919,156.95388 c 250.003001,0 250.817341,0 250.817341,0 l 0,4.88606"
+       id="path6973-9"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="89.984787"
+       y="179.75546"
+       id="text7650-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan7652-8"
+         x="89.984787"
+         y="179.75546">+ documentID</tspan><tspan
+         sodipodi:role="line"
+         x="89.984787"
+         y="199.75546"
+         id="tspan7654-8">+ score</tspan></text>
   </g>
 </svg>

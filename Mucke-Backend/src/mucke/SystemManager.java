@@ -33,15 +33,15 @@ public class SystemManager {
     }
 
     /**
-     * Executes die currently configured state of the system based on the configuration as defined in "primary.properties" and its secondary
+     * Executes the currently configured state of the system based on the configuration as defined in "primary.properties" and its secondary
      * properties file. The secondary properties file may contain multiple runs that are executed in the order of their listing. Results of
      * each run are stored in the central system database.
      */
-    public void execute() {
+    public void executeBatchMode() {
 
-	// something more
 	// extract configuration for all runs
-	logger.debug("Loading Runs...");
+	logger.debug("Starting batch mode...");
+	logger.debug("Loading runs...");
 	List<String> runConfigFilenames = configManager.getRuns();
 	// execute each run
 	int i = 0;
@@ -61,13 +61,33 @@ public class SystemManager {
 	}
 	logger.info("Completed " + i + " runs!");
     }
+    
+    
+    public void executeInteractiveMode(){
+	logger.debug("Starting interactive mode...");
+	String interactiveConfigFilename = "prototypetest-interactive.properties";
+	
+	try {
 
+	    // load interactive configuration
+	    configManager.loadRunPropoerties(interactiveConfigFilename);
+	    logger.info("Run configuration '" + interactiveConfigFilename + "' successfully loaded.");
+
+	} catch (Exception e) {
+
+	    logger.error("Failed to load run configuration. Check if it is included in the classpath. Exception: " + e.getMessage());
+	    e.printStackTrace();
+
+	}
+	
+    }
+    
     /** Executes the manager */
     public static void main(String[] args) {
 
 	// Initialize manager
 	SystemManager manager = new SystemManager();
-	manager.execute();
+	manager.executeBatchMode();
 
     }
 
