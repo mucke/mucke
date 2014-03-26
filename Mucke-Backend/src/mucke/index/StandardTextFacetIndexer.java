@@ -33,8 +33,8 @@ import org.apache.lucene.util.Version;
  */
 public class StandardTextFacetIndexer implements FacetIndexer {
 
-    private String facetName = null;
-    private ConfigurationManager configManager = null;
+    protected String facetName = null;
+    protected ConfigurationManager configManager = null;
 
     /** Logging facility */
     static Logger logger = Logger.getLogger(StandardTextFacetIndexer.class);
@@ -106,6 +106,8 @@ public class StandardTextFacetIndexer implements FacetIndexer {
      * @param List<IndexFieldGenerator> A list of generators that populate the fields with content
      * @throws IOException */
     private void indexDocuments(IndexWriter writer, File file, List<IndexFieldGenerator> fieldGenerators) throws IOException {
+	
+	logger.info("StandardTextFacetIndexer!!!!");
 	
 	// do not try to index files that cannot be read
 	if (file.canRead()) {

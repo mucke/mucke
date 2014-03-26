@@ -10,6 +10,8 @@ import mucke.index.FacetIdSignature;
 
 import org.apache.log4j.Logger;
 
+import com.hp.hpl.jena.tdb.index.Index;
+
 
 /** 
  * Manages all index building. 
@@ -17,9 +19,7 @@ import org.apache.log4j.Logger;
  * @author Ralf Bierig
  */
 public class IndexManager {
-    
-    
-    
+        
     static Logger logger = Logger.getLogger(IndexManager.class);
     
     /** Provides access to central configuration */
@@ -34,7 +34,7 @@ public class IndexManager {
     public void index(){
 	
 	// create document index
-	this.indexDocument();
+	//this.indexDocument();
 	
 	// extract the facet indexers
 	List<String> facetIndexers = configManager.getProperties(ConfigConstants.DOCINDEX_FACETS, false);
@@ -105,73 +105,11 @@ public class IndexManager {
 	FacetIndexer indexer = (FacetIndexer) configManager.getFacetIndexerClass(facetIndexName, indexClassName);
 	
 	if (indexer != null){
-	    logger.debug("Calling indexer...");
+	    logger.debug("Calling indexer: " + indexer);
 	    indexer.index(contentFolderValue, indexFolderValue, generatorValues);
 	    logger.debug("Called and finisehd! :)");    
 	}
 	
-    }
-    
-    /** Calls the text indexer to index (defined by the indexName) the given content directory and store the index 
-     * in the given index directory
-     * @param contentDirectory
-     * @param indexDirectory 
-     * @param indexName A unique name of the index that is also used in the configuration file to refer to the fields
-     * that are used and the generator that is applied to create the fields.
-     */
-    public void indexText(String contentDirectory, String indexDirectory, String indexName){
-	
-	// create generators
-	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
-	    
-	// create and start the indexer with generators
-	StandardTextFacetIndexer indexer = new StandardTextFacetIndexer(indexName, configManager);
-	indexer.index(contentDirectory, indexDirectory, generators);
-    }
-       
-    
-    /** Calls the tag indexer to index (defined by the indexName) the given content directory and store the index 
-     * in the given index directory
-     * @param contentDirectory
-     * @param indexDirectory 
-     * @param indexName A unique name of the index that is also used in the configuration file to refer to the fields
-     * that are used and the generator that is applied to create the fields.
-     */
-    public void indexTag(String contentDirectory, String indexDirectory, String indexName){
-	
-	// create generators
-	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
-	    
-	// create and start the indexer with generators
-	StandardTagFacetIndexer indexer = new StandardTagFacetIndexer(indexName, configManager);
-	indexer.index(contentDirectory, indexDirectory, generators);
-    }
-    
-    /** Calls the image indexer to index (defined by the indexName) the given content directory and store the index 
-     * in the given index directory
-     * @param contentDirectory
-     * @param indexDirectory 
-     * @param indexName A unique name of the index that is also used in the configuration file to refer to the fields
-     * that are used and the generator that is applied to create the fields.
-     */
-    public void indexImage(String contentDirectory, String indexDirectory, String indexName){
-
-	// create generators
-	List<IndexFieldGenerator> generators = prepareFieldGenerators(indexName);
-	
-	// create and start the indexer with generators
-	StandardImageFacetIndexer indexer = new StandardImageFacetIndexer(indexName, configManager);
-	indexer.index(contentDirectory, indexDirectory, generators);
-    }
-    
-    /** Calls the concept indexer to index (defined by the indexName) the given content directory and store the index 
-     * in the given index directory
-     * @param contentDirectory
-     * @param indexDirectory 
-     */
-    public void indexConcept(String contentDirectory, String indexDirectory, String indexName){
-	
-	// TODO
     }
     
     /** Verifies the common parameters for an index. Index parameters consist of:
@@ -310,9 +248,17 @@ public class IndexManager {
 	    
 	    try {
 		
-		Class<?> clazz = Class.forName(generatorProperties.get(0));
-		Constructor constructor = clazz.getConstructor(String.class, String.class);
-		IndexFieldGenerator generator = (IndexFieldGenerator) constructor.newInstance(fieldToken, signatureToken);
+		//Class<?> clazz = Class.forName(generatorProperties.get(0));
+		//Constructor constructor = clazz.getConstructor(String.class, String.class);
+		//StandardIndexFieldGenerator generator = (StandardIndexFieldGenerator) constructor.newInstance(fieldToken, signatureToken);
+		
+		//Class<?> clazz = Class.forName(generatorProperties.get(0));
+		//Constructor<?> constructor = clazz.getConstructor(String.class, String.class);
+		//IndexFieldGenerator generator = (IndexFieldGenerator)constructor.newInstance(fieldToken, signatureToken);
+		
+		// create generator object
+		IndexFieldGenerator generator = (IndexFieldGenerator)configManager.getIndexFieldGeneratorClass(generatorProperties.get(0), fieldToken, signatureToken);
+		
 		// add to list
 		generators.add(generator);
 		
