@@ -23,6 +23,18 @@ public class DBConstants {
     public static final String DOCINDEX_FACETTYPE = "facettype";
     
     //
+    // credibilty index table
+    //
+    
+    /** Table name for document index */
+    public static final String CREDINDEX_TABLE_NAME = TABLE_PREFIX + "credindex";
+    
+    /** document index docid field  */
+    public static final String CREDINDEX_USERID = "userid";
+    /** document index facetid field  */
+    public static final String CREDINDEX_SCORE = "score";
+    
+    //
     // evaluation table
     //
     

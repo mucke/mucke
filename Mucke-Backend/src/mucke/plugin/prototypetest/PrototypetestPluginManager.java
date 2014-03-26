@@ -3,6 +3,8 @@ package mucke.plugin.prototypetest;
 import java.util.List;
 
 import mucke.config.ConfigurationManager;
+import mucke.credibility.CredibilityManager;
+import mucke.credibility.User;
 import mucke.documentmodel.Facet;
 import mucke.documentmodel.ImageFacet;
 import mucke.documentmodel.TextFacet;
@@ -51,11 +53,11 @@ public class PrototypetestPluginManager extends PluginManager {
 	//indexManager.index();
 
 	// creating queries
-	QueryManager queryManager = new QueryManager(this.configManager);
-	List<Query> queries = queryManager.prepareCollection();
+	//QueryManager queryManager = new QueryManager(this.configManager);
+	//List<Query> queries = queryManager.prepareCollection();
 	
 	// debug output
-	int i = 1;
+	/*int i = 1;
 	for (Query q : queries){
 	    logger.info("Query: " + i);
 	    List<Facet> facets = q.getFacets();
@@ -69,6 +71,15 @@ public class PrototypetestPluginManager extends PluginManager {
 		j++;
 	    }
 	    i++;
+	}*/
+
+	logger.debug("Creating CrediblityManager...");
+	CredibilityManager credManager = new CredibilityManager(configManager);
+	logger.debug("Calling CrediblityCollectionReader ...");
+	List<User> users = credManager.prepareCollection();
+	for (User user : users){
+	    credManager.addUser(user);	 
+	    logger.debug("Userid: " + user.getId() + " added...");
 	}
 	
 	logger.info("Done!");

@@ -36,6 +36,7 @@ public class DBManager {
 
 	// create database
 	try {
+	    logger.info("Creating tables...");
 	    this.createTables();
 	} catch (Exception e) {
 	    logger.error("Error creating database!");
@@ -89,15 +90,24 @@ public class DBManager {
      */
     public void createTables() {
 
-	// 'docindex' table
-	String sql = "CREATE TABLE IF NOT EXISTS `" + DBConstants.DOCINDEX_TABLE_NAME + 
+	logger.info("Now creating tables!!");
+	
+	// document index table
+	String sqlDoc = "CREATE TABLE IF NOT EXISTS `" + DBConstants.DOCINDEX_TABLE_NAME + 
 			"` (" + "`" + DBConstants.DOCINDEX_DOCID + "` varchar(20), " + 
 			"`" + DBConstants.DOCINDEX_FACETID + "` varchar(20), " + 
 			"`" + DBConstants.DOCINDEX_FACETNAME + "` varchar(20), " + 
 			"`" + DBConstants.DOCINDEX_FACETTYPE + "` varchar(20), PRIMARY KEY (`" + DBConstants.DOCINDEX_DOCID + "`, `" + 
 			DBConstants.DOCINDEX_FACETID + "`, `" + DBConstants.DOCINDEX_FACETNAME + "`)" + ") " + 
 			"ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;";
-	query(sql);
+	query(sqlDoc);
+	
+	// crediblity index table
+	String sqlCred = "CREATE TABLE IF NOT EXISTS `" + DBConstants.CREDINDEX_TABLE_NAME + 
+			"` (" + "`" + DBConstants.CREDINDEX_USERID + "` varchar(20), " + 
+				"`" + DBConstants.CREDINDEX_SCORE + "` double, PRIMARY KEY (`" + DBConstants.CREDINDEX_USERID + "`)" + ") " + 
+				"ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;";
+	query(sqlCred);
     }
 
     /** Truncates the given table name 
@@ -126,6 +136,21 @@ public class DBManager {
 	query(sql);
     }
     
+    /** Inserts a document into the document index table 
+     * 
+     * @param docId The document identifier
+     * @param facetId The facet identifier
+     * @param facetType The facet type
+     */
+    public void insertUserCredibilty(String userId, double credibiliyScore){
+	
+	String sql = "INSERT INTO `" + DBConstants.CREDINDEX_TABLE_NAME + 
+		"` (`" + DBConstants.CREDINDEX_USERID + "`, `" + DBConstants.CREDINDEX_SCORE + "`) " +
+		"VALUES ('" + userId + "', '" + credibiliyScore + "')";
+	logger.info("Indexing userid: " + userId + " with crediblityScore: " + credibiliyScore);
+	query(sql);
+    }
+    
     /** Selects all documents for the given facetid 
      * 
      * @param facetId The facet identifier
@@ -140,7 +165,6 @@ public class DBManager {
 	
 	// TODO!!!!
 	return null;
-	
 	
     }
     

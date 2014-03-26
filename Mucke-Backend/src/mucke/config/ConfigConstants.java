@@ -19,6 +19,18 @@ public class ConfigConstants {
     
     
     //
+    // Credibility package
+    //
+    
+    /** Defines the location of the query collection*/
+    public final static String CRED_COLLECTION_FILE = "credibilitycollection.file";
+    
+    /** Defines the location of the query collection*/
+    public final static String CRED_COLLECTION_READER = "credibilitycollection.reader";
+    
+    
+    
+    //
     // Query package
     //
     

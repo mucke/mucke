@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import mucke.data.DBManager;
-import mucke.index.IndexFieldGenerator;
+import mucke.index.StandardIndexFieldGenerator;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.chainsaw.Main;
@@ -124,7 +124,7 @@ public class ConfigurationManager {
     }
     
     /**
-     * Creates instance of a FacetIndexer class by name and cast it to a interface.
+     * Creates an instance of a FacetIndexer class by name and cast it to a interface.
      * 
      * @param class
      * @param propertiesFilename The configuration file of the run
@@ -135,7 +135,7 @@ public class ConfigurationManager {
 
 	try {
 	    
-	    // instantiate Run class by name (standard constructor)
+	    // instantiate object
 	    Class<?> clazz = Class.forName(clazzName);
 	    Constructor constructor = clazz.getConstructor(String.class, ConfigurationManager.class);
 	    object = constructor.newInstance(indexName, this);
@@ -148,7 +148,7 @@ public class ConfigurationManager {
     } 
     
     /**
-     * Creates instances of QueryReader class by name and cast it to a interface.
+     * Creates an instance of QueryReader class by name and cast it to a interface.
      * 
      * @param class
      * @param propertiesFilename The configuration file of the run
@@ -159,7 +159,7 @@ public class ConfigurationManager {
 
 	try {
 	    
-	    // instantiate Run class by name (standard constructor)
+	    // instantiate object
 	    Class<?> clazz = Class.forName(clazzName);
 	    Constructor constructor = clazz.getConstructor(ConfigurationManager.class);
 	    object = constructor.newInstance(this);
@@ -170,6 +170,55 @@ public class ConfigurationManager {
 	}
 	return object;
     }
+    
+    /**
+     * Creates an instance of CrediblityReader class by name and cast it to a interface.
+     * 
+     * @param class
+     * @param propertiesFilename The configuration file of the run
+     */
+    public Object getCrediblityReaderClass(String clazzName) {
+
+	Object object = null;
+
+	try {
+	    
+	    // instantiate object
+	    Class<?> clazz = Class.forName(clazzName);
+	    Constructor constructor = clazz.getConstructor(ConfigurationManager.class);
+	    object = constructor.newInstance(this);
+	    
+	} catch (Exception e) {
+	    logger.error("Exception while reading and creating CrediblityReader instance: " + e.getMessage());
+	    e.printStackTrace();
+	}
+	return object;
+    }
+    
+    /**
+     * Creates instance of IndexFieldGenerator class by name and cast it to a interface.
+     * 
+     * @param class
+     * @param propertiesFilename The configuration file of the run
+     */
+    public Object getIndexFieldGeneratorClass(String clazzName, String fieldName, String signature) {
+
+	Object object = null;
+
+	try {
+	    
+	    // instantiate object
+	    Class<?> clazz = Class.forName(clazzName);
+	    Constructor constructor = clazz.getConstructor(String.class, String.class);
+	    object = constructor.newInstance(fieldName, signature);
+	    
+	} catch (Exception e) {
+	    logger.error("Exception while reading and creating IndexFieldGenerator instance: " + e.getMessage());
+	    e.printStackTrace();
+	}
+	return object;
+    }
+    
     
     /** Extracts configuration properties that may contain multiple, comma-separated values of the form:
      * <li>
