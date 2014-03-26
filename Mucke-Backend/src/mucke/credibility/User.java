@@ -37,7 +37,7 @@ public class User {
     /**
      * @return the credibilityScore
      */
-    protected final double getCredibilityScore() {
+    public final double getCredibilityScore() {
         return credibilityScore;
     }
 

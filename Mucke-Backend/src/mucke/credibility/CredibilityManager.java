@@ -54,9 +54,8 @@ public class CredibilityManager {
 	return credibilityReader.prepare();
     }
     
-    
-    
-    /** Adds a user to the credibility index */
+    /** Adds a user to the credibility index 
+     * @param User user */
     public void addUser(User user) {
 	
 	// index user
@@ -64,9 +63,14 @@ public class CredibilityManager {
 	
     }
 
-    public User getUser(String id) {
-	// TODO: Extract user from DB index by id
-	return null;
+    /** Extracts user based on userId 
+     * @param userId User id
+     * @return User The user with the given id */
+    public User getUser(String userId) {
+	
+	// select user
+	return configManager.getDbManager().selectUser(userId);
+	
     }
 
     /** Determines subjective credibility of the given user */

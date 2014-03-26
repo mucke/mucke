@@ -9,6 +9,7 @@ import java.util.List;
 
 import mucke.config.ConfigConstants;
 import mucke.config.ConfigurationManager;
+import mucke.credibility.User;
 import mucke.documentmodel.Document;
 
 import org.apache.log4j.Logger;
@@ -168,9 +169,72 @@ public class DBManager {
 	
     }
     
+    /** Selects a user based on the given userid 
+     * 
+     * @param userId The user id
+     * @return User with the given id
+     */
+    public User selectUser(String userId){
+	
+	User user = null;
+	
+	String sql = "SELECT * FROM `" + DBConstants.CREDINDEX_TABLE_NAME + "` WHERE userid = '" + userId + "'";
+	logger.info("Selecting user with this statement: " + sql);
+	ResultSet results = queryResult(sql);
+
+	// only care for the first, in fact only one should be in the set
+	try {
+
+	    // check if result set is empty
+	    if (!results.next()){
+		logger.warn("No user with userId '" + userId + "'. Returning null.");
+		return null;
+	    }
+	    
+	    // set cursor to first result
+	    results.first();
+	    // extract information
+	    String useridResult = results.getString(DBConstants.CREDINDEX_USERID);
+	    double scoreResult = results.getDouble(DBConstants.CREDINDEX_SCORE);
+	    // create User object
+	    user = new User(useridResult, scoreResult);
+	    
+	} catch (SQLException e){
+	    logger.error("Error while selecting user from credibilty index: " + e.getMessage());
+	}
+	
+	return user;
+	
+    }
+    
+    
+    
+    
+    
+    
     /** Executes the given SQL query for a list of results */
     private ResultSet queryResult(String query) {
-	// TODO
+	
+	Connection connection = null;
+	Statement statement = null;
+
+	try {
+
+	    // get connected
+	    connection = this.getDBConnection();
+
+	    // create evaluation table
+	    statement = connection.createStatement();
+	    ResultSet results = statement.executeQuery(query);
+	    return results; 
+
+	} catch (SQLException e) {
+
+	    logger.error("SQLError: " + e.getMessage());
+	    
+	} 
+	
+	// something went wrong
 	return null;
     }
     

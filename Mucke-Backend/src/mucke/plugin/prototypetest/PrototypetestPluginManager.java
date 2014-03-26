@@ -73,14 +73,23 @@ public class PrototypetestPluginManager extends PluginManager {
 	    i++;
 	}*/
 
+	// user credibility
 	logger.debug("Creating CrediblityManager...");
 	CredibilityManager credManager = new CredibilityManager(configManager);
-	logger.debug("Calling CrediblityCollectionReader ...");
 	List<User> users = credManager.prepareCollection();
 	for (User user : users){
 	    credManager.addUser(user);	 
 	    logger.debug("Userid: " + user.getId() + " added...");
 	}
+	// check for user
+	String userId = "62559061@N06";
+	User u = credManager.getUser(userId);
+	if (u != null){
+	    logger.debug("User '" + u.getId() + "' has credibitily: " + u.getCredibilityScore());
+	} else {
+	    logger.debug("No user with id " + userId);
+	}
+	
 	
 	logger.info("Done!");
 	

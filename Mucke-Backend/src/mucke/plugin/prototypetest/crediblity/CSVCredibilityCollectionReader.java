@@ -8,6 +8,7 @@ import mucke.config.ConfigConstants;
 import mucke.config.ConfigurationManager;
 import mucke.credibility.CredibilityCollectionReader;
 import mucke.credibility.User;
+import mucke.data.DBConstants;
 import mucke.query.Query;
 import mucke.query.QueryCollectionReader;
 import mucke.util.Util;
@@ -30,6 +31,9 @@ public class CSVCredibilityCollectionReader implements CredibilityCollectionRead
     @Override
     public List<User> prepare() {
 
+	// empty credibility index table before building a new one
+	configManager.getDbManager().emptyTable(DBConstants.CREDINDEX_TABLE_NAME);
+	
 	// list of queries
 	List<User> users = new ArrayList<User>();
 	
