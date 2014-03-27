@@ -13,12 +13,12 @@ public class User {
     static Logger logger = Logger.getLogger(User.class);
 
     private String id = "";
-    private double credibilityScore = 0.0;    // per default, a user is not credible
+    private float credibilityScore = 0.0f;    // per default, a user is not credible
 
     /**
      * Constructor
      */
-    public User(String id, double crediblityScore) {
+    public User(String id, float crediblityScore) {
         this.id = id;
         if (crediblityScore < 0.0 || crediblityScore > 1.0) {
             logger.warn("User created with illegal crediblity score. Value must be between 0.0 and 1.0. Value set to 0.0!");
@@ -39,7 +39,7 @@ public class User {
     /**
      * @return the credibilityScore
      */
-    public final double getCredibilityScore() {
+    public final float getCredibilityScore() {
         return credibilityScore;
     }
 

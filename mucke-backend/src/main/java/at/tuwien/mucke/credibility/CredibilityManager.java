@@ -80,13 +80,6 @@ public class CredibilityManager {
 
     }
 
-    /**
-     * Determines subjective credibility of the given user
-     */
-    public double getUserCredibility(User user) {
-        return 1.0;
-    }
-
     /** Determines subjective credibility of the content-producing user */
     // public double getUserCredibility(User consumer, User producer){
     // return 1.0; // dummy return value
