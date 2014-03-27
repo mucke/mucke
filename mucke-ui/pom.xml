@@ -62,6 +62,7 @@
             <version>(2.2,)</version>
         </dependency>
 
+        <!-- MUCKE Backend -->
         <dependency>
             <groupId>at.tuwien.mucke</groupId>
             <artifactId>mucke-backend</artifactId>

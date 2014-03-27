@@ -3,7 +3,13 @@ package at.tuwien.mucke.plugin.prototypetest;
 import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.credibility.CredibilityManager;
 import at.tuwien.mucke.credibility.User;
+import at.tuwien.mucke.documentmodel.Facet;
+import at.tuwien.mucke.documentmodel.ImageFacet;
+import at.tuwien.mucke.documentmodel.TextFacet;
+import at.tuwien.mucke.index.IndexManager;
 import at.tuwien.mucke.plugin.PluginManager;
+import at.tuwien.mucke.query.Query;
+import at.tuwien.mucke.query.QueryManager;
 import org.apache.log4j.Logger;
 
 import java.util.List;
@@ -45,45 +51,45 @@ public class PrototypetestPluginManager extends PluginManager {
         logger.info("Start");
 
         // create indices
-        //IndexManager indexManager = new IndexManager(this.configManager);
-        //indexManager.index();
+        IndexManager indexManager = new IndexManager(this.configManager);
+        indexManager.index();
 
         // creating queries
-        //QueryManager queryManager = new QueryManager(this.configManager);
-        //List<Query> queries = queryManager.prepareCollection();
+        QueryManager queryManager = new QueryManager(this.configManager);
+        List<Query> queries = queryManager.prepareCollection();
 
         // debug output
-    /*int i = 1;
-	for (Query q : queries){
-	    logger.info("Query: " + i);
-	    List<Facet> facets = q.getFacets();
-	    int j = 1;
-	    for (Facet f : facets){
-		if (f instanceof TextFacet){
-		    logger.info(j +") id: " + f.getId() + " name: " + f.getName() + " type: TEXTFACET content: " + f.getContent());
-		} else if (f instanceof ImageFacet){
-		    logger.info(j +") id: " + f.getId() + " name: " + f.getName() + " type: IMAGEFACET content: " + f.getContent());
-		}
-		j++;
+        int i = 1;
+	    for (Query q : queries){
+	        logger.info("Query: " + i);
+	        List<Facet> facets = q.getFacets();
+	        int j = 1;
+	        for (Facet f : facets){
+		        if (f instanceof TextFacet){
+		            logger.info(j +") id: " + f.getId() + " name: " + f.getName() + " type: TEXTFACET content: " + f.getContent());
+		        } else if (f instanceof ImageFacet){
+		            logger.info(j +") id: " + f.getId() + " name: " + f.getName() + " type: IMAGEFACET content: " + f.getContent());
+		        }
+		        j++;
+	        }
+	        i++;
 	    }
-	    i++;
-	}*/
 
         // user credibility
-        logger.debug("Creating CrediblityManager...");
+        logger.info("Creating CrediblityManager...");
         CredibilityManager credManager = new CredibilityManager(configManager);
         List<User> users = credManager.prepareCollection();
         for (User user : users) {
             credManager.addUser(user);
-            logger.debug("Userid: " + user.getId() + " added...");
+            logger.info("Userid: " + user.getId() + " added...");
         }
         // check for user
         String userId = "62559061@N06";
         User u = credManager.getUser(userId);
         if (u != null) {
-            logger.debug("User '" + u.getId() + "' has credibitily: " + u.getCredibilityScore());
+            logger.info("User '" + u.getId() + "' has credibitily: " + u.getCredibilityScore());
         } else {
-            logger.debug("No user with id " + userId);
+            logger.info("No user with id " + userId);
         }
 
 

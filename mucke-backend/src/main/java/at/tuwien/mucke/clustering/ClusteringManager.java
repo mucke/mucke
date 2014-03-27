@@ -9,4 +9,12 @@ package at.tuwien.mucke.clustering;
 public class ClusteringManager {
 
 
+    public float rerank(float score1, float score2){
+
+        // TODO
+
+    }
+
+
+
 }

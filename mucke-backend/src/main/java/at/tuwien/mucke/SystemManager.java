@@ -2,10 +2,12 @@ package at.tuwien.mucke;
 
 import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.config.Run;
-
-import java.util.List;
-
+import at.tuwien.mucke.util.Util;
 import org.apache.log4j.Logger;
+
+import java.io.File;
+import java.net.URL;
+import java.util.List;
 
 /**
  * This is the Main class that regulates everything the system does at the top level. It reads the configuration file "primary.properties"
@@ -44,21 +46,21 @@ public class SystemManager {
     public void executeBatchMode() {
 
         // extract configuration for all runs
-        logger.debug("Starting batch mode...");
-        logger.debug("Loading runs...");
+        logger.info("Starting batch mode...");
+        logger.info("Loading runs...");
         List<String> runConfigFilenames = configManager.getRuns();
         // execute each run
         int i = 0;
         for (String runConfigFilename : runConfigFilenames) {
             i++;
-            logger.debug("Run # " + (i) + ":" + runConfigFilename);
+            logger.info("Run # " + (i) + ":" + runConfigFilename);
 
             // instantiate and execute Run
             Run run = configManager.getRunClass(runConfigFilename);
 
             if (run != null) {
                 logger.info("Starting the Runner '" + run.getClass().getSimpleName().toString() + "' with configuration '"
-                	+ runConfigFilename + "'");
+                        + runConfigFilename + "'");
 
                 run.run(runConfigFilename);
             }
@@ -95,6 +97,22 @@ public class SystemManager {
         SystemManager manager = new SystemManager();
         manager.executeBatchMode();
 
+    }
+
+    /** For testing */
+    public void test(){
+        URL url = Thread.currentThread().getContextClassLoader().getResource("primary.properties");
+        System.out.println(url.toString());
+
+        // load file somewhere on the disk
+        System.out.println("---------------------------- ANYWHERE ON DISK -----------------------------------");
+        System.out.println(Util.getContents(new File("D:/Data/collections/UserCredibilityImages/imageLists/1")));
+        System.out.println("-------------------------FINISHED ANYWHERE ON DISK -----------------------------------");
+
+        // load file in home directory
+        //System.out.println("---------------------------- HOME DIRECTORY -----------------------------------");
+        //String userHome = System.getProperty("user.home");
+        //System.out.println(Util.getContents(new File(userHome + "/data/collections/UserCredibilityImages/imageLists/1")));
     }
 
     /**

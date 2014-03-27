@@ -4,9 +4,13 @@ import at.tuwien.mucke.config.ConfigConstants;
 import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.credibility.User;
 import at.tuwien.mucke.documentmodel.Document;
+import java.sql.Connection;
 import org.apache.log4j.Logger;
 
-import java.sql.*;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 /**

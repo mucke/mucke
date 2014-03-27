@@ -47,12 +47,8 @@
                     <h:outputLabel for="search-lbl" value="Search: "/>
                     <p:inputText id="search-lbl" value="#{editor.value}" style="width: 100%;"></p:inputText>
                 </h:panelGrid>
-                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                    <h:outputText value="Prefer Credible Sources: " />
-                    <p:selectBooleanCheckbox value="#{editor.credibilityEnabled}" />
-                </h:panelGrid>
             </p:panel>
-            <p:commandButton actionListener="#{editor.run()}" update="panel,display" value="Search"
+            <p:commandButton actionListener="#{editor.testStuff()}" update="panel,display" value="Search"
                              id="search-btn"
                              icon="ui-icon-search"/>
         </div>
