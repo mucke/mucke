@@ -14,7 +14,7 @@
    id="svg6334"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="package_search_v2.svg"
+   sodipodi:docname="package_search_v3.svg"
    inkscape:export-filename="C:\Users\rbierig.INTERN\git\mucke\MUCKE\doc\systemarchitecture\package_search.png"
    inkscape:export-xdpi="149.94728"
    inkscape:export-ydpi="149.94728">
@@ -177,7 +177,7 @@
          sodipodi:role="line"
          x="217.61726"
          y="152.26822"
-         id="tspan4455">List&lt;Result&gt; facetSearch(Query, List&lt;Result&gt;)</tspan></text>
+         id="tspan4455">List&lt;Result&gt; facetSearch(String, List&lt;Result&gt;)</tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-width:2.12598425;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
        id="rect6967-8-9-4"
@@ -466,14 +466,30 @@
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="773.43817"
-       y="146.67677"
+       x="801.31531"
+       y="137.09401"
        id="text7656-7-14-1"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="773.43817"
-         y="146.67677"
-         id="tspan3070-2-7">URL getId()</tspan></text>
+         x="801.31531"
+         y="137.09401"
+         id="tspan3070-2-7">String getId()</tspan><tspan
+         sodipodi:role="line"
+         x="801.31531"
+         y="154.59401"
+         id="tspan3057">String getTitle()</tspan><tspan
+         sodipodi:role="line"
+         x="801.31531"
+         y="172.09401"
+         id="tspan3061">float getScore()</tspan><tspan
+         sodipodi:role="line"
+         x="801.31531"
+         y="189.59401"
+         id="tspan3059">String getUserId()</tspan><tspan
+         sodipodi:role="line"
+         x="801.31531"
+         y="207.09401"
+         id="tspan3053" /></text>
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -484,7 +500,7 @@
          sodipodi:role="line"
          x="774.85236"
          y="168.59708"
-         id="tspan3070-2-5">float getScore()</tspan></text>
+         id="tspan3070-2-5" /></text>
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
