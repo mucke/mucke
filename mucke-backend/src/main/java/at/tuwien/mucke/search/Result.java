@@ -10,12 +10,14 @@ import java.net.URL;
 public class Result {
 
     private String id;
+    private String title;
     private float score;
     private String userId;
 
 
-    public Result(URL id, float score, String userId) {
+    public Result(String id, String title, float score, String userId) {
         this.id = id;
+        this.title = title;
         this.score = score;
         this.userId = userId;
     }
@@ -23,8 +25,15 @@ public class Result {
     /**
      * @return the id
      */
-    public final URL getId() {
+    public final String getId() {
         return id;
+    }
+
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+        return title;
     }
 
     /**
@@ -39,6 +48,13 @@ public class Result {
      */
     public String getUserId() {
         return userId;
+    }
+
+    /**
+     * Re-set the score
+     */
+    public void setScore(float score) {
+        this.score = score;
     }
 
 }

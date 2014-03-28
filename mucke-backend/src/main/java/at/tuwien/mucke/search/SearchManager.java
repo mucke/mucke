@@ -2,10 +2,10 @@ package at.tuwien.mucke.search;
 
 import at.tuwien.mucke.config.ConfigConstants;
 import at.tuwien.mucke.config.ConfigurationManager;
+import at.tuwien.mucke.documentmodel.TextFacet;
 import at.tuwien.mucke.query.Query;
 import org.apache.log4j.Logger;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,42 +27,43 @@ public class SearchManager {
     }
 
     /**
-     * Interactive search interface for searching images
+     * Interactive facet search interface that is used by a user interface
+     * @param queryString The query string of the form: facet:myfacet term OP term where
+     *                    myfacet refers to the name of the facet as defined in the index creation,
+     *                    term refers to the search terms and OP referes to Boolean operators.
+     * @param filterResults Results by which new results will be filtered.
      */
-    public List<Result> imageFacetSearch(Query query, List<Result> filterResults) {
+    public List<Result> facetSearch(String queryString, List<Result> filterResults) {
 
-        List<Result> results = new ArrayList<Result>();
+        // Extract index information from configuration
+        List<String> facetSearchers = configManager.getProperties(ConfigConstants.SEARCH_FACETSEARCHERS, false);
 
-        // currently hard wired response
-        try {
+        for (String facetSearcher : facetSearchers){
 
-            Result r1 = new Result(new URL("http://abcnews.go.com/images/Lifestyle/GTY_yawning_dog_dm_130807.jpg"), 1.0f);
-            results.add(r1);
-            Result r2 = new Result(new URL("http://abcnews.go.com/images/Lifestyle/GTY_yawning_dog_dm_130807.jpg"), 0.9f);
-            results.add(r2);
-            Result r3 = new Result(new URL("http://jameni.com/wp-content/uploads/easycare.jpg"), 0.7f);
-            results.add(r3);
+            logger.info("Instantiating FacetSearcher...");
+            String searchClassName = configManager.getProperty(facetSearcher + ".class");
+            logger.debug("searchClassName ======> " + searchClassName);
+            FacetSearcher searcher = (FacetSearcher) configManager.getFacetSearcherClass(facetSearcher, searchClassName);
 
-        } catch (Exception e) {
-            logger.error(e.getMessage());
+            //call searcher
+            return searcher.search(queryString, null);
+
         }
 
-        //ImageFacetSearcher searcher = new ImageFacetSearcher();
-        //results = searcher.search(query, filterResults);
-
-        return results;
+        return new ArrayList<>();
     }
 
     /**
-     * Batched search interface that runs on configuration parameters
+     * Batched facet search interface that runs on configuration parameters
      */
     public List<Result> facetSearch() {
-        // check parameterization of batch mode
+
+        // check parametrization of batch mode
         this.checkParameters();
 
         // TODO
 
-        return new ArrayList<Result>();
+        return new ArrayList<>();
     }
 
     /**
@@ -89,5 +90,34 @@ public class SearchManager {
         // at this point, everything looked fine
         return true;
     }
+
+
+
+    /**
+     * Interactive search interface for searching images
+     */
+    /*public List<Result> imageFacetSearch(Query query, List<Result> filterResults) {
+
+        List<Result> results = new ArrayList<Result>();
+
+        // currently hard wired response
+        try {
+
+            Result r1 = new Result("http://abcnews.go.com/images/Lifestyle/GTY_yawning_dog_dm_130807.jpg", "Result1", 1.0f, "User1");
+            results.add(r1);
+            Result r2 = new Result("http://abcnews.go.com/images/Lifestyle/GTY_yawning_dog_dm_130807.jpg", "Result2", 0.9f, "User1");
+            results.add(r2);
+            Result r3 = new Result("http://jameni.com/wp-content/uploads/easycare.jpg", "Result3", 0.7f, "User2");
+            results.add(r3);
+
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
+        //ImageFacetSearcher searcher = new ImageFacetSearcher();
+        //results = searcher.search(query, filterResults);
+
+        return results;
+    }*/
 
 }

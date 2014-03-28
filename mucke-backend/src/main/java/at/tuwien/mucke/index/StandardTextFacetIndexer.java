@@ -106,9 +106,9 @@ public class StandardTextFacetIndexer implements FacetIndexer {
     /**
      * Indexes individual document with a set of configured IndexFieldGenerators.
      *
-     * @param IndexWriter               A writing handle to the index
-     * @param File                      The file to be indexed
-     * @param List<IndexFieldGenerator> A list of generators that populate the fields with content
+     * @param writer               A writing handle to the index
+     * @param file                      The file to be indexed
+     * @param fieldGenerators A list of generators that populate the fields with content
      * @throws IOException
      */
     private void indexDocuments(IndexWriter writer, File file, List<IndexFieldGenerator> fieldGenerators) throws IOException {

@@ -9,10 +9,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.document.LongField;
-import org.apache.lucene.document.StringField;
+import org.apache.lucene.document.*;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.IndexWriterConfig.OpenMode;
@@ -21,10 +18,7 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 import java.util.List;
 
@@ -108,9 +102,9 @@ public class MultiTextFacetIndexer extends StandardTextFacetIndexer {
     /**
      * Indexes individual document with a set of configured IndexFieldGenerators.
      *
-     * @param IndexWriter               A writing handle to the index
-     * @param File                      The file to be indexed
-     * @param List<IndexFieldGenerator> A list of generators that populate the fields with content
+     * @param writer A writing handle to the index
+     * @param file The file to be indexed
+     * @param fieldGenerators A list of generators that populate the fields with content
      * @throws IOException
      */
     private void indexDocuments(IndexWriter writer, File file, List<IndexFieldGenerator> fieldGenerators) throws IOException {
@@ -204,6 +198,7 @@ public class MultiTextFacetIndexer extends StandardTextFacetIndexer {
                         // last modified date of the file. Uses a LongField that is indexed (i.e. efficiently
                         // filterable with NumericRangeFilter) which uses a milli-second resolution.
                         doc.add(new LongField("modified", tempFile.lastModified(), Field.Store.NO));
+
 
                         //
                         // optional fields defines by fieldGenerators

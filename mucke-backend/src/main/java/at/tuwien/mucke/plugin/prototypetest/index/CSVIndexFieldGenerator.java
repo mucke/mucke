@@ -4,6 +4,7 @@ import at.tuwien.mucke.index.IndexFieldGenerator;
 import at.tuwien.mucke.util.Util;
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Field;
+import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 
 import java.io.File;
@@ -50,8 +51,6 @@ public class CSVIndexFieldGenerator extends IndexFieldGenerator {
 
         try {
 
-            // logger.debug("field=" + this.fieldname + " sep=" + separator + " sig=" + signature);
-
             // get content of file as CSV array
             List<String> contents = Util.getContents(file, this.separator);
 
@@ -63,7 +62,17 @@ public class CSVIndexFieldGenerator extends IndexFieldGenerator {
 
             if (contents.get(position) != null) {
                 // simple case where all content is added to the field
-                field = new TextField(fieldname, new StringReader(contents.get(position)));
+
+                // ORG
+                //field = new TextField(fieldname, new StringReader(contents.get(position)));
+
+                // NEW not tokenized and stored
+                //field = new StringField(fieldname, contents.get(position), Field.Store.YES);
+
+                // NEW tokenized and stored
+                field = new TextField(fieldname, contents.get(position), Field.Store.YES);
+
+
             } else {
                 logger.warn("Null value at position" + position + " in File '" + file.getName() + "'. Nothing done.");
             }

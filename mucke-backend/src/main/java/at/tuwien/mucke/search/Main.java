@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
 
         // search for concepts
-        ConceptSearcher csearcher = new ConceptSearcher();
+        /*ConceptSearcher csearcher = new ConceptSearcher();
         List<Concept> concepts = new ArrayList<Concept>();
         try {
             Concept concept1 = new Concept(new URI("tree"));
@@ -43,6 +43,6 @@ public class Main {
         String imageId = "appletree";
         ImageFacetSearcher isearcher = new ImageFacetSearcher();
         //List<Result> iResults = isearcher.search(imageId, cResults);
-
+           */
     }
 }

@@ -1,6 +1,7 @@
 package at.tuwien.mucke.ui;
 
 import at.tuwien.mucke.SystemManager;
+import at.tuwien.mucke.search.Result;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -25,32 +26,7 @@ public class EditorBean {
         System.out.println("Creating a new System Manager ...");
         SystemManager manager = new SystemManager();
         System.out.println("Executing Batch Mode ...");
-        manager.executeBatchMode();
-
-    }
-
-    public void testResults() {
-        if (!this.value.isEmpty()) {
-            resultList = new ArrayList<Result>();
-
-            for (int i = 1; i < 18; i++) {
-                Result result = new Result("images/dog" + i + ".jpg", "Results No. " + i);
-                resultList.add(result);
-            }
-        }
-    }
-
-    public void testSettings() {
-        // Initialize manager
-        //SystemManager manager = new SystemManager();
-        // test stuff
-        //manager.executeBatchMode();
-
-        if (this.credibilityEnabled == true){
-            System.out.println("Credibility is enabled!");
-        } else {
-            System.out.println("Credibility is disabled!");
-        }
+        this.resultList = manager.executeInteractiveMode(value);
 
     }
 
@@ -80,9 +56,32 @@ public class EditorBean {
 
     public void addCredibility() {
         String summary = credibilityEnabled ? "Checked" : "Unchecked";
-
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
     }
 
+    /*public void testResults() {
+        if (!this.value.isEmpty()) {
+            resultList = new ArrayList<Result>();
+
+            for (int i = 1; i < 18; i++) {
+                Result result = new Result("images/dog" + i + ".jpg", "Results No. " + i);
+                resultList.add(result);
+            }
+        }
+    }
+
+    public void testSettings() {
+        // Initialize manager
+        //SystemManager manager = new SystemManager();
+        // test stuff
+        //manager.executeBatchMode();
+
+        if (this.credibilityEnabled == true){
+            System.out.println("Credibility is enabled!");
+        } else {
+            System.out.println("Credibility is disabled!");
+        }
+
+    }*/
 
 }

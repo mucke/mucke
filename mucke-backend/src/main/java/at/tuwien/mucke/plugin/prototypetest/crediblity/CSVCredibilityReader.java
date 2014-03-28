@@ -36,7 +36,7 @@ public class CSVCredibilityReader implements CredibilityReader {
 
         // add part 1-3 as id, query terms, and narrative
         String userid = parts[0].trim();
-        double score = Double.parseDouble(parts[1].trim());
+        float score = Float.parseFloat(parts[1].trim());
 
         return new User(userid, score);
     }

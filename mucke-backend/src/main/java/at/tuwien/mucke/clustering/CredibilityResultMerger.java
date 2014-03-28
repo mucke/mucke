@@ -20,12 +20,20 @@ public class CredibilityResultMerger implements ResultMerger {
     @Override
     public List<Result> merge(List<Result> results) {
 
-        CredibilityManager credibilityManager = new CredibilityManager(configManager);
+        CredibilityManager credibilityManager = new CredibilityManager(this.configManager);
 
         for (Result result : results){
+
+            // extract scores
             float resultScore = result.getScore();
             float userScore = credibilityManager.getUser(result.getUserId()).getCredibilityScore();
-            //float newScoare = harmonicMean(new float[]{resultScore, userScore});
+            float[] scores = {resultScore, userScore};
+
+            // calculate harmonic mean
+            float newScore = CredibilityResultMerger.harmonicMean(scores);
+
+            // re-assign the new score
+            result.setScore(newScore);
 
         }
 
@@ -33,7 +41,7 @@ public class CredibilityResultMerger implements ResultMerger {
     }
 
     /** Calculates the harmonic mean */
-    public static double harmonicMean(float[] scores) {
+    public static float harmonicMean(float[] scores) {
 
         float sum = 0.0f;
 

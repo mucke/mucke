@@ -13,44 +13,22 @@ public class ImageFacetSearcher implements FacetSearcher {
 
     static Logger logger = Logger.getLogger(ImageFacetSearcher.class);
 
-    @Override
-    public List<Result> search(Query query, List<Result> results) {
+    /**
+     * Searches for image facets based on a query.
+     *
+     * @param query         The query that is used to search the text index
+     * @param filterResults List of already existing results as a filter for the results found by
+     *                      the search. Results outside that list will be ignored. If the result list is null, a normal
+     *                      search will be performed with all results considered.
+     */
+    public List<Result> search(String queryString, List<Result> filterResults) {
 
-        List<Result> imageResults = new ArrayList<Result>();
+        List<Result> results = new ArrayList<Result>();
 
         // logging
-        logger.debug("Searching for images!");
+        logger.debug("TODO: Searching for images!");
 
-        // extract image facets and turn them into urls
-
-
-        // Checking if arg[0] is there and if it is an image.
-        /*BufferedImage img = null;
-        boolean passed = false;
-        if (image.exists()) {
-            try {
-        	img = ImageIO.read(image);
-        	passed = true;
-            } catch (IOException e) {
-        	e.printStackTrace();  
-            }
-        }
-        if (!passed) {
-            System.out.println("No image given as first argument.");
-            System.out.println("Run \"Searcher <query image>\" to search for <query image>.");
-            System.exit(1);
-        }
- 
-        IndexReader ir = DirectoryReader.open(FSDirectory.open(new File("index")));
-        ImageSearcher searcher = ImageSearcherFactory.createCEDDImageSearcher(10);
- 
-        ImageSearchHits hits = searcher.search(img, ir);
-        for (int i = 0; i < hits.length(); i++) {
-            String fileName = hits.doc(i).getValues(DocumentBuilder.FIELD_NAME_IDENTIFIER)[0];
-            System.out.println(hits.score(i) + ": \t" + fileName);
-        }*/
-
-        return imageResults;
+        return results;
 
     }
 

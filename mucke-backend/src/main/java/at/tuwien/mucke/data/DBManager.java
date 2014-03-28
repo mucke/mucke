@@ -110,7 +110,7 @@ public class DBManager {
         // crediblity index table
         String sqlCred = "CREATE TABLE IF NOT EXISTS `" + DBConstants.CREDINDEX_TABLE_NAME +
                 "` (" + "`" + DBConstants.CREDINDEX_USERID + "` varchar(20), " +
-                "`" + DBConstants.CREDINDEX_SCORE + "` double, PRIMARY KEY (`" + DBConstants.CREDINDEX_USERID + "`)" + ") " +
+                "`" + DBConstants.CREDINDEX_SCORE + "` float, PRIMARY KEY (`" + DBConstants.CREDINDEX_USERID + "`)" + ") " +
                 "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;";
         query(sqlCred);
     }
@@ -146,9 +146,8 @@ public class DBManager {
     /**
      * Inserts a document into the document index table
      *
-     * @param docId     The document identifier
-     * @param facetId   The facet identifier
-     * @param facetType The facet type
+     * @param userId The user identifier
+     * @param credibiliyScore The crediblity score
      */
     public void insertUserCredibilty(String userId, double credibiliyScore) {
 
@@ -204,7 +203,7 @@ public class DBManager {
             results.first();
             // extract information
             String useridResult = results.getString(DBConstants.CREDINDEX_USERID);
-            double scoreResult = results.getDouble(DBConstants.CREDINDEX_SCORE);
+            float scoreResult = results.getFloat(DBConstants.CREDINDEX_SCORE);
             // create User object
             user = new User(useridResult, scoreResult);
 

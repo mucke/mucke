@@ -258,14 +258,6 @@ public class IndexManager {
 
             try {
 
-                //Class<?> clazz = Class.forName(generatorProperties.get(0));
-                //Constructor constructor = clazz.getConstructor(String.class, String.class);
-                //StandardIndexFieldGenerator generator = (StandardIndexFieldGenerator) constructor.newInstance(fieldToken, signatureToken);
-
-                //Class<?> clazz = Class.forName(generatorProperties.get(0));
-                //Constructor<?> constructor = clazz.getConstructor(String.class, String.class);
-                //IndexFieldGenerator generator = (IndexFieldGenerator)constructor.newInstance(fieldToken, signatureToken);
-
                 // create generator object
                 IndexFieldGenerator generator = (IndexFieldGenerator) configManager.getIndexFieldGeneratorClass(generatorProperties.get(0), fieldToken, signatureToken);
 

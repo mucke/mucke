@@ -87,6 +87,9 @@ public class ConfigConstants {
      */
     public final static String SEARCH_FACETSEARCHERS = "search.facetsearchers";
 
+    /** Defines the max length of the search result list */
+    public final static String SEARCH_RESULTLIST_LENGTH = "search.resultlist.length";
+
 
     //
     // Index package

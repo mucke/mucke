@@ -2,6 +2,8 @@ package at.tuwien.mucke;
 
 import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.config.Run;
+import at.tuwien.mucke.search.Result;
+import at.tuwien.mucke.search.SearchManager;
 import at.tuwien.mucke.util.Util;
 import org.apache.log4j.Logger;
 
@@ -69,22 +71,31 @@ public class SystemManager {
     }
 
 
-    public void executeInteractiveMode() {
-        logger.debug("Starting interactive mode...");
-        String interactiveConfigFilename = "prototypetest-interactive.properties";
+    public List<Result> executeInteractiveMode(String queryString) {
 
-        try {
+        // extract configuration for all runs
+        List<String> runConfigFilenames = configManager.getRuns();
+        // execute each run
+        int i = 0;
+        for (String runConfigFilename : runConfigFilenames) {
+            i++;
+            logger.info("Run # " + (i) + ":" + runConfigFilename);
 
-            //load interactive configuration
-            configManager.loadRunPropoerties(interactiveConfigFilename);
-            logger.info("Run configuration '" + interactiveConfigFilename + "' successfully loaded.");
-
-        } catch (Exception e) {
-
-            logger.error("Failed to load run configuration. Check if it is included in the classpath. Exception: " + e.getMessage());
-            e.printStackTrace();
+            // instantiate and execute Run
+            Run run = configManager.getRunClass(runConfigFilename);
 
         }
+
+        SearchManager searchManager = new SearchManager(configManager);
+        List<Result> results = searchManager.facetSearch(queryString, null);
+
+        // debug output
+        logger.info("======================== result list =================================");
+        for (Result result : results){
+            logger.info("result id:" + result.getId() + " title:" + result.getTitle() + " score:" + result.getScore() + " userid:" + result.getUserId());
+        }
+        logger.info("======================== result list END =================================");
+        return results;
 
     }
 

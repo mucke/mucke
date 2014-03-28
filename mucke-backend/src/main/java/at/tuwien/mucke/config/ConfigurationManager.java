@@ -57,12 +57,12 @@ public class ConfigurationManager {
      *
      * @param propertiesFilename The file with the properties
      */
-    public void loadRunPropoerties(String propertiesFilename) {
+    public void loadRunProperties(String propertiesFilename) {
 
         try {
 
             // load run configuration
-            this.loadRunPropoerties(propertiesFilename);
+            this.loadRunProperties(propertiesFilename);
             logger.info("Run configuration '" + propertiesFilename + "' successfully loaded.");
 
         } catch (Exception e) {
@@ -143,11 +143,36 @@ public class ConfigurationManager {
             object = constructor.newInstance(indexName, this);
 
         } catch (Exception e) {
-            logger.error("Exception while reading and creating Object instance: " + e.getMessage());
+            logger.error("Exception while reading and creating FacetIndexer Object instance: " + e.getMessage());
             e.printStackTrace();
         }
         return object;
     }
+
+    /**
+     * Creates an instance of a FacetSearcher class by name and cast it to the interface.
+     *
+     * @param clazzName
+     * @param searcherName The configuration file of the run
+     */
+    public Object getFacetSearcherClass(String searcherName, String clazzName) {
+
+        Object object = null;
+
+        try {
+
+            // instantiate object
+            Class<?> clazz = Class.forName(clazzName);
+            Constructor constructor = clazz.getConstructor(String.class, ConfigurationManager.class);
+            object = constructor.newInstance(searcherName, this);
+
+        } catch (Exception e) {
+            logger.error("Exception while reading and creating FacetSearcher Object instance: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return object;
+    }
+
 
     /**
      * Creates an instance of QueryReader class by name and cast it to a interface.

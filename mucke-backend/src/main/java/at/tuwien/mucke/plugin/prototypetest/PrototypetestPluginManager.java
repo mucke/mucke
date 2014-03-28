@@ -10,6 +10,8 @@ import at.tuwien.mucke.index.IndexManager;
 import at.tuwien.mucke.plugin.PluginManager;
 import at.tuwien.mucke.query.Query;
 import at.tuwien.mucke.query.QueryManager;
+import at.tuwien.mucke.search.Result;
+import at.tuwien.mucke.search.SearchManager;
 import org.apache.log4j.Logger;
 
 import java.util.List;
@@ -55,11 +57,11 @@ public class PrototypetestPluginManager extends PluginManager {
         indexManager.index();
 
         // creating queries
-        QueryManager queryManager = new QueryManager(this.configManager);
-        List<Query> queries = queryManager.prepareCollection();
+        //QueryManager queryManager = new QueryManager(this.configManager);
+        //List<Query> queries = queryManager.prepareCollection();
 
         // debug output
-        int i = 1;
+        /*int i = 1;
 	    for (Query q : queries){
 	        logger.info("Query: " + i);
 	        List<Facet> facets = q.getFacets();
@@ -73,7 +75,7 @@ public class PrototypetestPluginManager extends PluginManager {
 		        j++;
 	        }
 	        i++;
-	    }
+	    }*/
 
         // user credibility
         logger.info("Creating CrediblityManager...");
@@ -93,7 +95,19 @@ public class PrototypetestPluginManager extends PluginManager {
         }
 
 
-        logger.info("Done!");
+        /*SearchManager searchManager = new SearchManager(configManager);
+        String queryString = "tags:digitalart  tags:fractal tags:apophysis tags:fractals";
+        List<Result> results = searchManager.facetSearch(queryString, null);
+
+        if (results.size() == 0){
+            logger.info("No results for query '" + queryString);
+        }
+
+        for (Result result : results){
+            logger.info("score: " + result.getScore() + "    id: " + result.getId() + "    title: " + result.getTitle() + "     userid: " + result.getUserId());
+        }
+
+        logger.info("Done!");*/
 
     }
 

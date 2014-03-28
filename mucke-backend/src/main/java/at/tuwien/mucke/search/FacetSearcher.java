@@ -21,6 +21,6 @@ public interface FacetSearcher {
      *                will be performed with all results considered.
      * @return List of results
      */
-    public List<Result> search(Query query, List<Result> results);
+    public List<Result> search(String queryString, List<Result> results);
 
 }
