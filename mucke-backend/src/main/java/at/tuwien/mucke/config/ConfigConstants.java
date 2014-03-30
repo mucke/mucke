@@ -31,6 +31,14 @@ public class ConfigConstants {
 
 
     //
+    // Clustering package
+    //
+
+    /** Dtfines the class that merges the facets search results */
+    public final static String CLUSTERING_FACETMERGER_CLASS = "clustering.facetmerge.class";
+
+
+    //
     // Credibility package
     //
 

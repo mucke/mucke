@@ -25,8 +25,9 @@ public class EditorBean {
         // Initialize manager
         System.out.println("Creating a new System Manager ...");
         SystemManager manager = new SystemManager();
-        System.out.println("Executing Batch Mode ...");
-        this.resultList = manager.executeInteractiveMode(value);
+
+        System.out.println("Executing Interactive Mode ...");
+        this.resultList = manager.executeInteractiveMode(value, this.credibilityEnabled);
 
     }
 
@@ -59,17 +60,6 @@ public class EditorBean {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
     }
 
-    /*public void testResults() {
-        if (!this.value.isEmpty()) {
-            resultList = new ArrayList<Result>();
-
-            for (int i = 1; i < 18; i++) {
-                Result result = new Result("images/dog" + i + ".jpg", "Results No. " + i);
-                resultList.add(result);
-            }
-        }
-    }
-
     public void testSettings() {
         // Initialize manager
         //SystemManager manager = new SystemManager();
@@ -82,6 +72,6 @@ public class EditorBean {
             System.out.println("Credibility is disabled!");
         }
 
-    }*/
+    }
 
 }

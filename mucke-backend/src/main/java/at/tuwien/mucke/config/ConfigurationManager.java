@@ -128,8 +128,8 @@ public class ConfigurationManager {
     /**
      * Creates an instance of a FacetIndexer class by name and cast it to a interface.
      *
-     * @param class
-     * @param propertiesFilename The configuration file of the run
+     * @param indexName The name of the facet index that this FacetIndex will serve
+     * @param clazzName The name of the class
      */
     public Object getFacetIndexerClass(String indexName, String clazzName) {
 
@@ -152,8 +152,8 @@ public class ConfigurationManager {
     /**
      * Creates an instance of a FacetSearcher class by name and cast it to the interface.
      *
-     * @param clazzName
      * @param searcherName The configuration file of the run
+     * @param clazzName The name of the class
      */
     public Object getFacetSearcherClass(String searcherName, String clazzName) {
 
@@ -177,8 +177,8 @@ public class ConfigurationManager {
     /**
      * Creates an instance of QueryReader class by name and cast it to a interface.
      *
-     * @param class
-     * @param propertiesFilename The configuration file of the run
+     * @param clazzName The name of the class
+     * @return A new QueryReader object
      */
     public Object getQueryReaderClass(String clazzName) {
 
@@ -201,8 +201,8 @@ public class ConfigurationManager {
     /**
      * Creates an instance of CrediblityReader class by name and cast it to a interface.
      *
-     * @param class
-     * @param propertiesFilename The configuration file of the run
+     * @param clazzName The name of the class
+     * @return A new CredibilityReader object
      */
     public Object getCrediblityReaderClass(String clazzName) {
 
@@ -223,10 +223,35 @@ public class ConfigurationManager {
     }
 
     /**
+     * Creates an instance of ResultMerger class by name and cast it to a interface.
+     *
+     * @param clazzName Name of the class
+     */
+    public Object getResultMergerClass(String clazzName) {
+
+        Object object = null;
+
+        try {
+
+            // instantiate object
+            Class<?> clazz = Class.forName(clazzName);
+            Constructor constructor = clazz.getConstructor(ConfigurationManager.class);
+            object = constructor.newInstance(this);
+
+        } catch (Exception e) {
+            logger.error("Exception while reading and creating ResultMerger instance: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return object;
+    }
+
+    /**
      * Creates instance of IndexFieldGenerator class by name and cast it to a interface.
      *
-     * @param class
-     * @param propertiesFilename The configuration file of the run
+     * @param clazzName The name of teh class
+     * @param fieldName The name of the field
+     * @param signature The signature of the field
+     * @return A new IndexFieldGenerator
      */
     public Object getIndexFieldGeneratorClass(String clazzName, String fieldName, String signature) {
 

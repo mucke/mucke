@@ -186,6 +186,9 @@ public class DBManager {
 
         User user = null;
 
+        // clean userId
+        userId = userId.trim();
+
         String sql = "SELECT * FROM `" + DBConstants.CREDINDEX_TABLE_NAME + "` WHERE userid = '" + userId + "'";
         logger.info("Selecting user with this statement: " + sql);
         ResultSet results = queryResult(sql);

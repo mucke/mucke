@@ -1,13 +1,12 @@
 package at.tuwien.mucke.search;
 
-import java.net.URL;
 
 /**
  * Stores the most essential information about search results.
  *
  * @author Ralf Bierig
  */
-public class Result {
+public class Result implements Comparable<Result>{
 
     private String id;
     private String title;
@@ -55,6 +54,20 @@ public class Result {
      */
     public void setScore(float score) {
         this.score = score;
+    }
+
+    /** Sort Result objects always in descending order based on their score
+     * @param compareObject The Result object to compare this Result to
+     * @return  -1 if object < compared object, +1 if object > compared object and 0 if they are the same.
+     */
+    public int compareTo(Result compareObject) {
+        if (getScore() < compareObject.getScore()){
+            return 1;
+        } else if (getScore() == compareObject.getScore()) {
+            return 0;
+        } else {
+            return -1;
+        }
     }
 
 }

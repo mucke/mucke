@@ -1,7 +1,9 @@
 package at.tuwien.mucke;
 
+import at.tuwien.mucke.clustering.ClusteringManager;
 import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.config.Run;
+import at.tuwien.mucke.credibility.CredibilityManager;
 import at.tuwien.mucke.search.Result;
 import at.tuwien.mucke.search.SearchManager;
 import at.tuwien.mucke.util.Util;
@@ -71,7 +73,7 @@ public class SystemManager {
     }
 
 
-    public List<Result> executeInteractiveMode(String queryString) {
+    public List<Result> executeInteractiveMode(String queryString, boolean credibilityEnabled) {
 
         // extract configuration for all runs
         List<String> runConfigFilenames = configManager.getRuns();
@@ -95,6 +97,19 @@ public class SystemManager {
             logger.info("result id:" + result.getId() + " title:" + result.getTitle() + " score:" + result.getScore() + " userid:" + result.getUserId());
         }
         logger.info("======================== result list END =================================");
+
+
+        // result re-ranking based on crediblity information
+        if (credibilityEnabled == true){
+
+            logger.info("Credibility enabled, going to merge...");
+            ClusteringManager clusteringManager = new ClusteringManager(configManager);
+            results = clusteringManager.merge(results);
+
+        } else {
+            logger.info("Credibility was disabled, nothing done!");
+        }
+
         return results;
 
     }
