@@ -46,8 +46,10 @@ public class SearchManager {
             FacetSearcher searcher = (FacetSearcher) configManager.getFacetSearcherClass(facetSearcher, searchClassName);
 
             //call searcher
-            return searcher.search(queryString, null);
+            List<Result> results = searcher.search(queryString, null);
 
+            // return normalized results
+            return SearchManager.normalize(results);
         }
 
         return new ArrayList<>();
@@ -91,7 +93,31 @@ public class SearchManager {
         return true;
     }
 
+    /** Normalizes Results so that scores are between 0.0 and 1.0 if at least one value
+     * is larger than 1.0. It does not normalize if all values are below the value of 1.0.
+     * @param results The original result list
+     * @return Normalized results */
+    public static List<Result> normalize(List<Result> results){
 
+        // determine the largest value
+        float maxScore = 0.0f;
+        for (Result result : results){
+            if (result.getScore() > maxScore) {
+                maxScore = result.getScore();
+            }
+        }
+
+        // normalize
+        if (maxScore > 1.0){
+            // only normalize if scores rise over 1.0
+            for (Result result : results){
+                // reset score
+                result.setScore(1 / maxScore * result.getScore());
+            }
+        }
+
+        return results;
+    }
 
     /**
      * Interactive search interface for searching images
@@ -120,4 +146,21 @@ public class SearchManager {
         return results;
     }*/
 
+
+
+    public static void main (String[] args ){
+        List<Result> results = new ArrayList<Result>();
+        results.add(new Result("1", "Title1", 0.0f, "user1"));
+        results.add(new Result("2", "Title2", 0.25f, "user1"));
+        results.add(new Result("3", "Title3", 0.5f, "user1"));
+        results.add(new Result("4", "Title4", 0.8f, "user1"));
+        results.add(new Result("5", "Title5", 0.0f, "user1"));
+
+
+        results = SearchManager.normalize(results);
+        for (Result r : results){
+            logger.info("result id: " + r.getId() + " score: " + r.getScore());
+        }
+
+    }
 }

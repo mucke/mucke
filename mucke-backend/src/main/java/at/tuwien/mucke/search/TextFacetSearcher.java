@@ -90,8 +90,6 @@ public class TextFacetSearcher implements FacetSearcher {
 
             }
 
-
-
             reader.close();
 
         } catch (Exception e) {
