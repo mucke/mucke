@@ -78,16 +78,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.86831673"
-     inkscape:cx="354.82415"
-     inkscape:cy="357.67118"
+     inkscape:zoom="0.85338625"
+     inkscape:cx="526.18109"
+     inkscape:cy="372.04724"
      inkscape:current-layer="layer1"
      id="namedview6338"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="1028"
-     inkscape:window-x="-32000"
-     inkscape:window-y="-32000"
+     inkscape:window-width="1350"
+     inkscape:window-height="822"
+     inkscape:window-x="74"
+     inkscape:window-y="0"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata6340">
@@ -234,14 +234,10 @@
          sodipodi:role="line"
          x="77.881805"
          y="228.42509"
-         id="tspan3017">- prepareCollection(String, </tspan><tspan
+         id="tspan3019">- prepareCollection()</tspan><tspan
          sodipodi:role="line"
          x="77.881805"
-         y="251.41872"
-         id="tspan3019">          QueryCollectionReader)</tspan><tspan
-         sodipodi:role="line"
-         x="77.881805"
-         y="274.41235"
+         y="251.4187"
          id="tspan3021">-List&lt;Concept&gt; process(Query)</tspan></text>
     <text
        xml:space="preserve"
@@ -253,7 +249,15 @@
          sodipodi:role="line"
          id="tspan7658"
          x="608.00598"
-         y="206.48492">- List&lt;Field&gt;  getFacets ()</tspan></text>
+         y="206.48492">- void add(Facet)</tspan><tspan
+         sodipodi:role="line"
+         x="608.00598"
+         y="226.48492"
+         id="tspan3037">- List&lt;Facet&gt;  getFacets ()</tspan><tspan
+         sodipodi:role="line"
+         x="608.00598"
+         y="246.48492"
+         id="tspan3039" /></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -295,7 +299,7 @@
          sodipodi:role="line"
          id="tspan7658-6-7"
          x="596.36865"
-         y="470.69052">- List&lt;Query&gt; prepare(String listOfQueries)</tspan></text>
+         y="470.69052">- List&lt;Query&gt; prepare()</tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-width:3.95389867;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
        id="rect6967-8-9-4"
@@ -314,7 +318,7 @@
          id="tspan6971-9-7-9"
          x="175.06908"
          y="598.72949"
-         style="font-size:32px">TestQueryReader</tspan></text>
+         style="font-size:32px">XMLQueryReader</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:4.25026274;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 69.558118,611.29807 c 420.566622,0 421.936542,0 421.936542,0 l 0,4.1791"
@@ -338,7 +342,7 @@
          id="tspan6971-9-3-2"
          x="580.59082"
          y="602.93915"
-         style="font-size:32px">TestQueryCollectionReader</tspan></text>
+         style="font-size:32px">XMLQueryCollectionReader</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:4.25026274;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 562.60553,617.8111 c 420.56662,0 421.93652,0 421.93652,0 l 0,4.1791"
@@ -365,7 +369,7 @@
          sodipodi:role="line"
          id="tspan7658-6-7-7"
          x="596.30963"
-         y="656.72302">- List&lt;Query&gt; prepare(String listOfQueries)</tspan></text>
+         y="656.72302">- List&lt;Query&gt; prepare()</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:3.12519693;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#EmptyTriangleOutL)"
        d="m 280.95314,567.17542 0.0199,-62.66308"
