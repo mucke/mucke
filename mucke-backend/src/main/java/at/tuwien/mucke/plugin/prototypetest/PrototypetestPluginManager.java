@@ -54,6 +54,7 @@ public class PrototypetestPluginManager extends PluginManager {
 
         // create indices
         IndexManager indexManager = new IndexManager(this.configManager);
+        logger.info("IndexManager instantiated!");
         indexManager.index();
 
         // creating queries

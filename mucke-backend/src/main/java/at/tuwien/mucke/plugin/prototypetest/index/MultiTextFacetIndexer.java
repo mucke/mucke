@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class MultiTextFacetIndexer extends StandardTextFacetIndexer {
 
-    /**
+     /**
      * Logging facility
      */
     static Logger logger = Logger.getLogger(MultiTextFacetIndexer.class);
@@ -45,19 +45,15 @@ public class MultiTextFacetIndexer extends StandardTextFacetIndexer {
 
     /**
      * Indexes all text files stored in the given directory
-     *
-     * @param contentDirectory File path to content directory
-     * @param indexDirectory   File path to index directory to be produced
-     * @param fieldGenerators  A list of field generators that create die fields of the index
      */
-    public void index(String contentDirectory, String indexDirectory, List<IndexFieldGenerator> fieldGenerators) {
+    public void index() {
 
         // true creates a new index / false updates the existing index
         boolean create = false;
 
         // check if data directory exists
-        logger.debug("content Dir = " + contentDirectory);
-        final File docDir = new File(contentDirectory);
+        logger.debug("content Dir = " + this.contentFolder);
+        final File docDir = new File(this.contentFolder);
         if (!docDir.exists() || !docDir.canRead()) {
             logger.error("Document directory '" + docDir.getAbsolutePath()
                     + "' does not exist or is not readable, please check the path");
@@ -68,19 +64,19 @@ public class MultiTextFacetIndexer extends StandardTextFacetIndexer {
         Date start = new Date();
 
         try {
-            logger.debug("Indexing to directory '" + indexDirectory + "'...");
+            logger.debug("Indexing to directory '" + this.indexFolder + "'...");
 
-            Directory dir = FSDirectory.open(new File(indexDirectory));
+            Directory dir = FSDirectory.open(new File(this.indexFolder));
             Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_42);
             IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_42, analyzer);
 
             if (create) {
                 // Create new index, remove previous index
-                logger.debug("Creating a new index in directory: '" + indexDirectory + "'...");
+                logger.debug("Creating a new index in directory: '" + this.indexFolder + "'...");
                 iwc.setOpenMode(OpenMode.CREATE);
             } else {
                 // Add new documents to existing index
-                logger.debug("Updating the index in directory: '" + indexDirectory + "'...");
+                logger.debug("Updating the index in directory: '" + this.indexFolder + "'...");
                 iwc.setOpenMode(OpenMode.CREATE_OR_APPEND);
             }
 
@@ -221,12 +217,12 @@ public class MultiTextFacetIndexer extends StandardTextFacetIndexer {
 
                         if (writer.getConfig().getOpenMode() == OpenMode.CREATE) {
                             // New index, so we just add the document (no old document can be there):
-                            //logger.debug("Adding " + tempFile);
+                            logger.debug("Adding " + tempFile);
                             writer.addDocument(doc);
                         } else {
                             // Existing index (an old copy of this document may have been indexed) so we use
                             // updateDocument instead to replace the old one matching the exact path, if present:
-                            //logger.debug("Updating " + tempFile);
+                            logger.debug("Updating " + tempFile);
                             writer.updateDocument(new Term("path", tempFile.getPath()), doc);
                         }
                         writer.commit();

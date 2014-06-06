@@ -104,6 +104,12 @@ public class ConfigConstants {
     //
 
     /**
+     * Defines the names of all accessory index facets. Accessory index facets are not combined within a document index
+     * and represent isolated facets that are used for specific purposes.
+     */
+    public final static String ACCESSORYINDEX_FACETS = "accessoryindex";
+
+    /**
      * Defines the location of the content that is parsed for the document index
      */
     public final static String DOCINDEX_CONTENTFOLDER = "docindex.contentfolder";

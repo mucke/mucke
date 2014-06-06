@@ -12,11 +12,19 @@ public interface FacetIndexer {
 
     /**
      * Indexes all content files of a specific facet stored in the given directory
-     *
-     * @param contentDirectory File path to content directory
-     * @param indexDirectory   File path to index directory to be produced
-     * @param fieldGenerators  A list of field generators that create die fields of the index
      */
-    public void index(String contentDirectory, String indexDirectory, List<IndexFieldGenerator> fieldGenerators);
+    public void index();
 
+    /**
+     * Verifies the common parameters for the index which can be inquired by calling <see>explainParams</see>.
+     *
+     * @return true, if all parameters are correctly defined, false otherwise
+     */
+    public boolean checkParams();
+
+
+    /**
+     * Provides a detailed description of the parameters and their defaults.
+     */
+    public String explainParams();
 }

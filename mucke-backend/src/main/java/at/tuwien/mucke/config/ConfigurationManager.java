@@ -21,7 +21,7 @@ public class ConfigurationManager {
      */
     public ConfigurationManager() {
 
-        // load primary.properties configuration file
+        // load system.properties configuration file
         this.loadPrimaryPropoerties();
 
         // initilize system database
@@ -30,7 +30,7 @@ public class ConfigurationManager {
     }
 
     /**
-     * Load properties based on primary.properties and the secondary.properties file (as set in primiary.properties).
+     * Load properties based on system.properties and the secondary.properties file (as set in primiary.properties).
      *
      * @throws Exception if of the property files was not fully loaded
      */
@@ -41,12 +41,12 @@ public class ConfigurationManager {
             // load primary properties file
             logger.debug("Loading primary properties...");
 
-            System.getProperties().load(Main.class.getClassLoader().getResourceAsStream("primary.properties"));
+            System.getProperties().load(Main.class.getClassLoader().getResourceAsStream("system.properties"));
             logger.info("Primary properties successfully loaded.");
 
         } catch (Exception e) {
 
-            logger.error("Failed to load 'primary.properties' file. Check if it is included in the classpath. Exception: " + e.getMessage());
+            logger.error("Failed to load 'system.properties' file. Check if it is included in the classpath. Exception: " + e.getMessage());
             e.printStackTrace();
 
         }

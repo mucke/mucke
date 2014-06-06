@@ -36,8 +36,11 @@ import java.util.List;
  */
 public class StandardImageFacetIndexer implements FacetIndexer {
 
-    private String facetName = null;
-    private ConfigurationManager configManager = null;
+    protected String facetName = null;
+    protected ConfigurationManager configManager = null;
+    protected String contentFolder = null;
+    protected String indexFolder = null;
+    protected List<IndexFieldGenerator> fieldGenerators = null;
 
     /**
      * Logging facility
@@ -50,23 +53,109 @@ public class StandardImageFacetIndexer implements FacetIndexer {
     public StandardImageFacetIndexer(String facetName, ConfigurationManager configManager) {
         this.facetName = facetName;
         this.configManager = configManager;
+
+        // check index parameters against errors
+        this.checkParams();
+
+        // extract content folder
+        this.contentFolder = configManager.getProperty(this.facetName + ".contentfolder");
+        logger.debug("contentFolder: " + contentFolder);
+
+        // extract index folder
+        this.indexFolder = configManager.getProperty(this.facetName + ".indexfolder");
+        logger.debug("indexFolder: " + indexFolder);
+
+        // create generators
+        this.fieldGenerators = prepareFieldGenerators(this.facetName);
+        if (this.fieldGenerators == null){
+            logger.debug("Currently no fieldGenerators active!");
+        } else {
+            logger.debug("Number of active fieldGenerators:" + this.fieldGenerators.size());
+        }
+
     }
 
     /**
-     * Indexes all text files stored in the given directory
+     * Prepares IndexFieldGenerator Objects, that contain the method with which an index field is filled with
+     * data from a content file during indexing. A so-called signature is used for that (e.g. a XML query or a
+     * regular expression). The information for building the index field names and the generator objects are
+     * obtained from the configuration file.
      *
-     * @param contentDirectory File path to content directory
-     * @param indexDirectory   File path to index directory to be produced
-     * @param fieldGenerators  A list of field generators that create die fields of the index
+     * @param indexName The name of the index is used to find the configuration for this index in the properties file
+     * @return A list of IndexFieldGenerator objects
      */
-    public void index(String contentDirectory, String indexDirectory, List<IndexFieldGenerator> fieldGenerators) {
+    private List<IndexFieldGenerator> prepareFieldGenerators(String indexName) {
+
+        String indexFieldsProperty = indexName + ".fields";
+        //logger.debug("index field: " + indexFieldsProperty);
+        String indexFieldsGeneratorProperty = indexFieldsProperty + ".generator";
+        //logger.debug("generator field: " + indexFieldsGeneratorProperty);
+
+        // Collection of IndexFieldGenerators, one per field
+        List<IndexFieldGenerator> generators = new ArrayList<IndexFieldGenerator>();
+
+        // extract IndexFieldGenerator information from configuration
+        List<String> generatorProperties = configManager.getProperties(indexFieldsGeneratorProperty, false); // simple lookup
+        if (generatorProperties.size() != 1) {
+            logger.error("There must be exactly on IndexFieldGenerator per Index. Check your configuration.");
+        }
+
+        // check if index fields and generator are accurately declared
+        this.checkParams();
+
+        // read index configuration (fields and signatures for fields)
+        List<String> indexFields = configManager.getProperties(indexFieldsProperty, false);
+
+        // extract index fields
+        for (String indexField : indexFields) {
+
+            // option NONE stops the process
+            if (indexField.equals("NONE")) {
+                logger.debug("No Index Fields declared. Nothing to parse.");
+                continue;
+            }
+
+            List<String> values = configManager.getProperties(indexField, false);    // simple lookup
+
+            if (values.size() != 2) {
+                logger.error("Index field '" + indexField + "' is incorrect. It requires one name and one signature. Please modify configuration.");
+                break;
+            }
+
+            // extract field, signature pair
+            String fieldToken = values.get(0);
+            String signatureToken = values.get(1);
+
+            try {
+
+                // create generator object
+                IndexFieldGenerator generator = (IndexFieldGenerator) configManager.getIndexFieldGeneratorClass(
+                        generatorProperties.get(0), fieldToken, signatureToken);
+
+                // add to list
+                generators.add(generator);
+
+            } catch (Exception e) {
+                logger.error("Exception while creating IndexFieldGenerator. Class either does not exist or " +
+                        "has no such constructor. Check configuration file.");
+            }
+        }
+
+        return generators;
+    }
+
+
+    /**
+     * Indexes all text files stored in the given directory
+     */
+    public void index() {
 
         // true creates a new index / false updates the existing index
         boolean create = false;
 
         // check if data directory exists
-        logger.debug("content Dir = " + contentDirectory);
-        final File docDir = new File(contentDirectory);
+        logger.debug("content Dir = " + this.contentFolder);
+        final File docDir = new File(this.contentFolder);
         if (!docDir.exists() || !docDir.canRead()) {
             logger.error("Image directory '" + docDir.getAbsolutePath()
                     + "' does not exist or is not readable, please check the path");
@@ -77,7 +166,7 @@ public class StandardImageFacetIndexer implements FacetIndexer {
         Date start = new Date();
 
         try {
-            logger.debug("Indexing to directory '" + indexDirectory + "'...");
+            logger.debug("Indexing to directory '" + this.indexFolder + "'...");
 
             // Getting all images from a directory and its sub directories.
             ArrayList<String> images = FileUtils.getAllImages(docDir, true);
@@ -136,15 +225,15 @@ public class StandardImageFacetIndexer implements FacetIndexer {
             // Creating a Lire IndexWriter
             IndexWriterConfig iwc = new IndexWriterConfig(LuceneUtils.LUCENE_VERSION,
                     new WhitespaceAnalyzer(LuceneUtils.LUCENE_VERSION));
-            Directory dir = FSDirectory.open(new File(indexDirectory));
+            Directory dir = FSDirectory.open(new File(this.indexFolder));
 
             if (create) {
                 // Create new index, remove previous index
-                logger.debug("Creating a new index in directory: '" + indexDirectory + "'...");
+                logger.debug("Creating a new index in directory: '" + this.indexFolder + "'...");
                 iwc.setOpenMode(OpenMode.CREATE);
             } else {
                 // Add new documents to existing index
-                logger.debug("Updating the index in directory: '" + indexDirectory + "'...");
+                logger.debug("Updating the index in directory: '" + this.indexFolder + "'...");
                 iwc.setOpenMode(OpenMode.CREATE_OR_APPEND);
             }
 
@@ -166,10 +255,10 @@ public class StandardImageFacetIndexer implements FacetIndexer {
     /**
      * Indexes individual images with a set of configured builder features and a set of configured IndexFieldGenerators.
      *
-     * @param IndexWriter               A writing handle to the index
-     * @param DocumentBuilder           A document builder that contains all selected features (based on configuration)
-     * @param ArrayList<String>         A list of images to be indexed
-     * @param List<IndexFieldGenerator> A list of generators that populate additional fields with content
+     * @param writer               A writing handle to the index
+     * @param builder            A document builder that contains all selected features (based on configuration)
+     * @param images         A list of images to be indexed
+     * @param fieldGenerators A list of generators that populate additional fields with content
      * @throws IOException
      */
     private void indexDocuments(IndexWriter writer, DocumentBuilder builder, ArrayList<String> images,
@@ -247,5 +336,19 @@ public class StandardImageFacetIndexer implements FacetIndexer {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public boolean checkParams() {
+
+        return false;
+    }
+
+    @Override
+    public String explainParams() {
+
+        // TODO Insert parameter explanation code here, currently just held implicitly in the confirmation file
+
+        return null;
     }
 }

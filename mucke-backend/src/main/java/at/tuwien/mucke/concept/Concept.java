@@ -13,12 +13,27 @@ public class Concept {
     private URI id;
 
     /**
-     * Constructor
+    * Model state provided by a visual classifier that represents the state of the visual concept
+    */
+    private ClassifierModel modelClassifier;
+
+    /**
+     * Constructor of Concept that does not store a classifier model within
      *
      * @param id The URI of the concept
      */
     public Concept(URI id) {
+        this(id, null);
+    }
+
+    /**
+     * Constructor of Concept that does store a classifier model within
+     *
+     * @param id The URI of the concept
+     */
+    public Concept(URI id, ClassifierModel modelClassifier) {
         this.id = id;
+        this.modelClassifier = modelClassifier;
     }
 
     /**
@@ -26,6 +41,13 @@ public class Concept {
      */
     public final URI getId() {
         return id;
+    }
+
+    /**
+     * @return the modelClassifier
+     */
+    public ClassifierModel getModelClassifier() {
+        return this.modelClassifier;
     }
 
 }

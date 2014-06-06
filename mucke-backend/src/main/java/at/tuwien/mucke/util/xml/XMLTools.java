@@ -1,5 +1,6 @@
 package at.tuwien.mucke.util.xml;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -13,12 +14,58 @@ import javax.xml.xpath.XPathFactory;
 import java.io.*;
 import java.nio.charset.Charset;
 
+import javax.xml.stream.*;
+
 /**
  * XML tools shared between classes of the search system
  *
  * @author Ralf Bierig
  */
 public class XMLTools {
+
+    /**
+     * Logging facility
+     */
+    static Logger logger = Logger.getLogger(XMLTools.class);
+
+    private static int counter = 0;
+
+
+    public static void main(String[] args){
+        try {
+            XMLInputFactory xif = XMLInputFactory.newInstance();
+            XMLStreamReader xsr = xif.createXMLStreamReader(new FileReader("C:/Data/enwiki-20120502-pages-articles/enwiki-20120502-pages-articles.xml"));
+            //XMLStreamReader xsr = xif.createXMLStreamReader(new FileReader("D:/Data/collections/Wiki2012/test.xml"));
+
+            while(xsr.hasNext()){
+                xsr.nextTag(); // move forward
+                if (xsr.getName().equals("page")){
+                    break;
+                } else {
+                    logger.info("Not found: " + xsr.getName());
+                }
+            }
+
+            logger.info("The current node name = " + xsr.getName());
+
+            /*TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer t = tf.newTransformer();
+            while(xsr.nextTag() == XMLStreamConstants.START_ELEMENT) {
+                DOMResult result = new DOMResult();
+                // ###
+                t.transform(new StAXSource(xsr), result);
+                Node domNode = result.getNode();
+                XMLTools.counter++;
+            }*/
+        } catch (Exception e){
+            logger.error("Error while parsing file: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        logger.info("Found " + XMLTools.counter + "pages in this file!");
+
+    }
+
 
     /**
      * Extracts Nodes from the given file (encoded in latin ISO) based on the given xPath

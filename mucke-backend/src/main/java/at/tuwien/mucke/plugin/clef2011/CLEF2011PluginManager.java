@@ -189,7 +189,7 @@ public class CLEF2011PluginManager extends PluginManager {
 
 
     /**
-     * Performs a run based on the configuration as defined in the system properties file "primary.properties" and its plugin-specific
+     * Performs a run based on the configuration as defined in the system properties file "system.properties" and its plugin-specific
      * properties file. The CLEF2011Plugin run is divided into three parts.
      * <p/>
      * First, the indexing part which is performed only if <code>do.index</code> is true.

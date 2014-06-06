@@ -3,7 +3,6 @@ package at.tuwien.mucke;
 import at.tuwien.mucke.clustering.ClusteringManager;
 import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.config.Run;
-import at.tuwien.mucke.credibility.CredibilityManager;
 import at.tuwien.mucke.search.Result;
 import at.tuwien.mucke.search.SearchManager;
 import at.tuwien.mucke.util.Util;
@@ -14,7 +13,7 @@ import java.net.URL;
 import java.util.List;
 
 /**
- * This is the Main class that regulates everything the system does at the top level. It reads the configuration file "primary.properties"
+ * This is the Main class that regulates everything the system does at the top level. It reads the configuration file "system.properties"
  * and executes a list of runs (defined by the property 'run.properties'). Each run is configured individually and independently and may work
  * on a different collection. Each runs executes sequentially in its own, separate parametric environment.
  *
@@ -43,7 +42,7 @@ public class SystemManager {
     }
 
     /**
-     * Executes the currently configured state of the system based on the configuration as defined in "primary.properties" and its secondary
+     * Executes the currently configured state of the system based on the configuration as defined in "system.properties" and its secondary
      * properties file. The secondary properties file may contain multiple runs that are executed in the order of their listing. Results of
      * each run are stored in the central system database.
      */
@@ -127,7 +126,7 @@ public class SystemManager {
 
     /** For testing */
     public void test(){
-        URL url = Thread.currentThread().getContextClassLoader().getResource("primary.properties");
+        URL url = Thread.currentThread().getContextClassLoader().getResource("system.properties");
         System.out.println(url.toString());
 
         // load file somewhere on the disk
