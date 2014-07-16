@@ -14,12 +14,25 @@
    id="svg6334"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="package_search_v2.svg"
+   sodipodi:docname="package_search.svg"
    inkscape:export-filename="D:\Projects\CHIST-ERA.-.MUCKE\Meetings\2014-04-24_26.-.S3.Meeting.-.Paris\Presentation\pics\git\package_search.png"
    inkscape:export-xdpi="149.94728"
    inkscape:export-ydpi="149.94728">
   <defs
      id="defs6336">
+    <marker
+       inkscape:stockid="EmptyTriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="EmptyTriangleOutL"
+       style="overflow:visible">
+      <path
+         id="path4123"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;fill:#FFFFFF;stroke:#000000;stroke-width:1.0pt"
+         transform="scale(0.8) translate(-6,0)" />
+    </marker>
     <marker
        inkscape:stockid="Arrow1Lstart"
        orient="auto"
@@ -103,9 +116,9 @@
      inkscape:current-layer="layer1"
      id="namedview6338"
      showgrid="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="838"
-     inkscape:window-x="-8"
+     inkscape:window-width="1680"
+     inkscape:window-height="1028"
+     inkscape:window-x="3512"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
@@ -116,7 +129,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -177,77 +190,85 @@
          sodipodi:role="line"
          x="217.61726"
          y="152.26822"
-         id="tspan4455">List&lt;Result&gt; facetSearch(Query, List&lt;Result&gt;)</tspan></text>
+         id="tspan3953">List&lt;Result&gt; facetSearch(Query, List&lt;Result&gt;)</tspan><tspan
+         sodipodi:role="line"
+         x="217.61726"
+         y="169.76822"
+         id="tspan3951">List&lt;Result&gt; facetSearch()</tspan><tspan
+         sodipodi:role="line"
+         x="217.61726"
+         y="187.26822"
+         id="tspan3949">List&lt;Result&gt; conceptSearch(Facet)</tspan></text>
     <rect
-       style="fill:none;stroke:#000000;stroke-width:2.12598425;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:2.12598419;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
        id="rect6967-8-9-4"
        width="266.87164"
        height="96.858421"
-       x="723.22522"
-       y="470.53918" />
+       x="731.93683"
+       y="515.83954" />
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="792.95093"
-       y="488.45239"
+       x="801.66254"
+       y="533.75275"
        id="text6969-3-6-0"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan6971-9-7-9"
-         x="792.95093"
-         y="488.45239"
+         x="801.66254"
+         y="533.75275"
          style="font-size:14px">ImageFacetSearcher</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:2.12598425;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 724.45985,500.27584 c 264.69168,0 265.55387,0 265.55387,0 l 0,4.8114"
+       style="fill:none;stroke:#000000;stroke-width:2.12598419;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 733.17146,545.5762 c 264.69168,0 265.55387,0 265.55387,0 l 0,4.8114"
        id="path6973-3-9-4"
        inkscape:connector-curvature="0" />
     <rect
-       style="fill:none;stroke:#000000;stroke-width:2.12598425;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:2.12598419;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
        id="rect6967-8-9-4-0"
        width="299.2374"
        height="96.697273"
-       x="43.672989"
-       y="468.10635" />
+       x="52.384598"
+       y="513.40668" />
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="132.41006"
-       y="487.35318"
+       x="141.12167"
+       y="532.6535"
        id="text6969-3-6-0-9"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan6971-9-7-9-4"
-         x="132.41006"
-         y="487.35318"
+         x="141.12167"
+         y="532.6535"
          style="font-size:14px">TextFacetSearcher</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:2.12598425;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 44.901919,497.83722 c 296.259011,0 297.224031,0 297.224031,0 l 0,4.66174"
+       style="fill:none;stroke:#000000;stroke-width:2.12598419;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 53.613526,543.13758 c 296.259014,0 297.224034,0 297.224034,0 l 0,4.66174"
        id="path6973-3-9-4-8"
        inkscape:connector-curvature="0" />
     <rect
-       style="fill:none;stroke:#000000;stroke-width:2.12598425;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:2.12598419;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
        id="rect6967-8-9-4-4"
        width="277.42465"
        height="96.804825"
-       x="374.73874"
-       y="468.05258" />
+       x="383.45035"
+       y="513.35291" />
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="418.27472"
-       y="485.93896"
+       x="426.98633"
+       y="531.23932"
        id="text6969-3-6-0-5"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="418.27472"
-         y="485.93896"
+         x="426.98633"
+         y="531.23932"
          style="font-size:14px"
          id="tspan3200">TagFacetSearcher</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:2.12598425;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 375.97064,497.78642 c 274.51112,0 275.4053,0 275.4053,0 l 0,4.76334"
+       style="fill:none;stroke:#000000;stroke-width:2.12598419;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 384.68225,543.08678 c 274.51112,0 275.4053,0 275.4053,0 l 0,4.76334"
        id="path6973-3-9-4-1"
        inkscape:connector-curvature="0" />
     <rect
@@ -330,7 +351,7 @@
          id="tspan3053">                                  List&lt;Result&gt;)</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#EmptyTriangleInL)"
-       d="M 579.51797,352.13911 776.20862,470.53918"
+       d="M 567.74895,352.13911 797.42514,515.83954"
        id="path3230"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -341,7 +362,7 @@
        sodipodi:nodetypes="csc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#EmptyTriangleInL)"
-       d="m 505.89576,352.13911 5.32974,115.91347"
+       d="m 507.07967,352.13911 11.60019,161.2138"
        id="path3232"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -351,7 +372,7 @@
        inkscape:connection-end-point="d4" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#EmptyTriangleInL)"
-       d="M 436.37234,352.13911 264.81623,468.10635"
+       d="M 449.89752,352.13911 259.18088,513.40668"
        id="path3234"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -406,47 +427,47 @@
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="61.058289"
-       y="521.44678"
+       x="69.769897"
+       y="566.74713"
        id="text7656-7-5-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="61.058289"
-         y="521.44678"
+         x="69.769897"
+         y="566.74713"
          id="tspan3070-7-0">List&lt;Result&gt; search(String query, </tspan><tspan
          sodipodi:role="line"
-         x="61.058289"
-         y="538.94678"
+         x="69.769897"
+         y="584.24713"
          id="tspan3057">                                  List&lt;Result&gt;)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="385.6203"
-       y="517.91125"
+       x="394.33191"
+       y="563.21161"
        id="text7656-7-5-9"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="385.6203"
-         y="517.91125"
+         x="394.33191"
+         y="563.21161"
          id="tspan3070-7-4">List&lt;Result&gt; search(String query, </tspan><tspan
          sodipodi:role="line"
-         x="385.6203"
-         y="535.41125"
+         x="394.33191"
+         y="580.71161"
          id="tspan3055">                                  List&lt;Result&gt;)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="721.49603"
-       y="520.03259"
+       x="730.20764"
+       y="565.33295"
        id="text7656-7-5-8"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="721.49603"
-         y="520.03259"
+         x="730.20764"
+         y="565.33295"
          id="tspan3070-7-8">- List&lt;Result&gt; search(String query, </tspan><tspan
          sodipodi:role="line"
-         x="721.49603"
-         y="537.53259"
+         x="730.20764"
+         y="582.83295"
          id="tspan3059">                                    List&lt;Result&gt;)</tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-width:2.12598425;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
@@ -524,7 +545,7 @@
          sodipodi:role="line"
          x="216.45442"
          y="178.97141"
-         id="tspan4455-7">List&lt;Result&gt; facetSearch()</tspan></text>
+         id="tspan3943" /></text>
     <text
        xml:space="preserve"
        style="font-size:21.73011589px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -537,5 +558,65 @@
          x="634.453"
          y="135.56978"
          style="font-size:18px">n</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1.59796011;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none"
+       id="rect6967-8-9-4-4-8"
+       width="276.93445"
+       height="119.83593"
+       x="732.69354"
+       y="248.16054" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="813.44434"
+       y="273.6423"
+       id="text6969-3-6-0-5-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="813.44434"
+         y="273.6423"
+         style="font-size:14px"
+         id="tspan3200-45">ConceptSearcher</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.12598419;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 732.80914,291.58786 c 274.51116,0 275.40526,0 275.40526,0 l 0,4.76334"
+       id="path6973-3-9-4-1-5"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="742.4588"
+       y="311.71271"
+       id="text7656-7-5-9-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="742.4588"
+         y="311.71271"
+         id="tspan3055-1">List&lt;Result&gt; search(List&lt;Concept&gt;)</tspan><tspan
+         sodipodi:role="line"
+         x="742.4588"
+         y="329.21271"
+         id="tspan5175">List&lt;Result&gt; search(Facet)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="742.37195"
+       y="354.78564"
+       id="text7656-7-5-9-1-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="742.37195"
+         y="354.78564"
+         id="tspan3055-1-2" /></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 588.32704,208.71561 144.3665,50.71769"
+       id="path5173"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#rect6967-8-9-5"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end="#rect6967-8-9-4-4-8"
+       inkscape:connection-end-point="d4" />
   </g>
 </svg>
