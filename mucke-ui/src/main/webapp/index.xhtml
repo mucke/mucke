@@ -61,7 +61,9 @@
         <p:panel id="display" header="Results" style="margin-top:10px;">
             <p:dataList value="#{editor.resultList}" var="result" type="ordered">
                 <img src="#{result.id}" alt="#{result.title}"/><br/>
+                <p>#{result.title}</p>
                 <p>#{result.score}</p>
+                <p>#{result.userId}</p>
             </p:dataList>
         </p:panel>
     </h:form>
