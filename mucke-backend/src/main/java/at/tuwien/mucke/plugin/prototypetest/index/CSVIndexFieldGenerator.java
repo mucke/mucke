@@ -52,7 +52,7 @@ public class CSVIndexFieldGenerator extends IndexFieldGenerator {
         try {
 
             // get content of file as CSV array
-            List<String> contents = Util.getContents(file, this.separator);
+            List<String> contents = Util.getContents(file, true, this.separator);
 
             // catch faulty positions
             if ((position + 1) > contents.size()) {

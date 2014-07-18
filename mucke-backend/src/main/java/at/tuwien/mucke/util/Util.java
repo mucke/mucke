@@ -3,6 +3,9 @@ package at.tuwien.mucke.util;
 import org.apache.log4j.Logger;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +16,23 @@ public class Util {
      */
     static Logger logger = Logger.getLogger(Util.class);
 
+
+
+    // TODO check if you can exchange getContents with this code?
+    //static String readFile(String path, Charset encoding)
+    //        throws IOException {
+    //    byte[] encoded = Files.readAllBytes(Paths.get(path));
+    //    return new String(encoded, encoding);
+    //}
+
+
     /**
      * Fetch the entire contents of a text file, and return it in a String.
      * This style of implementation does not throw Exceptions to the caller.
      *
      * @param aFile is a file which already exists and can be read.
      */
-    static public String getContents(File aFile) {
+    static public String getContents(File aFile, boolean lineSpeparated) {
 
         StringBuilder contents = new StringBuilder();
 
@@ -31,7 +44,13 @@ public class Util {
                 String line = null; //not declared within while loop
                 while ((line = reader.readLine()) != null) {
                     contents.append(line);
-                    contents.append(System.getProperty("line.separator"));
+
+                    // return contents line-wise, might disturb number formating (e.g. turning text to integer,
+                    // use lineSeparated = false in that case
+                    if (lineSpeparated){
+                        contents.append(System.getProperty("line.separator"));
+                    }
+
                 }
             } finally {
                 reader.close();
@@ -43,7 +62,6 @@ public class Util {
         return contents.toString();
     }
 
-
     /**
      * Fetch the entire contents of a text file, and return it in an List of Strings.
      * A separator is used to define the splitting point that separates the Strings.
@@ -51,10 +69,10 @@ public class Util {
      *
      * @param aFile is a file which already exists and can be read.
      */
-    static public List<String> getContents(File aFile, String separator) {
+    static public List<String> getContents(File aFile, boolean lineSeparator, String separator) {
 
         List<String> contentList = new ArrayList<String>();
-        String[] contentStrings = Util.getContents(aFile).split(separator, -1);
+        String[] contentStrings = Util.getContents(aFile, lineSeparator).split(separator, -1);
         for (String s : contentStrings) {
             contentList.add(s);
         }
@@ -62,25 +80,55 @@ public class Util {
         return contentList;
     }
 
+    /**
+     * Write the given contents to the given file either in overwriting mode or in attaching mode.
+     *
+     * @param aFile A file
+     * @param content The content to be written
+     * @param append Adds the content to the existing content of the file, if set ot true, overwrites otherwise
+     */
+    static public void putContents(File aFile, String content, boolean append) {
+
+        // init
+        Writer writer = null;
+
+        // make sure file exists
+        if (!aFile.exists()) {
+            Util.createFile(aFile.getAbsolutePath());
+        }
+
+        // write content
+        try {
+            writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(aFile), "UTF-8"));
+            writer.write(content);
+            writer.flush();
+        } catch (IOException e) {
+            logger.error("Error writing content to file: " + aFile);
+        } finally {
+            try {
+                // Close the writer regardless of what happens
+                writer.close();
+            } catch (Exception e) {
+                logger.error("Error while closing file: " + aFile.getAbsolutePath());
+            }
+        }
+
+    }
 
     /**
-     * Create a new file with the given text contents. Creates the directory structure if it does not yet
+     * Create an empty new file. Creates the directory structure if it does not yet
      * exist.
      *
      * @param filename Absolute path of the file
-     * @param content  Text content to be written
+     *
      * @throws IOException If file already exists
      */
-    static public void createFile(String filename, String content) {
-
-        // don't create emptry file
-        if (content.trim().length() == 0) {
-            return;
-        }
+    static public void createFile(String filename) {
 
         // protection against accidental overwrite
         if (new File(filename).exists()) {
-            //logger.warn("File '" + filename + "' already exists. Nothing done.");
+            logger.warn("File '" + filename + "' already exists. Nothing done.");
             return;
         }
 
@@ -91,26 +139,26 @@ public class Util {
             throw new IllegalStateException("Couldn't create dir: " + parent);
         }
 
-        // write file content
         try {
-
-            // create new file
-            BufferedWriter tempWriter = new BufferedWriter(new FileWriter(targetFile));
-            tempWriter.write(content.trim());
-            tempWriter.close();
-
-        } catch (Exception e) {
-            logger.error("Exception while creating file: " + e.getMessage());
+            targetFile.createNewFile();
+        } catch (IOException e){
+            logger.error("Error while creating empty file '" + filename + "': " + e.getMessage());
         }
-    }
 
+    }
 
     /**
      * For intial testing
      */
     public static void main(String[] args) {
 
-        Util.createFile("D:/Data/collections/UserCredibilityImages/imageLists/temp_1/1", "test");
+        Util.putContents(new File("D:/Data/TEST.TXT"), "1342122", false);
+        String numberString = Util.getContents(new File("D:/Data/TEST.TXT"), false);
+
+        logger.info("String: " + numberString);
+        //logger.info("String: " + Integer.parseInt(numberString));
+        logger.info("String converted to number with non-numbery stuff removed: " + Integer.parseInt(numberString.replaceAll("\\s", "")));
+
     }
 }
 

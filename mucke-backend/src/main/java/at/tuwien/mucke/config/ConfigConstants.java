@@ -104,12 +104,6 @@ public class ConfigConstants {
     //
 
     /**
-     * Defines the names of all accessory index facets. Accessory index facets are not combined within a document index
-     * and represent isolated facets that are used for specific purposes.
-     */
-    public final static String ACCESSORYINDEX_FACETS = "accessoryindex";
-
-    /**
      * Defines the location of the content that is parsed for the document index
      */
     public final static String DOCINDEX_CONTENTFOLDER = "docindex.contentfolder";
@@ -186,5 +180,28 @@ public class ConfigConstants {
      * ImageFacetIndexer Tamura feature name that creates three Tamura features
      */
     public final static String IMAGEFACET_FEATURE_TAMURA = "Tamura";
+
+
+    /**
+     * Wikipedia indexer class
+     */
+    public final static String WIKIPEDIA_INDEXER = "wikipedia";
+
+    /**
+     * Wikipedia dump location
+     */
+    public final static String WIKIPEDIA_CONTENTFOLDER = "wikipedia.contentfolder";
+
+    /**
+     * DWikipedia index location
+     */
+    public final static String WIKIPEDIA_INDEXFOLDER = "wikipedia.indexfolder";
+
+
+
+    /**
+     * DWikipedia index location
+     */
+    public final static String CONCEPTINDEXER = "conceptindex";
 
 }

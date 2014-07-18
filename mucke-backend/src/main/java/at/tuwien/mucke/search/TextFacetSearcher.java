@@ -45,7 +45,7 @@ public class TextFacetSearcher implements FacetSearcher {
     @Override
     public List<Result> search(String queryString, List<Result> filterResults) {
 
-        List<Result> results = new ArrayList<Result>();
+        List<Result> results = new ArrayList<>();
 
         logger.info("Extracting the index facet folder to be searched... ");
         String facet = configManager.getProperty(searcherName + ".facet");

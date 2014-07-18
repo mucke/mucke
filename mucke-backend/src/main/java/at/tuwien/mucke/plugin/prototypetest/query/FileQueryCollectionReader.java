@@ -57,7 +57,7 @@ public class FileQueryCollectionReader implements QueryCollectionReader {
                     // generate single query
                     logger.debug("Reading topic # " + (i + 1) + " ...");
                     CSVQueryReader queryReader = new CSVQueryReader(configManager);
-                    Query query = queryReader.prepare(Util.getContents(files[i]));
+                    Query query = queryReader.prepare(Util.getContents(files[i], true));
                     queries.add(query);
                 }
             }

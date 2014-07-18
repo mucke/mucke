@@ -131,7 +131,7 @@ public class SystemManager {
 
         // load file somewhere on the disk
         System.out.println("---------------------------- ANYWHERE ON DISK -----------------------------------");
-        System.out.println(Util.getContents(new File("D:/Data/collections/UserCredibilityImages/imageLists/1")));
+        System.out.println(Util.getContents(new File("D:/Data/collections/UserCredibilityImages/imageLists/1"), true));
         System.out.println("-------------------------FINISHED ANYWHERE ON DISK -----------------------------------");
 
         // load file in home directory

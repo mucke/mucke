@@ -3,15 +3,8 @@ package at.tuwien.mucke.plugin.prototypetest;
 import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.credibility.CredibilityManager;
 import at.tuwien.mucke.credibility.User;
-import at.tuwien.mucke.documentmodel.Facet;
-import at.tuwien.mucke.documentmodel.ImageFacet;
-import at.tuwien.mucke.documentmodel.TextFacet;
 import at.tuwien.mucke.index.IndexManager;
 import at.tuwien.mucke.plugin.PluginManager;
-import at.tuwien.mucke.query.Query;
-import at.tuwien.mucke.query.QueryManager;
-import at.tuwien.mucke.search.Result;
-import at.tuwien.mucke.search.SearchManager;
 import org.apache.log4j.Logger;
 
 import java.util.List;

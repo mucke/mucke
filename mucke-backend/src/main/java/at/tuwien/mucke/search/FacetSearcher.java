@@ -1,7 +1,5 @@
 package at.tuwien.mucke.search;
 
-import at.tuwien.mucke.query.Query;
-
 import java.util.List;
 
 /**

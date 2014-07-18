@@ -1,5 +1,6 @@
 package at.tuwien.mucke.config;
 
+import at.tuwien.mucke.concept.DocumentFacetProcessor;
 import at.tuwien.mucke.data.DBManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.chainsaw.Main;

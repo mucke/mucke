@@ -1,7 +1,5 @@
 package at.tuwien.mucke.concept;
 
-import java.net.URI;
-
 /**
  * Represents an abstract concept that forms the basis for indexing and searching within the system
  */
@@ -10,7 +8,7 @@ public class Concept {
     /**
      * URL field uniquely defining a concept
      */
-    private URI id;
+    private String id;
 
     /**
     * Model state provided by a visual classifier that represents the state of the visual concept
@@ -22,7 +20,7 @@ public class Concept {
      *
      * @param id The URI of the concept
      */
-    public Concept(URI id) {
+    public Concept(String id) {
         this(id, null);
     }
 
@@ -31,7 +29,7 @@ public class Concept {
      *
      * @param id The URI of the concept
      */
-    public Concept(URI id, ClassifierModel modelClassifier) {
+    public Concept(String id, ClassifierModel modelClassifier) {
         this.id = id;
         this.modelClassifier = modelClassifier;
     }
@@ -39,7 +37,7 @@ public class Concept {
     /**
      * @return the id of the concept
      */
-    public final URI getId() {
+    public final String getId() {
         return id;
     }
 

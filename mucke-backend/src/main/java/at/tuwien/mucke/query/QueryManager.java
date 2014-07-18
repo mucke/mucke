@@ -20,15 +20,15 @@ import java.util.List;
 public class QueryManager {
 
     static Logger logger = Logger.getLogger(QueryManager.class);
-    private ConfigurationManager configManager;
+    private ConfigurationManager configurationManager;
     private DocumentFacetProcessor visitor;
 
     /**
      * Standard Constructor
      */
     public QueryManager(ConfigurationManager configManager) {
-        this.configManager = configManager;
-        this.visitor = new StandardDocumentFacetProcessor();
+        this.configurationManager = configManager;
+        this.visitor = new StandardDocumentFacetProcessor(configManager);
         // check parameterization
         this.checkParameters();
     }
@@ -49,15 +49,13 @@ public class QueryManager {
      * The query collection file is defined by configuration via <see>ConfigConstants. QUERY_COLLECTION_FILE</see>.
      * The query collection reader is defined by configuration via <see>ConfigConstants.QUERY_COLLECTION_READER</see>.
      *
-     * @param listOfQueries
-     * @param reader
      * @return List<Query>
      */
     public List<Query> prepareCollection() {
 
         // extract query reader from configuration
-        String queryReaderValue = configManager.getProperty(ConfigConstants.QUERY_COLLECTION_READER);
-        QueryCollectionReader queryReader = (QueryCollectionReader) configManager.getQueryReaderClass(queryReaderValue);
+        String queryReaderValue = configurationManager.getProperty(ConfigConstants.QUERY_COLLECTION_READER);
+        QueryCollectionReader queryReader = (QueryCollectionReader) configurationManager.getQueryReaderClass(queryReaderValue);
 
         return queryReader.prepare();
     }
@@ -86,11 +84,11 @@ public class QueryManager {
     private boolean checkParameters() {
 
         // checks query file
-        if (!configManager.isProperty(ConfigConstants.QUERY_COLLECTION_FILE)) {
+        if (!configurationManager.isProperty(ConfigConstants.QUERY_COLLECTION_FILE)) {
             logger.error("No query collection file provided. You must declare a file that contains the queries.");
             return false;
         }
-        String queryFileName = configManager.getProperty(ConfigConstants.QUERY_COLLECTION_FILE);
+        String queryFileName = configurationManager.getProperty(ConfigConstants.QUERY_COLLECTION_FILE);
         try {
             File queryFile = new File(queryFileName);
             if (!queryFile.exists()) {
@@ -101,33 +99,33 @@ public class QueryManager {
         }
 
         // query reader
-        if (!configManager.isProperty(ConfigConstants.QUERY_COLLECTION_READER)) {
+        if (!configurationManager.isProperty(ConfigConstants.QUERY_COLLECTION_READER)) {
             logger.error("No query collection reader provided. You must declare exactly one query collection reader.");
             return false;
         }
 
         // query collection signature
-        if (!configManager.isProperty(ConfigConstants.QUERY_COLLECTION_SIG) ||
-                configManager.getProperty(ConfigConstants.QUERY_COLLECTION_SIG) == null ||
-                configManager.getProperty(ConfigConstants.QUERY_COLLECTION_SIG).equals("")) {
+        if (!configurationManager.isProperty(ConfigConstants.QUERY_COLLECTION_SIG) ||
+                configurationManager.getProperty(ConfigConstants.QUERY_COLLECTION_SIG) == null ||
+                configurationManager.getProperty(ConfigConstants.QUERY_COLLECTION_SIG).equals("")) {
             logger.error("No query collection signature defined. You must declare a signature that tells the system which element separates two queries.");
             return false;
         }
 
         // query id
-        if (!configManager.isProperty(ConfigConstants.QUERY_ID)) {
+        if (!configurationManager.isProperty(ConfigConstants.QUERY_ID)) {
             logger.error("No field for query id defined. You must declare one field that defines the position of the unique query identifier.");
             return false;
         }
 
         // check query facets in detail
-        List<String> facets = configManager.getProperties(ConfigConstants.QUERY_FACETS, false);
+        List<String> facets = configurationManager.getProperties(ConfigConstants.QUERY_FACETS, false);
         if (facets.size() == 0) {
             logger.error("No query facets defined. You must at least declare one query facet to build a query.");
             return false;
         }
         for (String facet : facets) {
-            List<String> facetValueList = configManager.getProperties(facet, false);
+            List<String> facetValueList = configurationManager.getProperties(facet, false);
             if (facetValueList.size() == 3) {
                 if (!(facetValueList.get(0).equals("XPATH") || facetValueList.get(0).equals("REGEX"))) {
                     logger.error("Query facet '" + facet + "' has problem with first parameter (i.e. language). Must be 'XPATH' or 'REGEX'.");

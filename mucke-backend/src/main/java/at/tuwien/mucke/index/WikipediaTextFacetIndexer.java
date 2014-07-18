@@ -1,6 +1,7 @@
 package at.tuwien.mucke.index;
 
 import at.tuwien.mucke.config.ConfigurationManager;
+import at.tuwien.mucke.util.Util;
 import edu.jhu.nlp.wikipedia.*;
 import edu.jhu.nlp.language.Language;
 
@@ -15,10 +16,7 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 import java.util.Vector;
 
@@ -33,6 +31,9 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
     protected ConfigurationManager configManager = null;
     protected String contentFolder = null;
     protected String indexFolder = null;
+    private static int counter = 0;
+    protected File statusFile = null;
+    protected String lastStatus = null;
 
     /**
      * Logging facility
@@ -58,6 +59,12 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
         this.indexFolder = configManager.getProperty(this.facetName + ".indexfolder");
         logger.debug("indexFolder: " + indexFolder);
 
+        // define status file
+        statusFile = new File(indexFolder + "/" + "WIKIPEDIA_INDEX_STATUS.LOG");
+
+        // read last status
+        this.lastStatus = readStatus();
+        logger.info("last status === " + this.lastStatus + " read from: " + statusFile.getAbsolutePath());
     }
 
     /**
@@ -81,6 +88,7 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
         Date start = new Date();
 
         try {
+
             logger.debug("Indexing to directory '" + this.indexFolder + "'...");
 
             Directory dir = FSDirectory.open(new File(this.indexFolder));
@@ -98,13 +106,15 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
             }
 
             // index
+
             IndexWriter writer = new IndexWriter(dir, iwc);
             indexDocuments(writer, wikipediaDumpFile);
+            writer.commit();
             writer.close();
 
             // time stamping
             Date end = new Date();
-            logger.debug("Indexing time: " + (end.getTime() - start.getTime()) + " total milliseconds");
+            logger.debug("Indexing time: " + (end.getTime() - start.getTime()) + " total milliseconds for " + WikipediaTextFacetIndexer.counter + " articles.");
 
         } catch (IOException e) {
             logger.error("Exception: " + e.getMessage());
@@ -119,6 +129,9 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
      * @throws IOException
      */
     private void indexDocuments(final IndexWriter writer, File file) throws IOException {
+
+        // reset the file counter
+        WikipediaTextFacetIndexer.counter = 0;
 
         // do not try to index files that cannot be read
         if (file.canRead()) {
@@ -146,9 +159,6 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
 
                 try {
 
-                    // create a new, empty document
-                    final Document doc = new Document();
-
                     // access wikipedia dump file
                     WikiXMLParser wxsp = WikiXMLParserFactory.getSAXParser(file.getAbsolutePath());
 
@@ -156,14 +166,29 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
                         wxsp.setPageCallback(new PageCallbackHandler() {
                             public void process(WikiPage page) {
 
+                                // skip pages already indexed
+                                //logger.info("reading status and converting: " + Integer.parseInt(readStatus()));
+                                //logger.info("id converting: " +Integer.parseInt(page.getID().trim()));
+
+                                if (Integer.parseInt(page.getID().trim()) <= Integer.parseInt(readStatus())){
+                                    logger.info("O Wikipage id " + page.getID() + " skipped!");
+                                    return;
+                                }
+
+                                // create a new, empty document
+                                Document doc = new Document();
+
+                                // field storage trigger
+                                Field.Store storePolicy = Field.Store.YES;
+
                                 // default is to filter out stubs, special pages, redirection and disambiguation pages
                                 // TODO makes this dependent on a filter that the user can configure
                                 // TODO ALLOW_REDIRECT_PAGE = true
                                 // TODO ALLOW_DISAMBIGUATION_PAGE = true
                                 // TODO ALLOW_SPECIAL_PAGE = true
                                 // TODO ALLOW_STUB_PAGE = true
-                                if (!page.isRedirect() && !page.isDisambiguationPage() && !page.isSpecialPage() && !page.isStub()) {
-                                    logger.info("Redirection Page '" + page.getTitle().trim() + "' excluded!");
+                                if (page.isRedirect() || page.isDisambiguationPage() || page.isSpecialPage() || page.isStub()) {
+                                    //logger.info("- Excluding Redirection / Disambiguation / Special / Stub Wikipedia page id " + page.getID() + " about '"  + page.getTitle().trim() + "'");
                                     return;
                                 }
 
@@ -175,74 +200,120 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
                                 }
 
                                 // id
-                                doc.add(new IntField("id", new Integer(page.getID()), Field.Store.YES));
+                                String id = page.getID();
+                                doc.add(new IntField("id", new Integer(id), storePolicy));
+                                //logger.info("id ");
+                                //logger.info("id: " + page.getID());
 
                                 // title
-                                doc.add(new TextField("title", page.getTitle(), Field.Store.YES));
+                                String title = page.getTitle();
+                                doc.add(new TextField("title", title, storePolicy));
+                                //logger.info("title ");
+                                //logger.info("title: " + page.getTitle());
 
-                                // cleaned wikipedia text --- excludes some Wiki markup
-                                doc.add(new TextField("text", page.getText(), Field.Store.YES));
+                                // text
+                                String text = page.getText();
+                                if (text != null){
+                                    text = text.trim();
+                                    doc.add(new TextField("text", text, storePolicy));
+                                } else {
+                                    logger.info("-> No text found");
+                                }
+                                //logger.info("text ");
+                                //logger.info("TEXT: " + page.getText());
+
 
                                 // original wikipedia text --- excludes some Wiki markup
-                                doc.add(new TextField("wikitext", page.getWikiText(), Field.Store.YES));
+                                String wikiText = page.getWikiText();
+                                if (wikiText != null){
+                                    wikiText = wikiText.trim();
+                                    doc.add(new TextField("text", text, storePolicy));
+                                } else {
+                                    logger.info("-> No wikitext found");
+                                }
 
                                 // infobox
-                                InfoBox infoBox = page.getInfoBox();
-                                if (infoBox != null) {
-                                    doc.add(new TextField("infobox", page.getInfoBox().dumpRaw(), Field.Store.YES));
+                                // NOTE: try-block fixes a current bug with this library when extracting certain faulty infoboxes
+                                // NOTE: faulty infoboxes are excluded from the index to allow the indexer to continue
+                                try {
+                                    InfoBox ib = page.getInfoBox();
+                                    if (ib != null) {
+                                        String infoBox = page.getInfoBox().toString();
+                                        doc.add(new TextField("infobox", infoBox, storePolicy));
+                                    }
+                                } catch (Exception e) {
+                                    logger.error("Exception while extracting infobox from document " + page.getID() + " with title '" + page.getTitle() + "': " + e.getMessage());
+                                    logger.error("Therefore, no infobox included for Wikipedia page " + page.getID());
                                 }
 
                                 // links
-                                Vector links = page.getLinks();
-                                String linksString = "";
-                                for (int i = 0; i < links.size(); i++) {
-                                    linksString = linksString + links.get(i);
-                                    if (i < (links.size() - 1)) {
-                                        linksString = linksString + ";";
+
+                                // NEW
+                                Vector<String> links = page.getLinks();
+                                for (String link : links){
+                                    if (link != null & link.trim().length() > 0){
+                                        doc.add(new TextField("link", link.trim(), storePolicy));
+                                        //logger.info("-> link: " + link.trim());
                                     }
                                 }
-                                doc.add(new TextField("links", linksString.trim(), Field.Store.YES));
 
                                 // categories
-                                Vector categories = page.getCategories();
-                                String categoriesString = "";
-                                for (int i = 0; i < categories.size(); i++) {
-                                    categoriesString = categoriesString + categories.get(i);
-                                    if (i < (categories.size() - 1)) {
-                                        categoriesString = categoriesString + ";";
+                                Vector<String> categories = page.getCategories();
+                                for (String category : categories){
+                                    if (category != null & category.trim().length() > 0){
+                                        doc.add(new TextField("category", category.trim(), storePolicy));
+                                        //logger.info("-> category: " + category.trim());
                                     }
                                 }
-                                doc.add(new TextField("categories", categoriesString.trim(), Field.Store.YES));
 
                                 // redirect page
-                                if (page.getRedirectPage() != null){
-                                    doc.add(new TextField("redirectPage", page.getRedirectPage(), Field.Store.YES));
+                                String redirectPage = page.getRedirectPage();
+                                if (page.getRedirectPage() != null && page.getRedirectPage().length() > 0){
+                                    doc.add(new TextField("redirectPage", redirectPage, storePolicy));
+                                    //logger.info("redirectpage ");
+                                    //logger.info("redirect: " + page.getRedirectPage());
                                 }
 
                                 // translated titles for French, German and Spanish
-                                if (page.getTranslatedTitle(Language.FRENCH) != null){
-                                    doc.add(new TextField("translatedTitleFR", page.getTranslatedTitle(Language.FRENCH), Field.Store.YES));
+                                String translatedTitleFR = page.getTranslatedTitle(Language.FRENCH);
+                                if (page.getTranslatedTitle(Language.FRENCH) != null && page.getTranslatedTitle(Language.FRENCH).length() > 0){
+                                    doc.add(new TextField("translatedTitleFR", page.getTranslatedTitle(Language.FRENCH), storePolicy));
+                                    //logger.info("translatedTitleFR ");
+                                    //logger.info("translate: " + page.getTranslatedTitle(Language.FRENCH));
                                 }
-                                if (page.getTranslatedTitle(Language.GERMAN) != null){
-                                    doc.add(new TextField("translatedTitleFR", page.getTranslatedTitle(Language.GERMAN), Field.Store.YES));
+                                String translatedTitleDE = page.getTranslatedTitle(Language.GERMAN);
+                                if (page.getTranslatedTitle(Language.GERMAN) != null && page.getTranslatedTitle(Language.GERMAN).length() > 0){
+                                    doc.add(new TextField("translatedTitleDE", translatedTitleDE, storePolicy));
+                                    //logger.info("translatedTitleDE ");
+                                    //logger.info("translate: " + page.getTranslatedTitle(Language.GERMAN));
                                 }
-                                if (page.getTranslatedTitle(Language.SPANISH) != null){
-                                    doc.add(new TextField("translatedTitleFR", page.getTranslatedTitle(Language.SPANISH), Field.Store.YES));
+                                String translatedTitleES = page.getTranslatedTitle(Language.SPANISH);
+                                if (page.getTranslatedTitle(Language.SPANISH) != null && page.getTranslatedTitle(Language.SPANISH).length() > 0){
+                                    doc.add(new TextField("translatedTitleES", translatedTitleES, storePolicy));
+                                    //logger.info("translatedTitleES ");
+                                    //logger.info("translate: " + page.getTranslatedTitle(Language.SPANISH));
                                 }
 
                                 // write document to index
                                 try {
-                                    logger.debug("Adding wikipedia page id " + page.getID() + " about '" + page.getTitle().trim() + "'");
+
+                                    logger.debug("[" + WikipediaTextFacetIndexer.counter + "] + Adding Wikipedia page id " + page.getID() + " about '" + page.getTitle().trim() + "'");
                                     writer.addDocument(doc);
+                                    WikipediaTextFacetIndexer.counter++;
+                                    // keep marker
+                                    writeStatus(page.getID().trim());
+
                                 } catch (Exception e) {
                                     logger.error("Exception while writing index: " + e.getMessage());
                                 }
+
                             }
 
                         });
 
                         wxsp.parse();
                     } catch (Exception e) {
+                        logger.error("Exception while writing index: " + e.getMessage());
                         e.printStackTrace();
                     }
 
@@ -253,7 +324,8 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
             }
         }
 
-}
+        return;
+    }
 
     @Override
     public boolean checkParams() {
@@ -279,5 +351,25 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
     @Override
     public String explainParams() {
         return null;
+    }
+
+    /** Writes the status (i.e. the current position) of the Wikipedia indexing process. This allows
+     * incremental indexing.
+     * @param status A marker that identifies the position in the Wikipedia indexing process */
+    public void writeStatus(String status){
+        Util.putContents(statusFile, status, false);
+    }
+
+    /** Reads the status (i.e. the current position) of the Wikipedia indexing process. This allows
+     * incremental indexing. Creates the marker file if it does not yet exists.
+     * @return marker A marker that identifies the position in the Wikipedia indexing process */
+    public String readStatus(){
+
+        // creates the file if it does not yet exist
+        if (!statusFile.exists()){
+            Util.putContents(statusFile, "0", false);
+        }
+
+        return Util.getContents(statusFile ,false);
     }
 }

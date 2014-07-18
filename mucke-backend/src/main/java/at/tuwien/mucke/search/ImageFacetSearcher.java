@@ -1,6 +1,5 @@
 package at.tuwien.mucke.search;
 
-import at.tuwien.mucke.query.Query;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;

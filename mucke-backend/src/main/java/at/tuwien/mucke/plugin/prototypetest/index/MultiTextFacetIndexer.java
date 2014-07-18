@@ -135,7 +135,7 @@ public class MultiTextFacetIndexer extends StandardTextFacetIndexer {
                 try {
 
                     // splitting up the file in many lines - each line is one Lucene document
-                    List<String> contents = Util.getContents(file, "\n");
+                    List<String> contents = Util.getContents(file, true, "\n");
 
                     // create temporary file
                     int lineNumber = 1;
@@ -146,7 +146,7 @@ public class MultiTextFacetIndexer extends StandardTextFacetIndexer {
                         // file path
                         String path = tempDir + fileNameWithoutExtension + "_" + lineNumber;
 
-                        Util.createFile(path, content);
+                        Util.putContents(new File(path), content, false);
                         lineNumber++;
                     }
 

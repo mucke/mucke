@@ -2,8 +2,7 @@ package at.tuwien.mucke.search;
 
 import at.tuwien.mucke.config.ConfigConstants;
 import at.tuwien.mucke.config.ConfigurationManager;
-import at.tuwien.mucke.documentmodel.TextFacet;
-import at.tuwien.mucke.query.Query;
+import at.tuwien.mucke.documentmodel.Facet;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;

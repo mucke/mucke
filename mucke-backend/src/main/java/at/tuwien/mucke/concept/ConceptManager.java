@@ -1,5 +1,6 @@
 package at.tuwien.mucke.concept;
 
+import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.documentmodel.Document;
 import at.tuwien.mucke.documentmodel.Facet;
 
@@ -14,8 +15,10 @@ public class ConceptManager {
 
     private DocumentFacetProcessor visitor;
 
-    public ConceptManager() {
-        visitor = new StandardDocumentFacetProcessor();
+    protected ConfigurationManager configurationManager = null;
+
+    public ConceptManager(ConfigurationManager configurationManager) {
+        visitor = new StandardDocumentFacetProcessor(configurationManager);
     }
 
     public Concept[] process(Document doc) {

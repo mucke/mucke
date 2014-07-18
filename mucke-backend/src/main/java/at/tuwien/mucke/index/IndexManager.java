@@ -2,7 +2,6 @@ package at.tuwien.mucke.index;
 
 import at.tuwien.mucke.config.ConfigConstants;
 import at.tuwien.mucke.config.ConfigurationManager;
-import com.hp.hpl.jena.shared.uuid.Bits;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -35,42 +34,42 @@ public class IndexManager {
      */
     public void index() {
 
-        // index accessory indices
-        List<String> accessoryIndexers = configManager.getProperties(ConfigConstants.ACCESSORYINDEX_FACETS, false);
-        if (accessoryIndexers != null && accessoryIndexers.size() > 0)
-        {
-            for (String assessoryIndexName : accessoryIndexers) {
+        // index wikipedia
+        String wikipediaIndexerName = configManager.getProperty(ConfigConstants.WIKIPEDIA_INDEXER);
+        logger.debug("Wikipedia indexer class name:" + wikipediaIndexerName);
+        logger.debug("Instantiating...");
+        FacetIndexer wikipediaIndexer = (FacetIndexer) configManager.getFacetIndexerClass("wikipedia", wikipediaIndexerName);
+        wikipediaIndexer.index();
 
-                // create indexer
-                String indexClassName = configManager.getProperty(assessoryIndexName);
-                logger.debug("indexClassName:" + indexClassName);
-                logger.debug("Instantiating...");
-                FacetIndexer indexer = (FacetIndexer) configManager.getFacetIndexerClass(assessoryIndexName, indexClassName);
-
-                // Call indexer
-                indexer.index();
-            }
-        }
+        // concept indexing
+        //String conceptIndexerName = configManager.getProperty(ConfigConstants.CONCEPTINDEXER);
+        //logger.debug("Concept indexer class name:" + conceptIndexerName);
+        //logger.debug("Instantiating...");
+        //ConceptIndexer conceptIndexer = (ConceptIndexer) configManager.getFacetIndexerClass("conceptindex", conceptIndexerName);
+        //conceptIndexer.index();
 
         // dispatch document indexer
         //this.indexDocument();
 
         // extract and dispatch document facet indexers
-        List<String> facetIndexers = configManager.getProperties(ConfigConstants.DOCINDEX_FACETS, false);
+        //List<String> facetIndexers = configManager.getProperties(ConfigConstants.DOCINDEX_FACETS, false);
+        //if (facetIndexers != null) {    // do not do anything if there was no facetindexer configured
+            // dispatches facets indexers
+        //    for (String facetIndexName : facetIndexers) {
 
-        // dispatches facets indexers
-        for (String facetIndexName : facetIndexers) {
+                // create indexer
+        //      String indexClassName = configManager.getProperty(facetIndexName);
+        //      logger.debug("indexClassName:" + indexClassName);
+        //      logger.debug("Instantiating...");
+        //      FacetIndexer indexer = (FacetIndexer) configManager.getFacetIndexerClass(facetIndexName, indexClassName);
 
-            // create indexer
-            String indexClassName = configManager.getProperty(facetIndexName);
-            logger.debug("indexClassName:" + indexClassName);
-            logger.debug("Instantiating...");
-            FacetIndexer indexer = (FacetIndexer) configManager.getFacetIndexerClass(facetIndexName, indexClassName);
+                // Call indexer
+        //      indexer.index();
 
-            // Call indexer
-            indexer.index();
+        //    }
+    //}
 
-        }
+
 
     }
 

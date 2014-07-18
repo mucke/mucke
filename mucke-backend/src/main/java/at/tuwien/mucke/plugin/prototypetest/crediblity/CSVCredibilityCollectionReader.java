@@ -50,7 +50,7 @@ public class CSVCredibilityCollectionReader implements CredibilityCollectionRead
         }
 
         // do not try to index files that cannot be read
-        List<String> usersData = Util.getContents(file, "\n");
+        List<String> usersData = Util.getContents(file, true, "\n");
 
         int i = 1;
         for (String userData : usersData) {
