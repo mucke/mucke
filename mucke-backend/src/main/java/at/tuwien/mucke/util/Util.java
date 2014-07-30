@@ -3,6 +3,7 @@ package at.tuwien.mucke.util;
 import org.apache.log4j.Logger;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,7 +15,7 @@ public class Util {
     /**
      * Logging facility
      */
-    static Logger logger = Logger.getLogger(Util.class);
+    public static  Logger logger = Logger.getLogger(Util.class);
 
 
 
@@ -32,7 +33,7 @@ public class Util {
      *
      * @param aFile is a file which already exists and can be read.
      */
-    static public String getContents(File aFile, boolean lineSpeparated) {
+    public static String getContents(File aFile, boolean lineSpeparated) {
 
         StringBuilder contents = new StringBuilder();
 
@@ -69,7 +70,7 @@ public class Util {
      *
      * @param aFile is a file which already exists and can be read.
      */
-    static public List<String> getContents(File aFile, boolean lineSeparator, String separator) {
+    public static List<String> getContents(File aFile, boolean lineSeparator, String separator) {
 
         List<String> contentList = new ArrayList<String>();
         String[] contentStrings = Util.getContents(aFile, lineSeparator).split(separator, -1);
@@ -87,7 +88,7 @@ public class Util {
      * @param content The content to be written
      * @param append Adds the content to the existing content of the file, if set ot true, overwrites otherwise
      */
-    static public void putContents(File aFile, String content, boolean append) {
+    public static void putContents(File aFile, String content, boolean append) {
 
         // init
         Writer writer = null;
@@ -124,7 +125,7 @@ public class Util {
      *
      * @throws IOException If file already exists
      */
-    static public void createFile(String filename) {
+     public static void createFile(String filename) {
 
         // protection against accidental overwrite
         if (new File(filename).exists()) {
@@ -145,6 +146,17 @@ public class Util {
             logger.error("Error while creating empty file '" + filename + "': " + e.getMessage());
         }
 
+    }
+
+    /** Validates the given URI */
+    public static boolean validateHTTP_URI(String uri) {
+        final URL url;
+        try {
+            url = new URL(uri);
+        } catch (Exception e1) {
+            return false;
+        }
+        return "http".equals(url.getProtocol());
     }
 
     /**

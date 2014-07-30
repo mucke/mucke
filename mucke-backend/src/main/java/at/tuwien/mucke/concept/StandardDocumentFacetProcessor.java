@@ -7,13 +7,12 @@ import at.tuwien.mucke.documentmodel.TagFacet;
 import at.tuwien.mucke.documentmodel.TextFacet;
 import at.tuwien.mucke.search.Result;
 import at.tuwien.mucke.search.SearchManager;
+import at.tuwien.mucke.util.Util;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.index.IndexableField;
 import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
@@ -23,6 +22,7 @@ import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
 import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,12 +49,13 @@ public class StandardDocumentFacetProcessor implements DocumentFacetProcessor {
 
 
     /** TextFacets are per default translated into Wikipedia concepts. It searches the Wikipedia index that is created
-     * from the Wikipedia dump index as created by the WikipediaTextFacetIndexer. This means, that this method has a
-     * dependency against the WikipediaTextFacetIndexer and it requires that this indexer has ran before and configuration
-     * for this indexer is in place.
+     * from the Wikipedia dump index (as created by the WikipediaTextFacetIndexer). This means, that this implementation
+     * has a dependency against WikipediaTextFacetIndexer which requires its index to be in place before using this
+     * FacetProcessor.
      *
      * @param textFacet The TextFacet that is to be processed
      * @return List of concepts as detected from the Wikipedia index
+     * @see at.tuwien.mucke.index.WikipediaTextFacetIndexer
      */
     public List<Concept> process(TextFacet textFacet) {
 
@@ -83,7 +84,7 @@ public class StandardDocumentFacetProcessor implements DocumentFacetProcessor {
             multi.setDefaultOperator(QueryParser.Operator.OR);
 
             org.apache.lucene.search.Query query = multi.parse(textFacet.getContent());
-            TopDocs topDocs = searcher.search(query, 10); // unlimited concepts are considered
+            TopDocs topDocs = searcher.search(query, 100); // unlimited concepts are considered
             ScoreDoc[] hits = topDocs.scoreDocs;
 
             // transform into Results objects
@@ -92,9 +93,12 @@ public class StandardDocumentFacetProcessor implements DocumentFacetProcessor {
                 // get document from index
                 Document doc = searcher.doc(hits[i].doc);
 
-                // extract title as reference for concept (TODO try to get URL later!!!)
-                Concept concept = new Concept(doc.get("title"));
+                // TODO generate URl from title, see: http://en.wikipedia.org/wiki/Wikipedia:Page_name for how it is done here
+                // TODO: Does this always work? Needs testing!
+                //URI conceptURI = new URI("http://en.wikipedia.org/wiki/" + doc.get("title").replaceAll(" ", "_"));
+                Concept concept = new Concept(doc.get("title"), Concept.CONCEPT_TYPE_TEXT);
                 concepts.add(concept);
+
             }
 
             reader.close();

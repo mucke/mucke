@@ -1,8 +1,12 @@
 package at.tuwien.mucke;
 
 import at.tuwien.mucke.clustering.ClusteringManager;
+import at.tuwien.mucke.concept.Concept;
+import at.tuwien.mucke.concept.DocumentFacetProcessor;
+import at.tuwien.mucke.concept.StandardDocumentFacetProcessor;
 import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.config.Run;
+import at.tuwien.mucke.documentmodel.TextFacet;
 import at.tuwien.mucke.search.Result;
 import at.tuwien.mucke.search.SearchManager;
 import at.tuwien.mucke.util.Util;
@@ -10,6 +14,7 @@ import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,14 +35,10 @@ public class SystemManager {
      */
     public SystemManager() {
 
-        System.out.println("SYSTEMMANAGER IS ALIVE");
-
+        logger.info("SystemManager initialization...");
         // initialize the ConfigurationManager upon instantiation
         configManager = new ConfigurationManager();
-
-        // initialize the DBManager upon instantiation
-        // TODO
-        // EvalDBManager.init();
+        logger.info("SystemManager initialized!");
 
     }
 
@@ -71,7 +72,7 @@ public class SystemManager {
         logger.info("Completed " + i + " runs!");
     }
 
-
+    /** Used for MUCKE ICMR Demo */
     public List<Result> executeInteractiveMode(String queryString, boolean credibilityEnabled) {
 
         // extract configuration for all runs
@@ -112,6 +113,29 @@ public class SystemManager {
         return results;
 
     }
+
+    /** Used for ConceptDemo */
+    public List<Concept> executeConceptExtraction(String text) {
+
+        // Hello!
+        logger.info("executeConceptExtraction method!");
+
+        // execute configuration
+        this.executeBatchMode();
+
+        // translate text into concepts
+        DocumentFacetProcessor processor = new StandardDocumentFacetProcessor(configManager);
+        List<Concept> concepts = processor.process(new TextFacet("0", "interactive-text", text));
+
+        logger.info("======================== concept list =================================");
+        for (Concept c : concepts){
+            logger.info("Concept: " + c.getId());
+        }
+        logger.info("======================== concept list END =================================");
+
+        return concepts;
+    }
+
 
     /**
      * Executes the manager

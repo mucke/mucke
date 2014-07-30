@@ -182,7 +182,7 @@ public class WikipediaConceptIndexer implements ConceptIndexer {
 
                     // add all concepts to the index
                     for (Concept concept : concepts){
-                        doc.add(new StringField("concept", concept.getId(), Field.Store.YES));
+                        doc.add(new StringField("concept", concept.getId().toString(), Field.Store.YES));
                     }
 
                     if (writer.getConfig().getOpenMode() == OpenMode.CREATE) {

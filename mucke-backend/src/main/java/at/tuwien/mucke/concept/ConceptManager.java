@@ -15,12 +15,17 @@ public class ConceptManager {
 
     private DocumentFacetProcessor visitor;
 
+    /** Allows access to configuration details */
     protected ConfigurationManager configurationManager = null;
 
+    /** Constructor */
     public ConceptManager(ConfigurationManager configurationManager) {
         visitor = new StandardDocumentFacetProcessor(configurationManager);
     }
 
+    /** Processes the document with FacetProcessors into concepts
+     * @param doc Documents
+     * @return List of concepts that represent this document (and its facets) */
     public Concept[] process(Document doc) {
 
         List<Facet> facets = doc.getFacets();
