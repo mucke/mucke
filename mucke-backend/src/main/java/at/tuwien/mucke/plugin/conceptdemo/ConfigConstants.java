@@ -1,4 +1,4 @@
-package at.tuwien.mucke.plugin.mediaeval2014;
+package at.tuwien.mucke.plugin.conceptdemo;
 
 /**
  * Maps Java constants to naming conventions in configuration files

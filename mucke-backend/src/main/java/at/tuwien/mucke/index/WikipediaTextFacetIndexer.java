@@ -34,6 +34,7 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
     private static int counter = 0;
     protected File statusFile = null;
     protected String lastStatus = null;
+    private String finishStatusMarker = "FINISHED";
 
     /**
      * Logging facility
@@ -62,9 +63,10 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
         // define status file
         statusFile = new File(indexFolder + "/" + "WIKIPEDIA_INDEX_STATUS.LOG");
 
-        // read last status
+        // read last status, stop if already finished
         this.lastStatus = readStatus();
-        logger.info("last status === " + this.lastStatus + " read from: " + statusFile.getAbsolutePath());
+        logger.info("last status: '" + this.lastStatus + "' log file: '" + statusFile.getAbsolutePath() + "'");
+
     }
 
     /**
@@ -72,11 +74,16 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
      */
     public void index() {
 
+        // stop if index has already been built
+        if (this.lastStatus.endsWith(finishStatusMarker)){
+            logger.info("Wikipedia Index has already been build. Index folder: " + this.indexFolder);
+            return;
+        }
+
         // true creates a new index / false updates the existing index
         boolean create = false;
 
         // check if data directory exists
-        logger.debug("wikipedia dump file = " + contentFolder);
         final File wikipediaDumpFile = new File(contentFolder);
         if (!wikipediaDumpFile.exists() || !wikipediaDumpFile.canRead()) {
             logger.error("Wikipedia dump file '" + wikipediaDumpFile.getAbsolutePath()
@@ -88,8 +95,6 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
         Date start = new Date();
 
         try {
-
-            logger.debug("Indexing to directory '" + this.indexFolder + "'...");
 
             Directory dir = FSDirectory.open(new File(this.indexFolder));
             Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_42);
@@ -312,6 +317,10 @@ public class WikipediaTextFacetIndexer implements FacetIndexer {
                         });
 
                         wxsp.parse();
+                        logger.info("AFTER wxsp.parse()");
+                        writeStatus(readStatus() + "," + finishStatusMarker);
+                        logger.info("Status FINISH written: " + finishStatusMarker);
+
                     } catch (Exception e) {
                         logger.error("Exception while writing index: " + e.getMessage());
                         e.printStackTrace();

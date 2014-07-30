@@ -1,13 +1,9 @@
-package at.tuwien.mucke.plugin.mediaeval2014;
+package at.tuwien.mucke.plugin.conceptdemo;
 
 import at.tuwien.mucke.config.ConfigurationManager;
-import at.tuwien.mucke.credibility.CredibilityManager;
-import at.tuwien.mucke.credibility.User;
 import at.tuwien.mucke.index.IndexManager;
 import at.tuwien.mucke.plugin.PluginManager;
 import org.apache.log4j.Logger;
-
-import java.util.List;
 
 /**
  * Runs IR evaluations of the ImageCLEF2011 collection based on the parameterization declared in the properties files. It offers methods for
@@ -21,18 +17,18 @@ import java.util.List;
  *
  * @author Ralf Bierig
  */
-public class MediaEval2014PluginManager extends PluginManager {
+public class ConceptDemoPluginManager extends PluginManager {
 
     /**
      * Logging facility
      */
-    static Logger logger = Logger.getLogger(MediaEval2014PluginManager.class);
+    static Logger logger = Logger.getLogger(ConceptDemoPluginManager.class);
 
 
     /**
      * Constructor
      */
-    public MediaEval2014PluginManager(ConfigurationManager configManager) {
+    public ConceptDemoPluginManager(ConfigurationManager configManager) {
         super(configManager);
     }
 
