@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Sunshine
+ * @author Alexandra Siriteanu
  */
 
 public class ImageServlet extends HttpServlet {
@@ -68,6 +68,7 @@ public class ImageServlet extends HttpServlet {
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"" + filename + "\"");
         Files.copy(file.toPath(), response.getOutputStream());
+        System.out.println("");
     }
 
     /**
