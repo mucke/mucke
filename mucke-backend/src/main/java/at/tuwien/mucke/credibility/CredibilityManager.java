@@ -58,7 +58,7 @@ public class CredibilityManager {
     /**
      * Adds a user to the credibility index
      *
-     * @param User user
+     * @param user
      */
     public void addUser(User user) {
 

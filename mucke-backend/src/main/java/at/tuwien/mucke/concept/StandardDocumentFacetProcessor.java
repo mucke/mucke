@@ -59,7 +59,7 @@ public class StandardDocumentFacetProcessor implements DocumentFacetProcessor {
      */
     public List<Concept> process(TextFacet textFacet) {
 
-        System.out.println("Processing text facet to Wikipedia...");
+        System.out.println(" Processing text facet to Wikipedia...");
 
         List<Concept> concepts = new ArrayList<>();
 
