@@ -1,0 +1,848 @@
+PROJECT PATH :C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo
+TRAIN_DATA_ROOT_PATH : C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images
+TEST_DATA_ROOT_PATH : C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images
+IMG_ID_NAME_MAP_FILE : C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/mappings.txt
+RESULTS FOLDER : C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\result/full/
+
+ALL THE CONCEPTS : ['blue', 'green', 'red']
+image_paths: ['C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\0-Watt-Blue-Bulb-520x390.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\001 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\001 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\001 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\001 (5).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\001.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\002 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\002 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\002 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\002 (5).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\002.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\003 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\003 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\003 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\003.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\004 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\004 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\004 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\004 (5).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\004.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\005 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\005 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\005 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\005.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\006 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\006.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\007 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\007.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\008 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\008 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\008.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\009 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\009.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\010 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\010 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\blue\\3d_print3.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\001 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\001.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\002 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\002 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\002.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\003 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\003 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\003.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\004.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\005 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\005.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\006 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\006 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\006 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\006.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\007 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\007.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\008 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\008.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\009 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\009.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\010 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\010 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\010 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\010.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\011.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\012 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\012.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\013.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\014.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\015.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\021.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\053.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\3_15_GreenBagels-300x211 (1).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\3_15_GreenBagels-300x211.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\green\\_Picture-Web Objects-Clipart-FOOD-BROCCOLL.JPG', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\001 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\001 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\001 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\001.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\002 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\002 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\002 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\002 (5).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\002.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\003 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\003 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\003 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\003 (5).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\003.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\004 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\004 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\004 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\004 (5).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\004.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\005 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\005 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\005 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\005.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\006 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\006 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\006 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\006.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\007 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\007 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\007 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\007.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\008 (2).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\008 (3).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\008 (4).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\008.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/train_images\\red\\009 (2).jpg']
+TARGET CONCEPT --------> blue
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\0-Watt-Blue-Bulb-520x390.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (5).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (5).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (5).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\006 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\006.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\007 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\007.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\008 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\008 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\008.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\009 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\009.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\010 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\010 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\3d_print3.jpg
+Image is read
+Image feature extracted
+Positive data is ready
+Negative set is read for TARGET_CONCEPT --> blue
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\001 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\001.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\002 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\002 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\002.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\003 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\003 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\003.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\004.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\005 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\005.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\007 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\007.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\008 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\008.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\009 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\009.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\011.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\012 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\012.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\013.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\014.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\015.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\021.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\053.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\3_15_GreenBagels-300x211 (1).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\3_15_GreenBagels-300x211.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\_Picture-Web Objects-Clipart-FOOD-BROCCOLL.JPG
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\009 (2).jpg
+Image is read
+Negative data is ready
+Model training has been start ------ 
+Model is trained ------ 
+TARGET CONCEPT --------> green
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\001 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\001.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\002 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\002 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\002.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\003 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\003 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\003.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\004.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\005 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\005.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\007 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\007.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\008 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\008.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\009 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\009.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\011.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\012 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\012.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\013.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\014.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\015.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\021.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\053.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\3_15_GreenBagels-300x211 (1).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\3_15_GreenBagels-300x211.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\_Picture-Web Objects-Clipart-FOOD-BROCCOLL.JPG
+Image is read
+Image feature extracted
+Positive data is ready
+Negative set is read for TARGET_CONCEPT --> green
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\0-Watt-Blue-Bulb-520x390.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\006 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\006.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\007 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\007.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\008 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\008 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\008.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\009 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\009.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\010 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\010 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\3d_print3.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\009 (2).jpg
+Image is read
+Negative data is ready
+Model training has been start ------ 
+Model is trained ------ 
+TARGET CONCEPT --------> red
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\001.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002 (5).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\002.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003 (5).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\003.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004 (5).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\004.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\005.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\006.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\007.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008 (2).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008 (3).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008 (4).jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\008.jpg
+Image is read
+Image feature extracted
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\red\009 (2).jpg
+Image is read
+Image feature extracted
+Positive data is ready
+Negative set is read for TARGET_CONCEPT --> red
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\0-Watt-Blue-Bulb-520x390.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\001.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\002.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\003.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004 (5).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\004.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\005.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\006 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\006.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\007 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\007.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\008 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\008 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\008.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\009 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\009.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\010 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\010 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\blue\3d_print3.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\001 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\001.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\002 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\002 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\002.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\003 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\003 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\003.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\004.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\005 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\005.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\006.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\007 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\007.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\008 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\008.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\009 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\009.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010 (3).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010 (4).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\010.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\011.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\012 (2).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\012.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\013.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\014.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\015.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\021.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\053.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\3_15_GreenBagels-300x211 (1).jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\3_15_GreenBagels-300x211.jpg
+Image is read
+Next image path ----> C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/train_images\green\_Picture-Web Objects-Clipart-FOOD-BROCCOLL.JPG
+Image is read
+Negative data is ready
+Model training has been start ------ 
+Model is trained ------ 
+ALL MODELS ARE TRAINED --------> 
+TESTING TIME ....
+Test image paths: ['C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\blue\\524186868_31a74594a1.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\blue\\Blue-Car-Vector-452.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\blue\\blue-streamlined-racer.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\blue\\blue_object.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\blue\\Children-ball-1321962573_74.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\blue\\th.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\green\\8991_sj_shell.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\green\\green shoes converse objects all star 5420x3455 wallpaper_www.wall321.com_60.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\green\\green world.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\green\\light-bulb-made-of-green-leaves-Download-Royalty-free-Vector-File-EPS-54263.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\green\\lime-juice.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\green\\NATURE-GreenForest_1024x768.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\green\\th (1).jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\red\\0993b8a3bc924a8f4e7d8b6fa6fb6611.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\red\\6a00d834522c5069e200e54fbbbe1a8833-800wi.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\red\\red-number-0.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\red\\red-toolbox-Download-Royalty-free-Vector-File-EPS-2436.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\red\\red-umbrellas-cobb_1513_600x450.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\red\\redphone.jpg', 'C:\\Users\\rbierig.INTERN\\git\\mucke\\mucke-backend\\src\\main\\java\\at\\tuwien\\mucke\\plugin\\bilkentdemo\\data/full/test_images\\red\\SetSize510309-MoAD-Jug-Cola-Red.jpg']
+model name: blue
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\524186868_31a74594a1.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\Blue-Car-Vector-452.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\blue-streamlined-racer.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\blue_object.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\Children-ball-1321962573_74.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\th.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\8991_sj_shell.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\green shoes converse objects all star 5420x3455 wallpaper_www.wall321.com_60.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\green world.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\light-bulb-made-of-green-leaves-Download-Royalty-free-Vector-File-EPS-54263.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\lime-juice.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\NATURE-GreenForest_1024x768.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\th (1).jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\0993b8a3bc924a8f4e7d8b6fa6fb6611.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\6a00d834522c5069e200e54fbbbe1a8833-800wi.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\red-number-0.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\red-toolbox-Download-Royalty-free-Vector-File-EPS-2436.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\red-umbrellas-cobb_1513_600x450.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\redphone.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\SetSize510309-MoAD-Jug-Cola-Red.jpg
+model name: green
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\524186868_31a74594a1.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\Blue-Car-Vector-452.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\blue-streamlined-racer.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\blue_object.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\Children-ball-1321962573_74.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\th.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\8991_sj_shell.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\green shoes converse objects all star 5420x3455 wallpaper_www.wall321.com_60.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\green world.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\light-bulb-made-of-green-leaves-Download-Royalty-free-Vector-File-EPS-54263.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\lime-juice.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\NATURE-GreenForest_1024x768.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\th (1).jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\0993b8a3bc924a8f4e7d8b6fa6fb6611.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\6a00d834522c5069e200e54fbbbe1a8833-800wi.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\red-number-0.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\red-toolbox-Download-Royalty-free-Vector-File-EPS-2436.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\red-umbrellas-cobb_1513_600x450.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\redphone.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\SetSize510309-MoAD-Jug-Cola-Red.jpg
+model name: red
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\524186868_31a74594a1.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\Blue-Car-Vector-452.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\blue-streamlined-racer.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\blue_object.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\Children-ball-1321962573_74.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\blue\th.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\8991_sj_shell.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\green shoes converse objects all star 5420x3455 wallpaper_www.wall321.com_60.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\green world.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\light-bulb-made-of-green-leaves-Download-Royalty-free-Vector-File-EPS-54263.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\lime-juice.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\NATURE-GreenForest_1024x768.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\green\th (1).jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\0993b8a3bc924a8f4e7d8b6fa6fb6611.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\6a00d834522c5069e200e54fbbbe1a8833-800wi.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\red-number-0.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\red-toolbox-Download-Royalty-free-Vector-File-EPS-2436.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\red-umbrellas-cobb_1513_600x450.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\redphone.jpg
+test_image: C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo\data/full/test_images\red\SetSize510309-MoAD-Jug-Cola-Red.jpg
