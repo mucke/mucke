@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>MUCKE Concept Demo</title>
+    <style type="text/css">
+        ol {
+        display: inline-block;
+        padding: 10px;
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-bottom: 0;
+        margin-left: 10px;
+        width: 100%;
+        }
+
+        ol li {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        background-color: #eee;
+        padding: 0;
+        border-radius: 9px;
+        }
+
+        li p {
+        margin-top: 3px;
+        margin-bottom: 6px;
+        text-align: center;
+        }
+    </style>
+</h:head>
+<h:body>
+    <div style="display: table;margin: auto;padding-bottom: 10px;">
+        <h1 style="float:left;">Mucke</h1>
+        <img style="float:left;" alt="logo" src="logo.png"/>
+    </div>
+    <h:form id="form">
+        <div style="width: 500px;display: table;margin: auto;background-color: #eee;padding: 20px;border-radius: 14px;box-shadow: inset 2px 2px 6px #777;">
+            <p:panel id="panel" header="Enter Concepts" style="margin-bottom:10px;">
+                <p:messages id="messages"/>
+                <h:panelGrid columns="2" style="width: 100%;">
+
+                    <p:outputLabel value="Concepts:" for="concepts" />
+                    <p:autoComplete id="concepts" multiple="true" value="#{conceptView.selectedConcepts}" completeMethod="#{conceptView.completeConcept}"
+                                    var="concept" itemLabel="#{concept.displayName}" itemValue="#{concept}" converter="conceptConverter" forceSelection="true">
+                        <p:column style="width:10%">
+                            <h:outputText styleClass="ui-theme ui-theme-#{concept.name}" />
+                        </p:column>
+
+                        <p:column>
+                            <h:outputText value="#{concept.displayName}" />
+                        </p:column>
+                    </p:autoComplete>
+
+                </h:panelGrid>
+            </p:panel>
+            <center>
+            <p:commandButton actionListener="#{conceptView.run()}" update="panel,display" value="Find Concepts"
+                             id="search-btn"
+                             icon="ui-icon-search"/>
+        </center>
+        </div>
+
+        <p:panel id="display" header="Results" style="margin-top:10px;">
+            <p:dataList value="#{conceptView.resultList}" var="result" type="ordered">
+                <img src="#{result.id}" alt="#{result.title}" height="80" width="80"/><br/>
+                <p>#{result.score}</p>
+            </p:dataList>
+        </p:panel>
+
+    </h:form>
+</h:body>
+</html>
