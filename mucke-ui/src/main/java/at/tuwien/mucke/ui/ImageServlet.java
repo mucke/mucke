@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.util.Properties;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -63,7 +64,9 @@ public class ImageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String filename = request.getPathInfo().substring(1);
-        File file = new File("F:\\MUCKE\\Intalnire Ankara 4-8 aug 2014\\Data\\collections\\UserCredibilityImages\\images", filename);
+        Properties properties = new Properties();
+        properties.load(getServletContext().getResourceAsStream("/WEB-INF/system.properties"));
+        File file = new File(properties.getProperty("credimage.contentfolder"), filename);
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"" + filename + "\"");
