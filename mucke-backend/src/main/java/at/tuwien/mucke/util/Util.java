@@ -8,7 +8,9 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class Util {
 
@@ -80,6 +82,58 @@ public class Util {
 
         return contentList;
     }
+
+    /**
+     * Load the entire contents of a text file, and load it into a hashmap.
+     * The file has to be of format: Key separator Value.
+     * This style of implementation does not throw Exceptions to the caller.
+     *
+     * @param aFile is a file which already exists and can be read.
+     */
+    public static HashMap getContents(File aFile, String separator) {
+
+        HashMap map = new HashMap();
+
+        try {
+
+            // extract all text from this file
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(aFile), "UTF-8"));
+            try {
+
+                // default
+                if (separator == null){
+                    separator = ",";
+                }
+
+                String line = null; //not declared within while loop
+                while ((line = reader.readLine()) != null) {
+
+                    String[] parts = line.split(separator);
+                    if (parts == null){
+                        logger.error("File could not be split! Filename: " + aFile.getAbsolutePath());
+                        return null;
+                    }
+                    if (parts.length != 2){
+                        logger.error("File had CSV with more than 2 elements. False Format for building a HashMap: " + aFile.getName());
+                        logger.error("in this line: " + line);
+                        return null;
+                    }
+
+                    // add element to HashMap
+                    map.put(parts[0], parts[1]);
+
+                }
+            } finally {
+                reader.close();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        logger.info("HashMap built from file " + aFile.getAbsolutePath() + " has " + map.size() + " elements!");
+        return map;
+    }
+
 
     /**
      * Write the given contents to the given file either in overwriting mode or in attaching mode.

@@ -7,6 +7,7 @@ import at.tuwien.mucke.concept.StandardDocumentFacetProcessor;
 import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.config.Run;
 import at.tuwien.mucke.documentmodel.TextFacet;
+import at.tuwien.mucke.plugin.bilkentdemo.BilkentDemoPluginManager;
 import at.tuwien.mucke.search.Result;
 import at.tuwien.mucke.search.SearchManager;
 import at.tuwien.mucke.util.Util;
@@ -15,6 +16,7 @@ import org.apache.log4j.Logger;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -49,6 +51,9 @@ public class SystemManager {
      */
     public void executeBatchMode() {
 
+        // to calculate indexing time as a performance measure
+        Date start = new Date();
+
         // extract configuration for all runs
         logger.info("Starting batch mode...");
         logger.info("Loading runs...");
@@ -69,7 +74,9 @@ public class SystemManager {
                 run.run(runConfigFilename);
             }
         }
-        logger.info("Completed " + i + " runs!");
+        // time stamping
+        Date end = new Date();
+        logger.info("Completed " + i + " runs in " + (end.getTime() - start.getTime()) + " milliseconds.");
     }
 
     /** Used for MUCKE ICMR Demo */
@@ -134,6 +141,24 @@ public class SystemManager {
         logger.info("======================== concept list END =================================");
 
         return concepts;
+    }
+
+    /** Used for BilkentDemo */
+    public List<Result> executeConceptSearch(String text) {
+
+        logger.info("executeConceptSearch method!");
+        logger.info("text: " + text);
+
+        // execute configuration
+        this.executeBatchMode();
+
+        // search concept index with given query text (query text represents concepts)
+        BilkentDemoPluginManager bManager = new BilkentDemoPluginManager(configManager);
+
+        //List<Result> results = new ArrayList<>();
+        List<Result> results = bManager.search(text);
+
+        return results;
     }
 
 

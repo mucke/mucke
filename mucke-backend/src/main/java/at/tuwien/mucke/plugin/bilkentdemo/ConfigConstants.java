@@ -19,9 +19,11 @@ public class ConfigConstants {
     // Classification Paths
     //
 
-    public final static String FULL_TRAIN_FOLDER = "full.train.folder";
-    public final static String FULL_TEST_FOLDER = "full.test.folder";
-    public final static String FULL_MAPPING_FILE = "full.mapping.file";
-    public final static String FULL_RESULT_FOLDER = "full.result.folder";
+    public final static String TRAIN_FOLDER = "train.folder";
+    public final static String TEST_FOLDER = "test.folder";
+    public final static String MAPPING_FILE = "mappings.file";
+    public final static String RESULT_FOLDER = "result.folder";
+
+    public final static String CONCEPT_INDEX_FOLDER = "concept.indexfolder";
 
 }

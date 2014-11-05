@@ -2,13 +2,18 @@ package at.tuwien.mucke.plugin.bilkentdemo;
 
 import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.plugin.PluginManager;
+import at.tuwien.mucke.plugin.bilkentdemo.index.BilkenDemoConceptIndexer;
+import at.tuwien.mucke.plugin.bilkentdemo.search.BilkentDemoConceptSearcher;
+import at.tuwien.mucke.search.Result;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -45,7 +50,7 @@ public class BilkentDemoPluginManager extends PluginManager {
     public void run(String propertiesFile) {
         super.run(propertiesFile);
 
-        logger.info("Start");
+        logger.info("Start BilkentDemoPluginManager run...");
 
         // determine current working directory for Python call
         String currentDir = "";
@@ -55,35 +60,39 @@ public class BilkentDemoPluginManager extends PluginManager {
             logger.error("Error while determining current location: " + e.getMessage());
         }
 
-        // basic classification call (Python/Anaconda)
-        //String resultBasic = externalCall("python " + currentDir +
-        //        "/src/main/java/at/tuwien/mucke/plugin/bilkentdemo/BasicClassification.py");
-        //logger.info("Result basic:" + resultBasic);
-
-        // full classfication call (Python/Anaconda)
-
-        // command line --- delete later
-        //C:\Users\rbierig.INTERN\git\mucke\mucke-backend\src\main\java\at\tuwien\mucke\plugin\bilkentdemo>python FullClassification.py data/full/train_images data/full/test_images data/full/mappings.txt result/full/
-
-        /*String resultFull = externalCall("python " + currentDir +
-        "/src/main/java/at/tuwien/mucke/plugin/bilkentdemo/FullClassification.py " +
-                configManager.getProperty(ConfigConstants.FULL_TRAIN_FOLDER) + " " +
-                configManager.getProperty(ConfigConstants.FULL_TEST_FOLDER) + " " +
-                configManager.getProperty(ConfigConstants.FULL_MAPPING_FILE) + " " +
-                configManager.getProperty(ConfigConstants.FULL_RESULT_FOLDER));
-        logger.info("Result full:" + resultFull);*/
-
-
-
-        // simple solution
+        // step 1: classfication call (Python/Anaconda)
         String call = "python " + currentDir +
-                "/src/main/java/at/tuwien/mucke/plugin/bilkentdemo/FullClassification.py " +
-                "data/full/train_images data/full/test_images data/full/mappings.txt result/full";
-        String resultFull = externalCall(call);
-        logger.info("Result full:" + resultFull);
+        "/src/main/java/at/tuwien/mucke/plugin/bilkentdemo/FullClassification.py " +
+                configManager.getProperty(ConfigConstants.TRAIN_FOLDER) + " " +
+                configManager.getProperty(ConfigConstants.TEST_FOLDER) + " " +
+                configManager.getProperty(ConfigConstants.MAPPING_FILE) + " " +
+                configManager.getProperty(ConfigConstants.RESULT_FOLDER);
+        logger.info("call: " + call);
+        //String resultFull = externalCall(call);
+        //logger.info("Result full:" + resultFull);
+
+        // Step 2: indexing
+        //this.index();
+
+        // Step 3: search
+        //this.search("red");
 
         logger.info("Done!");
 
+    }
+
+    /** Build concept index */
+    public void index(){
+        logger.info("index() entered...");
+        BilkenDemoConceptIndexer indexer = new BilkenDemoConceptIndexer(configManager);
+        indexer.index();
+    }
+
+    public List<Result> search(String query){
+        logger.info("search() entered ...");
+        logger.info("search() query: " + query);
+        BilkentDemoConceptSearcher searcher = new BilkentDemoConceptSearcher(configManager);
+        return searcher.search(query);
     }
 
     /** Calls external command
