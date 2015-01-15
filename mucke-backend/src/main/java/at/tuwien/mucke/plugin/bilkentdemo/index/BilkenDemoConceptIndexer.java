@@ -97,6 +97,7 @@ public class BilkenDemoConceptIndexer {
 
         // load mapping file
         File mappingsFile = new File(configManager.getProperty(ConfigConstants.MAPPING_FILE));
+        logger.info("Mappings file: " + mappingsFile.getAbsolutePath());
         if (!mappingsFile.exists() || !mappingsFile.canRead()) {
             logger.error("Mappings file: '" + mappingsFile.getAbsolutePath()
                     + "' does not exist or is not readable, please check the path");
@@ -150,4 +151,5 @@ public class BilkenDemoConceptIndexer {
         return conceptMap;
 
     }
+
 }

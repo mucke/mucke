@@ -3,7 +3,9 @@
     Author : Eren Golge
     erengolge@gmail.com
 
-    TODO: Seelct random negatives if you have many negative instances
+    TODO: Select random negatives if you have many negative instances
+    Modified by: M.Ilker Sarac
+    ilker1486@gmail.com
 '''
 # IMPORT LIBRARIES
 import os
@@ -12,7 +14,11 @@ import numpy as np
 import cv2
 from skimage import feature
 from sklearn.svm import LinearSVC, SVC
+from sklearn.externals import joblib
+import pickle
 
+import h5py
+import scipy.io as sio
 
 ###########################################
 # in-use functions
@@ -26,7 +32,7 @@ def get_data_paths(root_path, ext = '*'):
     for root, dirnames, filenames in os.walk(root_path):
       for filename in fnmatch.filter(filenames, ext):
           matches.append(os.path.join(root, filename))
-    print "There are ",len(matches), " images re found!!"
+    print "There are ",len(matches), " images!!"
     return matches
 
 def create_ID_file_name_map_file(file_path, images_path):
@@ -35,7 +41,7 @@ def create_ID_file_name_map_file(file_path, images_path):
         for count, image_path in enumerate(image_paths):
             temp = image_path.split('/')
             image_name = os.path.join(temp[-2], temp[-1])
-            line  = str(count) + ' ' + image_name
+            line  = str(count) + ',' + image_name
             map_file.write(line+'\n')
     return image_paths
 
@@ -59,12 +65,15 @@ if __name__ == '__main__':
 
     # Define Parameters
     PROJECT_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)))
+    print('mypath: ' + PROJECT_PATH)
     TRAIN_DATA_ROOT_PATH  = os.path.join(PROJECT_PATH , sys.argv[1]) # THE ROOT PATH of the training images
     TEST_DATA_ROOT_PATH   = os.path.join(PROJECT_PATH , sys.argv[2])  # THE ROOT PATH of the test images
     IMG_ID_NAME_MAP_FILE  = os.path.join(PROJECT_PATH , sys.argv[3])   # File maps file ids to file names including concept folder
     IMG_CONF_FOLDER       = os.path.join(PROJECT_PATH , sys.argv[4])   # Folder that keeps image confidences, below OUTPUT_ROOT_PATH
     num_color_bins        = 20
     CONCEPT_MODEL_DICT    = {}                                                  # It'll keep all the trained models for each concept
+    IS_TRAIN    = True
+    IS_TEST     = True       
     
     # Write parameter logs
     f_log.write('PROJECT PATH :' + PROJECT_PATH + '\n')
@@ -101,105 +110,129 @@ if __name__ == '__main__':
     # models in a dictionary with keyed by the concept
     # name that it belongs to.
     ###############################################
+    #ALL_CONCEPTS = ALL_CONCEPTS
+    if IS_TRAIN:
+        concept_count = 1
+        for TARGET_CONCEPT in ALL_CONCEPTS:
+            
+            #This is to eliminate MAC specific .DS_Store folder.
+            #The other OSes might not need that if statement.
+            if TARGET_CONCEPT == '.DS_Store':
+                continue
+            
+            print ' '
+            print 'TARGET CONCEPT --------> ', TARGET_CONCEPT
+            f_log.write('TARGET CONCEPT --------> ' + TARGET_CONCEPT + '\n')
+            f_log.flush()
+            
+            # Read Positive Data and Extract RGB Histogram
+            X_pos = np.zeros([0, num_color_bins**3+1]) # feature size + label
+    
+            # TARGET_CONCEPT_PATH = os.path.join(TRAIN_DATA_ROOT_PATH, TARGET_CONCEPT)
+            # image_paths = get_data_paths(TARGET_CONCEPT_PATH)
+            image_paths_pos = [image_path for image_path in image_paths if image_path.split(os.sep)[-2] == TARGET_CONCEPT]
+            print "Number of images for the concept --------> ", str(len(image_paths_pos))
+            for image_path in image_paths_pos:
+                f_log.write('Next image path ----> ' + image_path + '\n')
+                f_log.flush()
+    
+                img = cv2.imread(image_path)
+                f_log.write('Image is read\n')
+                f_log.flush()
+                try:
+                    hist = cv2.calcHist(img, [0,1,2], None, [num_color_bins,num_color_bins,num_color_bins], [0, 256, 0, 256, 0, 256])
+                    f_log.write('Image feature extracted\n')
+                    f_log.flush()
+                except:
+                    print 'Image Read Problem in OpenCV. Most probably image file format is not suitable!!'
+                    f_log.write('Image Read Problem in OpenCV. Most probably image file format is not suitable!! ---> ' + image_path + '\n')
+                    f_log.flush()
+                    
+                hist = cv2.normalize(hist)
+                hist = hist.flatten()
+                X_pos = np.vstack([X_pos, np.hstack([hist,1])]); # stack the class label at the end of feature vector
+    
+            f_log.write('Positive data is ready\n')
+            f_log.flush()
+    
+            # Read Negative Data and Extract RGB Histogram
+            X_neg = np.ones([0, num_color_bins**3+1]) # feature size + label
+    
+            # find other category folders
+            OTHER_CONCEPT_FOLDERS = os.listdir(TRAIN_DATA_ROOT_PATH)
+            OTHER_CONCEPT_FOLDERS.remove(TARGET_CONCEPT)
+            OTHER_CONCEPT_PATHS = map(lambda x: os.path.join(TRAIN_DATA_ROOT_PATH, x),OTHER_CONCEPT_FOLDERS)
+    
+            # read images
+            image_paths_neg = [image_path for image_path in image_paths if image_path.split(os.sep)[-2] != TARGET_CONCEPT]
+            f_log.write('Negative set is read for TARGET_CONCEPT --> '+ TARGET_CONCEPT + '\n')
+            f_log.flush()
+            for image_path in image_paths_neg:
+                f_log.write('Next image path ----> ' + image_path + '\n')
+                f_log.flush()
+    
+                img = cv2.imread(image_path)
+    
+                f_log.write('Image is read\n')
+                f_log.flush()
+                try:
+                    hist = cv2.calcHist(img, [0,1,2], None, [num_color_bins,num_color_bins,num_color_bins], [0, 256, 0, 256, 0, 256])
+                    #hist = cv2.normalize(hist)
+                    #hist = hist.flatten()
+                    #X_neg = np.vstack([X_neg,np.hstack([hist,-1])])  # stack the class label at the end of feature vector
+    
+                except:
+                    print 'Image Read Problem in OpenCV. Most probably image file format is not suitable!!'
+                    f_log.write('Image Read Problem in OpenCV. Most probably image file format is not suitable!! ---> ' + image_path + '\n')
+                    f_log.flush()
+                hist = cv2.normalize(hist)
+                hist = hist.flatten()
+                X_neg = np.vstack([X_neg,np.hstack([hist,-1])])  # stack the class label at the end of feature vector
+    
+            f_log.write('Negative data is ready\n')
+            f_log.flush()
+    
+            # Preprocess Data Matrix
+            X = np.vstack([X_pos, X_neg])
+            np.random.shuffle(X)
+    
+            Y = X[:,-1].astype(int) # get labels
+            X = X[:,0:-1] # get instances
+    
+            print 'Number of labels ---------> ', len(np.unique(Y))
+            # Normalize data to unit ball
+            ROW_MEANS = X.mean(axis=1)   # You need to keep ROW_MEANS for novel data
+            ROW_STDS = X.std(axis=0)+10  # You need to keep ROW_STDS for novel data
+            X = X - ROW_MEANS[:,None] / (ROW_STDS+10)
+    
+            f_log.write('Model training has been start ------ \n')
+            f_log.flush()
 
-    for TARGET_CONCEPT in ALL_CONCEPTS:
+            SVM = LinearSVC(C=10000, fit_intercept=True, dual=False, loss='l2', penalty='l1', class_weight='auto', verbose=15)
+            #SVM = SVC(C=100, class_weight='auto', kernel='linear', probability=True, verbose= 15)
 
-        print ' '
-        print 'TARGET CONCEPT --------> ', TARGET_CONCEPT
-        f_log.write('TARGET CONCEPT --------> ' + TARGET_CONCEPT + '\n')
+            SVM.fit(X, Y)
+            f_log.write('Model is trained ------ \n')
+            f_log.flush()
+            print 'Training accuracy ---> ',SVM.score(X, Y)
+    
+            CONCEPT_MODEL_DICT[TARGET_CONCEPT] = SVM
+            
+            #sio.savemat('savedSVMmodel.mat', {'svm_Model': SVM})
+            #np.save('svmModels', SVM)
+            #joblib.dump(SVM, (str(concept_count) + 'svmModels.pkl'))
+                        
+            
+            concept_count = concept_count + 1
+    
+        f_log.write('ALL MODELS ARE TRAINED --------> \n')
         f_log.flush()
         
-        # Read Positive Data and Extract RGB Histogram
-        X_pos = np.zeros([0, num_color_bins**3+1]) # feature size + label
-
-        # TARGET_CONCEPT_PATH = os.path.join(TRAIN_DATA_ROOT_PATH, TARGET_CONCEPT)
-        # image_paths = get_data_paths(TARGET_CONCEPT_PATH)
-        image_paths_pos = [image_path for image_path in image_paths if image_path.split(os.sep)[-2] == TARGET_CONCEPT]
-        print "Number of images for the concept --------> ", str(len(image_paths_pos))
-        for image_path in image_paths_pos:
-            f_log.write('Next image path ----> ' + image_path + '\n')
-            f_log.flush()
-
-            img = cv2.imread(image_path)
-            f_log.write('Image is read\n')
-            f_log.flush()
-            try:
-                hist = cv2.calcHist(img, [0,1,2], None, [num_color_bins,num_color_bins,num_color_bins], [0, 256, 0, 256, 0, 256])
-                f_log.write('Image feature extracted\n')
-                f_log.flush()
-            except:
-                print 'Image Read Problem in OpenCV. Most probably image file format is not suitable!!'
-                f_log.write('Image Read Problem in OpenCV. Most probably image file format is not suitable!! ---> ' + image_path + '\n')
-                f_log.flush()
-                
-            hist = cv2.normalize(hist)
-            hist = hist.flatten()
-            X_pos = np.vstack([X_pos, np.hstack([hist,1])]); # stack the class label at the end of feature vector
-
-        f_log.write('Positive data is ready\n')
-        f_log.flush()
-
-        # Read Negative Data and Extract RGB Histogram
-        X_neg = np.ones([0, num_color_bins**3+1]) # feature size + label
-
-        # find other category folders
-        OTHER_CONCEPT_FOLDERS = os.listdir(TRAIN_DATA_ROOT_PATH)
-        OTHER_CONCEPT_FOLDERS.remove(TARGET_CONCEPT)
-        OTHER_CONCEPT_PATHS = map(lambda x: os.path.join(TRAIN_DATA_ROOT_PATH, x),OTHER_CONCEPT_FOLDERS)
-
-        # read images
-        image_paths_neg = [image_path for image_path in image_paths if image_path.split(os.sep)[-2] != TARGET_CONCEPT]
-        f_log.write('Negative set is read for TARGET_CONCEPT --> '+ TARGET_CONCEPT + '\n')
-        f_log.flush()
-        for image_path in image_paths_neg:
-            f_log.write('Next image path ----> ' + image_path + '\n')
-            f_log.flush()
-
-            img = cv2.imread(image_path)
-
-            f_log.write('Image is read\n')
-            f_log.flush()
-            try:
-                hist = cv2.calcHist(img, [0,1,2], None, [num_color_bins,num_color_bins,num_color_bins], [0, 256, 0, 256, 0, 256])
-            except:
-                print 'Image Read Problem in OpenCV. Most probably image file format is not suitable!!'
-                f_log.write('Image Read Problem in OpenCV. Most probably image file format is not suitable!! ---> ' + image_path + '\n')
-                f_log.flush()
-            hist = cv2.normalize(hist)
-            hist = hist.flatten()
-            X_neg = np.vstack([X_neg,np.hstack([hist,-1])])  # stack the class label at the end of feature vector
-
-        f_log.write('Negative data is ready\n')
-        f_log.flush()
-
-        # Preprocess Data Matrix
-        X = np.vstack([X_pos, X_neg])
-        np.random.shuffle(X)
-
-        Y = X[:,-1].astype(int) # get labels
-        X = X[:,0:-1] # get instances
-
-        print 'Number of labels ---------> ', len(np.unique(Y))
-        # Normalize data to unit ball
-        ROW_MEANS = X.mean(axis=1)   # You need to keep ROW_MEANS for novel data
-        ROW_STDS = X.std(axis=0)+10  # You need to keep ROW_STDS for novel data
-        X = X - ROW_MEANS[:,None] / (ROW_STDS+10)
-
-        f_log.write('Model training has been start ------ \n')
-        f_log.flush()
-        SVM = LinearSVC(C=10000, fit_intercept=True, dual=False, loss='l2', penalty='l1', class_weight='auto', verbose=15)
-        #SVM = SVC(C=100, class_weight='auto', kernel='linear', probability=True, verbose= 15)
-        SVM.fit(X, Y)
-        f_log.write('Model is trained ------ \n')
-        f_log.flush()
-        print 'Training accuracy ---> ',SVM.score(X, Y)
-
-        CONCEPT_MODEL_DICT[TARGET_CONCEPT] = SVM
-
-    f_log.write('ALL MODELS ARE TRAINED --------> \n')
-    f_log.flush()
-
-
+        pickle.dump(CONCEPT_MODEL_DICT, open('conceptModelsDict.pkl', 'wb')) #use cPickle later which is faster
+        #s = pickle.dumps(CONCEPT_MODEL_DICT)
+        #joblib.dump(CONCEPT_MODEL_DICT, ('conceptModelsDict.pkl'))
+    
+    
 
     ###################################################
     ## PREDICTION TIME
@@ -216,6 +249,20 @@ if __name__ == '__main__':
     f_log.write('Test image paths: ' + str(test_image_paths) + '\n')
     f_log.flush()
 
+    '''
+    bir = joblib.load('1svmModels.pkl')
+    iki = joblib.load('2svmModels.pkl')
+    ucu = joblib.load('3svmModels.pkl')
+    CONCEPT_MODEL_DICT[0] = bir
+    CONCEPT_MODEL_DICT[1] = iki
+    CONCEPT_MODEL_DICT[2] = ucu
+    '''
+    
+    CONCEPT_MODEL_DICT = pickle.load(open('conceptModelsDict.pkl', 'rb'))
+    #conceptModelDict = pickle.loads(s)    
+    #with open('pickleSVMmodelsFull', 'rb' ) as fid:
+    #    CONCEPT_MODEL_DICT = pickle.load(fid)
+    
     for model_name in CONCEPT_MODEL_DICT.keys():
         SVM = CONCEPT_MODEL_DICT[model_name];
         conf_files_path = os.path.join(IMG_CONF_FOLDER,model_name)+'.txt'

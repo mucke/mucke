@@ -41,15 +41,23 @@ public class BilkentDemoConceptSearcher {
         List<Result> results = null;
 
         try {
+
+            // create index reader
             IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(configManager.getProperty(ConfigConstants.CONCEPT_INDEX_FOLDER))));
             IndexSearcher searcher = new IndexSearcher(reader);
+
+            //associate payload similarity
             searcher.setSimilarity(new BilkentDemoPayloadSimilarity());
+
+            // create a query from concept terms
             PayloadTermQuery query = new PayloadTermQuery(new Term("concept", queryString),
                     new AveragePayloadFunction());
-            System.out.println("Query: " + query.toString());
+            logger.info("Query: " + query.toString());
+
+            // consider the first 999 results -- TODO should this be a parameter?
             TopDocs topDocs = searcher.search(query, 999);
             ScoreDoc[] hits = topDocs.scoreDocs;
-            System.out.println("Number of results:" + hits.length);
+            logger.info("Number of results:" + hits.length);
 
             // output
             for (int i = 0; i < hits.length; i++) {
@@ -75,7 +83,7 @@ public class BilkentDemoConceptSearcher {
             reader.close();
 
         } catch (Exception e) {
-            System.out.println("Exception while searching: " + e.getMessage());
+            logger.error("Exception while searching: " + e.getMessage());
         }
 
         return results;

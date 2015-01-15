@@ -17,14 +17,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Runs IR evaluations of the ImageCLEF2011 collection based on the parameterization declared in the properties files. It offers methods for
- * 1) indexing, 2) searching and 3) evaluating results.
- * <p/>
- * The index builds two indexes, one for Wikipedia content and one for metadata. Search is performed first on the documents of the Wiki
- * document collection as defined in the document index and then, for each document, a search is performed on the metadata index. The
- * evaluation generates performance measures based on a gold standard.
- * <p/>
- * Each of the three parts can run independently.
+ * Classifies images into concepts with probabilities and builds a concept index that can be searched.
  *
  * @author Ralf Bierig
  */
@@ -45,12 +38,35 @@ public class BilkentDemoPluginManager extends PluginManager {
 
 
     /**
-     * Runs the Plugin
+     * Runs the plugin as a complete process in batch mode
      */
     public void run(String propertiesFile) {
         super.run(propertiesFile);
 
         logger.info("Start BilkentDemoPluginManager run...");
+
+        // step 1: prepare collection
+        // TODO, currently done in step 2, will be separated later
+
+        // step 2: classfication call (Python/Anaconda)
+        this.classify();
+
+        // Step 3: index
+        this.index();
+
+        // Step 4: search
+        this.search("red");
+
+        logger.info("Done!");
+    }
+
+    /** Prepares data set for classifier */
+    public void prepare(){
+        // TODO
+    }
+
+    /** Trains classifiers and determines concepts for images  */
+    public void classify(){
 
         // determine current working directory for Python call
         String currentDir = "";
@@ -60,25 +76,15 @@ public class BilkentDemoPluginManager extends PluginManager {
             logger.error("Error while determining current location: " + e.getMessage());
         }
 
-        // step 1: classfication call (Python/Anaconda)
-        //String call = "python " + currentDir +
-        //"/src/main/java/at/tuwien/mucke/plugin/bilkentdemo/FullClassification.py " +
-        //        configManager.getProperty(ConfigConstants.TRAIN_FOLDER) + " " +
-        //        configManager.getProperty(ConfigConstants.TEST_FOLDER) + " " +
-        //        configManager.getProperty(ConfigConstants.MAPPING_FILE) + " " +
-        //        configManager.getProperty(ConfigConstants.RESULT_FOLDER);
-        //logger.info("call: " + call);
-        //String resultFull = externalCall(call);
-        //logger.info("Result full:" + resultFull);
-
-        // Step 2: indexing
-        this.index();
-
-        // Step 3: search
-        this.search("red");
-
-        logger.info("Done!");
-
+        String call = "python " + currentDir +
+        "/src/main/java/at/tuwien/mucke/plugin/bilkentdemo/FullClassification.py " +
+                configManager.getProperty(ConfigConstants.TRAIN_FOLDER) + " " +
+                configManager.getProperty(ConfigConstants.TEST_FOLDER) + " " +
+                configManager.getProperty(ConfigConstants.MAPPING_FILE) + " " +
+                configManager.getProperty(ConfigConstants.RESULT_FOLDER);
+        logger.info("call: " + call);
+        String resultFull = externalCall(call);
+        logger.info("Result full:" + resultFull);
     }
 
     /** Build concept index */
@@ -88,6 +94,7 @@ public class BilkentDemoPluginManager extends PluginManager {
         indexer.index();
     }
 
+    /** Serach for the given query */
     public List<Result> search(String query){
         logger.info("search() entered ...");
         logger.info("search() query: " + query);
@@ -98,7 +105,7 @@ public class BilkentDemoPluginManager extends PluginManager {
     /** Calls external command
      * @param commandLine
      * @return Result */
-    public String externalCall(String commandLine){
+    private String externalCall(String commandLine){
 
         String resultValue = "";
         try {

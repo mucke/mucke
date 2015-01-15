@@ -1,6 +1,7 @@
 package at.tuwien.mucke.ui;
 
 import at.tuwien.mucke.SystemManager;
+import at.tuwien.mucke.config.ConfigurationManager;
 import at.tuwien.mucke.search.Result;
 import org.apache.log4j.Logger;
 import org.primefaces.event.SelectEvent;
@@ -35,17 +36,25 @@ public class ConceptView {
     private List<Concept> selectedConcepts;
     private List<Result> resultList;
 
+    protected ConfigurationManager configManager;
+
     @ManagedProperty("#{conceptService}")
     private ConceptService service;
 
 
     public void run() {
 
-        // Initialize manager
-        System.out.println("Creating a new System Manager ...");
+        // Initialize manager and access plugin configuration
+        logger.info("Creating a new System Manager ...");
         SystemManager manager = new SystemManager();
+        this.configManager = manager.getConfigManager();
+        if (manager.getConfigManager() == null){
+            logger.info("ConfigurationManager is null!");
+        } else {
+            logger.info("ConfigurationManager set!");
+        }
 
-        System.out.println("Executing Interactive Mode ...");
+        logger.info("Executing Interactive Mode ...");
 
         // build query
         logger.info("Selected concepts: " + this.getSelectedConcepts());
